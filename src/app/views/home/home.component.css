@@ -1,0 +1,16 @@
+.header-home {
+
+  background-color: transparent !important;
+  background-image: url("../../../assets/img/background-home.png");
+  background-size: cover;
+
+}
+
+@media screen and (max-width: 1450px) {
+
+  .header-home {
+    background-color: #343434 !important;
+    background-image: none !important;
+  }
+
+}

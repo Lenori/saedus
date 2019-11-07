@@ -1,0 +1,30 @@
+form {
+
+  text-align: center;
+
+}
+
+input {
+
+  width: 80%;
+  background-color: #ECECEC;
+  border: none;
+  padding: 30px;
+  font-size: 17px;
+  font-weight: 100;
+  margin: 60px auto;
+  color: #313131;
+  -webkit-box-shadow: 0 12px 25px -23px rgb(50, 50, 50);
+  -moz-box-shadow: 0 12px 25px -23px rgb(50, 50, 50);
+  box-shadow: 0 12px 25px -23px rgb(50, 50, 50);
+  border-radius: 45px;
+
+}
+
+@media screen and (max-width: 700px) {
+
+  input {
+    width: 75%;
+  }
+
+}

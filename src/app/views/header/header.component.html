@@ -1,0 +1,31 @@
+<div class="header-menu">
+
+  <div class="content content-menu">
+
+    <div class="header-logo">
+
+      <img src="../../../assets/logo/logo.png" alt="saedus" />
+
+    </div>
+
+    <i id="hidden-menu-open" (click)="showMenu = true" class="fas fa-bars"></i>
+
+    <div [className]="showMenu ? 'hidden-header-menu-items' : 'header-menu-items'">
+
+      <ul>
+
+        <i (click)="showMenu = false" class="fas fa-times"></i>
+
+        <a href="#"><li>Projects</li></a>
+        <a href="#"><li>Professionals</li></a>
+        <a href="#"><li>How it Works</li></a>
+        <a href="#"><li class="highlight highlight-menu">Sign in</li></a>
+        <a href="#"><li class="highlight highlight-menu">Sign up</li></a>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+</div>

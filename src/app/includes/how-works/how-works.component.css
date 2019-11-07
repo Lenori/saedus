@@ -1,0 +1,92 @@
+.how-works {
+
+  text-align: center;
+
+}
+
+.how-works h1 {
+
+  font-size: 50px;
+  margin: 50px auto -25px;
+  border-bottom: 2px solid #323232;
+  font-weight: 100;
+  width: 35%;
+  padding: 0 0 15px 0;
+
+}
+
+.how-works h2 {
+
+  font-size: 50px;
+  margin: 60px auto 10px;
+  font-weight: 100;
+  width: 35%;
+  padding: 0 0 15px 0;
+
+}
+
+.how-works p {
+
+  font-weight: 100;
+  font-size: 22px;
+  margin: auto;
+  width: 250px;
+
+}
+
+.how-works > .large {
+
+  width: 450px;
+
+}
+
+.how-works-line {
+
+  width: 50%;
+  height: 90px;
+  box-sizing: border-box;
+  margin: 25px 0;
+
+}
+
+.line-left {
+
+  float: left;
+  border-right: 1px solid #323232;
+
+}
+
+.line-right {
+
+  float: right;
+  border-left: 1px solid #323232;
+
+}
+
+@media screen and (max-width: 1460px) {
+
+  .how-works h1, .how-works h2 {
+    width: 60%;
+  }
+
+}
+
+@media screen and (max-width: 950px) {
+
+  .how-works h1, .how-works h2 {
+    width: 80%;
+  }
+
+  .how-works > .large {
+    width: 315px;
+  }
+
+}
+
+@media screen and (max-width: 720px) {
+
+  .how-works h1, .how-works h2 {
+    width: 100%;
+  }
+
+}

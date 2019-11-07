@@ -1,0 +1,55 @@
+.bullets {
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 85px auto;
+
+}
+
+.bullet-item {
+
+  width: 33.33%;
+  text-align: center;
+  padding: 15px;
+  box-sizing: border-box;
+
+}
+
+.bullet-item i {
+
+  color: #343434;
+
+}
+
+.bullet-item p {
+
+  width: 300px;
+  margin: auto;
+
+}
+
+@media screen and (max-width: 1180px) {
+
+  .bullet-item {
+    width: 50%;
+  }
+
+}
+
+@media screen and (max-width: 950px) {
+
+  .bullet-item {
+    width: 100%;
+    margin: 0 0 25px 0;
+  }
+
+}
+
+@media screen and (max-width: 700px) {
+
+  .bullet-item p {
+    width: 100%;
+  }
+
+}
