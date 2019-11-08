@@ -1,0 +1,58 @@
+.all-categories {
+
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+
+}
+
+.all-categories-item {
+
+  width: 25%;
+
+}
+
+ul {
+
+  padding: 0;
+  list-style-type: none;
+
+}
+
+li {
+
+  font-weight: 100;
+  color: #343434;
+  margin: 0 0 10px 0;
+
+}
+
+@media screen and (max-width: 1110px) {
+
+  .all-categories-item {
+
+    width: 33.33%;
+
+  }
+
+}
+
+@media screen and (max-width: 950px) {
+
+  .all-categories-item {
+
+    width: 50%;
+
+  }
+
+}
+
+@media screen and (max-width: 750px) {
+
+  .all-categories-item {
+
+    width: 100%;
+
+  }
+
+}

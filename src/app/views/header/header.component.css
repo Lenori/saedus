@@ -67,6 +67,7 @@
   height: 100vh;
   right: 0;
   top: 0;
+  z-index: 2000;
 
 }
 

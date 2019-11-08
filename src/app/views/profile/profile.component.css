@@ -1,0 +1,297 @@
+.header-profile-content, .header-profile {
+
+  overflow: visible;
+
+}
+
+.profile-line {
+
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  overflow: visible;
+
+}
+
+.profile-info {
+
+  width: 100%;
+  padding: 15px 0;
+
+}
+
+.chat-button {
+
+  margin: 0 0 0 15px;
+  padding: 15px 40px;
+  font-size: 11px !important;
+  width: 50px;
+  text-align: center;
+  font-weight: 400;
+  display: inline;
+
+}
+
+.profile-line span {
+
+  font-weight: 100;
+  margin: 0 0 0 10px;
+  font-size: 12px;
+
+}
+
+.profile-line h4 {
+
+  text-align: right;
+  font-weight: 100;
+  font-size: 25px;
+  margin: 0 0 50px 0;
+
+}
+
+.profile-line-02 {
+
+  overflow: visible;
+
+}
+
+.profile-picture {
+
+  background-color: pink;
+  height: 260px;
+  width: 260px;
+  overflow: visible;
+  position: absolute;
+  right: 0;
+  background-position-x: center;
+  background-position-y: center;
+  background-size: cover;
+
+}
+
+.profile-status {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 30%;
+  color: #343434;
+
+}
+
+.profile-status p {
+
+  text-align: center;
+  font-weight: 100;
+
+}
+
+.profile-status span {
+
+  font-weight: 700;
+  font-size: 27px;
+
+}
+
+.profile-section {
+
+  margin: 20px 0;
+
+}
+
+.profile-section h4 {
+
+  font-weight: 100;
+  font-size: 19px;
+  text-transform: uppercase;
+  margin: 0 20px 0 0;
+  float: left;
+
+}
+
+.divisor {
+
+  border-bottom: 1px solid #dedede;
+  height: 1px;
+  width: 70%;
+  float: left;
+  margin: 13px 0 0 0;
+
+}
+
+.profile-reviews {
+
+  margin: 35px 0;
+
+}
+
+.profile-review-item {
+
+  display: flex;
+  justify-content: flex-start;
+  border-bottom: 1px solid #dedede;
+  padding: 0 0 20px 0;
+  margin: 0 0 20px 0;
+
+}
+
+.profile-review-item img {
+
+  max-width: 150px;
+  margin: 0 20px 0 0;
+
+}
+
+.profile-review-item h4 {
+
+  margin: 0;
+  color: #343434;
+
+}
+
+.profile-review-item p {
+
+  font-weight: 100;
+  color: #343434;
+  margin: 10px 0;
+
+}
+
+.profile-review-item span {
+
+  font-weight: 100;
+  color: #343434;
+  margin: 0 0 0 10px;
+  font-size: 12px;
+
+}
+
+.profile-certificates {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 35px 0;
+
+}
+
+.profile-certificate-item {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.profile-certificate-item i {
+
+  margin: 0 10px 0 0;
+  color: #fcac4f;
+  font-size: 60px;
+
+}
+
+.profile-certificate-info {
+
+  color: #343434;
+
+}
+
+.profile-certificate-info h4 {
+
+  margin: 0;
+
+}
+
+.profile-certificate-info p {
+
+  font-weight: 100;
+  margin: 5px 0;
+
+}
+
+.profile-certificate-info span {
+
+  font-weight: 400;
+  font-size: 13px;
+  font-style: italic;
+
+}
+
+@media screen and (max-width: 1300px) {
+
+  .profile-certificates {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .profile-certificate-item{
+    margin: 20px 0;
+  }
+
+}
+
+@media screen and (max-width: 1150px) {
+
+  .profile-info {
+    text-align: center;
+  }
+
+  .profile-status {
+    width: 35%;
+  }
+
+}
+
+@media screen and (max-width: 1050px) {
+
+  .profile-line {
+    flex-direction: column;
+  }
+
+  .profile-line h4 {
+    text-align: center;
+    margin: 50px auto 20px;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .profile-picture {
+    margin: auto;
+    position: inherit;
+  }
+
+  .profile-status {
+    width: 50%;
+    margin: auto;
+  }
+
+}
+
+@media screen and (max-width: 950px) {
+
+  .chat-button {
+    margin: 20px auto 0;
+    display: block;
+  }
+
+}
+
+@media screen and (max-width: 750px) {
+
+  .profile-status {
+    width: 80%;
+  }
+
+  .profile-review-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profile-review-item img {
+    margin: 0 auto 15px;
+  }
+
+}
+
+

@@ -34,3 +34,41 @@
   color: #323232;
 
 }
+
+@media screen and (max-width: 1205px) {
+
+  .home-categories ul {
+    justify-content: flex-start;
+  }
+
+  .home-categories li {
+    padding: 22px 40px;
+    margin: 0 10px 30px;
+    border-radius: 56px;
+    box-sizing: border-box;
+    font-size: 14px;
+    width: 31%;
+  }
+
+}
+
+@media screen and (max-width: 1090px) {
+
+  .home-categories ul {
+    justify-content: center;
+  }
+
+  .home-categories li {
+    margin: 0 8px 30px;
+    width: 48%;
+  }
+
+}
+
+@media screen and (max-width: 900px) {
+
+  .home-categories li {
+    width: 90%;
+  }
+
+}

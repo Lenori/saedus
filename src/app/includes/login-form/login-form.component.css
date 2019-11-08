@@ -1,0 +1,62 @@
+h3 {
+
+  margin: 50px 0 0;
+  font-weight: 200;
+  font-size: 30px;
+
+}
+
+input {
+
+  margin: 0 0 20px 0;
+
+}
+
+span {
+
+  margin: 0 0 30px;
+  display: block;
+  font-size: 12px;
+  color: #9e9e9e;
+
+}
+
+p {
+
+  width: 100px;
+  text-align: center;
+
+}
+
+.login-form {
+
+  width: 50%;
+  float: left;
+  padding: 0 40px 0 0;
+  box-sizing: border-box;
+
+}
+
+.create-form {
+
+  width: 50%;
+  float: left;
+  padding: 0 0 0 40px;
+  box-sizing: border-box;
+
+}
+
+.create-form p {
+
+  width: 200px !important;
+
+}
+
+@media screen and (max-width: 1170px) {
+
+  .login-form, .create-form {
+    width: 100%;
+    padding: 0;
+  }
+
+}
