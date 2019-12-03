@@ -18,9 +18,23 @@
 
         <a routerLink="/"><li>Projects</li></a>
         <a routerLink="/"><li>Professionals</li></a>
-        <a routerLink="/"><li>How it Works</li></a>
-        <a routerLink="/sign-in"><li class="highlight highlight-menu">Sign in</li></a>
-        <a routerLink="/sign-up"><li class="highlight highlight-menu">Sign up</li></a>
+
+        <ng-container *ngIf="user == null">
+
+          <a routerLink="/"><li>How it Works</li></a>
+          <a routerLink="/sign-in"><li class="highlight highlight-menu">Sign in</li></a>
+          <a routerLink="/sign-up"><li class="highlight highlight-menu">Sign up</li></a>
+
+        </ng-container>
+
+        <ng-container *ngIf="user">
+
+          <a routerLink="/my-projects"><li>My projects</li></a>
+
+          <a routerLink="/profile/{{user}}"><div class="profile-icon" [ngStyle]="{ 'background-image': 'url(http://18.224.180.162/api/resources/profile/avatar/' + user + '.jpg)'}"></div></a>
+          <li class="highlight highlight-menu">Logout</li>
+
+        </ng-container>
 
       </ul>
 

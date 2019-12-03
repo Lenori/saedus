@@ -28,13 +28,13 @@
 
   <div class="results-data">
 
-    <div class="results-profile">
+    <div *ngFor="let result of data" class="results-profile">
 
-      <a routerLink="/profile"><img src="../../../assets/profiles/01.jpg" alt="profile" /></a>
+      <a routerLink="/profile/{{result.user}}"><div class="profile-image" [ngStyle]="{ 'background-image': 'url(http://18.224.180.162/api/resources/profile/avatar/' + result.user + '.jpg)'}"></div></a>
 
       <div class="results-profile-info">
 
-        <a routerLink="/profile"><h3>Joshua Todd</h3></a>
+        <a routerLink="/profile/{{result.user}}"><h3>{{result.professional_fname + ' ' + result.professional_lname}}</h3></a>
         <p>5+ years as eletrician, contractor and general handyman. Check my profile to see past jobs.</p>
         <i class="fas fa-star fa-star-selected"></i>
         <i class="fas fa-star fa-star-selected"></i>
@@ -47,59 +47,8 @@
 
       <div class="results-profile-hire">
 
-        <span>$20 CAD/hour</span>
-        <p class="highlight highlight-menu">HIRE ME</p>
-
-      </div>
-
-    </div>
-
-    <div class="results-profile">
-
-      <a routerLink="/profile"><img src="../../../assets/profiles/01.jpg" alt="profile" /></a>
-
-      <div class="results-profile-info">
-
-        <a routerLink="/profile"><h3>Joshua Todd</h3></a>
-        <p>5+ years as eletrician, contractor and general handyman. Check my profile to see past jobs.</p>
-        <i class="fas fa-star fa-star-selected"></i>
-        <i class="fas fa-star fa-star-selected"></i>
-        <i class="fas fa-star fa-star-selected"></i>
-        <i class="fas fa-star fa-star-selected"></i>
-        <i class="fas fa-star"></i>
-        <span>108 reviews | Toronto | Eletricist, handyman, contractor</span>
-
-      </div>
-
-      <div class="results-profile-hire">
-
-        <span>$20 CAD/hour</span>
-        <p class="highlight highlight-menu">HIRE ME</p>
-
-      </div>
-
-    </div>
-
-    <div class="results-profile">
-
-      <a routerLink="/profile"><img src="../../../assets/profiles/01.jpg" alt="profile" /></a>
-
-      <div class="results-profile-info">
-
-        <a routerLink="/profile"><h3>Joshua Todd</h3></a>
-        <p>5+ years as eletrician, contractor and general handyman. Check my profile to see past jobs.</p>
-        <i class="fas fa-star fa-star-selected"></i>
-        <i class="fas fa-star fa-star-selected"></i>
-        <i class="fas fa-star fa-star-selected"></i>
-        <i class="fas fa-star fa-star-selected"></i>
-        <i class="fas fa-star"></i>
-        <span>108 reviews | Toronto | Eletricist, handyman, contractor</span>
-
-      </div>
-
-      <div class="results-profile-hire">
-
-        <span>$20 CAD/hour</span>
+        <span *ngIf="type == 'bids'">${{result.bid}} CAD</span>
+        <span *ngIf="type == 'search'">$20 CAD/hour</span>
         <p class="highlight highlight-menu">HIRE ME</p>
 
       </div>

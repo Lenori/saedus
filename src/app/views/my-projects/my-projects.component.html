@@ -11,81 +11,49 @@
 
 <div class="content">
 
-  <div class="project-item">
+  <div *ngFor="let project of projects;" [ngClass]="[project.status == 2 ? 'project-item project-complete' : 'project-item']">
 
     <div class="project-item-info">
 
-      <h3>Need painter to renew room</h3>
-      <p>Need to repaint a room that’s yellow to red. Room is 30 square meters. Need it done in 3 days.</p>
+      <a routerLink="/bids/{{project.id}}"><h3>{{project.title}}</h3></a>
+      <p>{{project.description}}</p>
       <span>32 bids | Eletricist | Published 20 minutes ago</span>
 
     </div>
 
-    <div class="project-item-actions">
+    <ng-container *ngIf="project.status == 0">
 
-      <h3>$240 CAD</h3>
-      <p class="highlight-dark">Edit</p>
-      <span>Unpublish</span>
+      <div class="project-item-actions">
 
-    </div>
+          <h3>${{project.budget}} CAD</h3>
+          <p class="highlight-dark">Edit</p>
+          <span>Unpublish</span>
 
-  </div>
+      </div>
 
-  <div class="project-item">
+    </ng-container>
 
-    <div class="project-item-info">
+    <ng-container *ngIf="project.status == 1">
 
-      <h3>Need painter to renew room</h3>
-      <p>Need to repaint a room that’s yellow to red. Room is 30 square meters. Need it done in 3 days.</p>
-      <span>32 bids | Eletricist | Published 20 minutes ago</span>
+      <div class="project-item-awards">
 
-    </div>
+        <div class="profile-image" [ngStyle]="{ 'background-image': 'url(http://18.224.180.162/api/resources/profile/avatar/' + project.awarded + '.jpg)'}"></div>
+        <p>Awarded to<br><span><a routerLink="/profile/{{project.awarded}}">{{project.professional_fname + ' ' + project.professional_lname}}</a></span> by <span>${{project.price}} CAD</span></p>
 
-    <div class="project-item-actions">
+      </div>
 
-      <h3>$240 CAD</h3>
-      <p class="highlight-dark">Edit</p>
-      <span>Unpublish</span>
+    </ng-container>
 
-    </div>
+    <ng-container *ngIf="project.status == 2">
 
-  </div>
+      <div class="project-item-awards">
 
-  <div class="project-item">
+        <div class="profile-image" [ngStyle]="{ 'background-image': 'url(http://18.224.180.162/api/resources/profile/avatar/' + project.awarded + '.jpg)'}"></div>
+        <p>Completed by<br><span><a routerLink="/profile/{{project.awarded}}">{{project.professional_fname + ' ' + project.professional_lname}}</a></span> for <span>${{project.price}} CAD</span></p>
 
-    <div class="project-item-info">
+      </div>
 
-      <h3>Need painter to renew room</h3>
-      <p>Need to repaint a room that’s yellow to red. Room is 30 square meters. Need it done in 3 days.</p>
-      <span>32 bids | Eletricist | Published 20 minutes ago</span>
-
-    </div>
-
-    <div class="project-item-awards">
-
-      <img src="../../../assets/profiles/01.jpg" alt="profile"/>
-      <p>Awarded to<br><span><a routerLink="/profile">Elliot March</a></span> by <span>$125 CAD</span></p>
-
-    </div>
-
-  </div>
-
-  <div class="project-item project-complete">
-
-    <div class="project-item-info">
-
-      <h3>Need painter to renew room</h3>
-      <p>Need to repaint a room that’s yellow to red. Room is 30 square meters. Need it done in 3 days.</p>
-      <span>32 bids | Eletricist | Published 20 minutes ago</span>
-
-    </div>
-
-    <div class="project-item-awards">
-
-      <img src="../../../assets/profiles/01.jpg" alt="profile"/>
-      <p>Complete by<br><span><a routerLink="/profile">Elliot March</a></span> for <span>$125 CAD</span></p>
-
-    </div>
+    </ng-container>
 
   </div>
 

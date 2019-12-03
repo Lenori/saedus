@@ -1,10 +1,11 @@
 .budget {
 
   width: 350px;
+  text-align: left !important;
 
 }
 
-form > a > p {
+form > p {
 
   text-align: center;
   width: 200px;

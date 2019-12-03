@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -9,9 +10,17 @@ export class HeaderComponent implements OnInit {
 
   showMenu = null;
 
-  constructor() { }
+  user: any;
+
+  constructor(
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
+
+    this.user = null;
+    this.authService.getUser().then(data => { this.user = data; });
+
   }
 
 }

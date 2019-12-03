@@ -2,18 +2,18 @@
 
   <form>
 
-    <input type="text" name="fulln" id="fulln" placeholder="Full Name" required />
-    <input type="email" name="email" id="email" placeholder="E-mail" required />
+    <input type="text" name="fn" id="fn" placeholder="First Name" required [(ngModel)]="form.fname" #fname="ngModel" />
+    <input type="text" name="ln" id="ln" placeholder="Last Name" required [(ngModel)]="form.lname" #lname="ngModel" />
 
-    <input type="password" name="password" id="password" placeholder="Password" required />
-    <input type="password" name="repeat" id="repeat" placeholder="Repeat password" required />
+    <input type="email" name="email" id="email" placeholder="E-mail" required [(ngModel)]="form.email" #email="ngModel" />
+    <input type="password" name="password" id="password" placeholder="Password" required [(ngModel)]="form.password" #password="ngModel" />
 
-    <input type="text" name="address1" id="address1" placeholder="Address Line 01" required />
-    <input type="text" name="address2" id="address2" placeholder="Address Line 02" required />
+    <input type="text" name="address1" id="address1" placeholder="Address Line 01" required [(ngModel)]="form.add1" #add1="ngModel" />
+    <input type="text" name="address2" id="address2" placeholder="Address Line 02" required [(ngModel)]="form.add2" #add2="ngModel" />
 
-    <input type="text" name="zip" id="zip" placeholder="Zip code" required />
+    <input type="text" name="zip" id="zip" placeholder="Zip code" required [(ngModel)]="form.zip" #zip="ngModel" />
 
-    <p class="highlight-dark">Create account</p>
+    <p (click)="onSubmit()" class="highlight-dark">{{loading ? 'Loading...' : 'Create Account'}}</p>
 
   </form>
 

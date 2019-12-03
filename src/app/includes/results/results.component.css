@@ -66,10 +66,12 @@
 
 }
 
-.results-profile img {
+.profile-image {
 
-  max-width: 150px;
-  margin: 0 20px 0 0;
+  background-size: cover;
+  width: 120px;
+  height: 100px;
+  margin: 0 25px 0 0;
 
 }
 

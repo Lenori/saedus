@@ -98,7 +98,7 @@ label {
 
 .header {
 
-  background-color: #343434;
+  background-color: #252525;
   margin: 0;
   padding-top: 125px;
 
@@ -114,7 +114,7 @@ label {
 
 .content {
 
-  width: 1400px;
+  width: 1140px;
   margin: auto;
 
 }
@@ -129,8 +129,8 @@ label {
 .content-title h1 {
 
   font-weight: 400;
-  font-size: 50px;
-  width: 560px;
+  font-size: 35px;
+  width: 430px;
   line-height: 55px;
   margin: 0;
 
@@ -139,7 +139,7 @@ label {
 .content-title p {
 
   font-weight: 100;
-  font-size: 25px;
+  font-size: 17px;
   width: 570px;
   margin: 40px 0 0;
 
@@ -148,7 +148,7 @@ label {
 .content h2 {
 
   color: #323232;
-  font-size: 19px;
+  font-size: 16px;
   font-weight: 800;
 
 }

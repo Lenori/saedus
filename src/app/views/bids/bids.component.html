@@ -9,10 +9,14 @@
 
 </div>
 
-<div class="content">
+<ng-container *ngIf="loaded">
 
-  <h3>Need eletrician to create new outlets - $250 CAD</h3>
+  <div class="content">
 
-</div>
+    <h3>{{project.title}} - ${{project.budget}} CAD</h3>
 
-<app-results></app-results>
+  </div>
+
+  <app-results [type]="type" [data]="bids"></app-results>
+
+</ng-container>

@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
@@ -22,15 +24,16 @@ import { LoginFormComponent } from './includes/login-form/login-form.component';
 import { SignUpComponent } from './views/sign-up/sign-up.component';
 import { AccountFormComponent } from './includes/account-form/account-form.component';
 import { CategoriesComponent } from './views/categories/categories.component';
+import {FormsModule} from '@angular/forms';
 
 const appRoutes = [
 
   { path: '', component: HomeComponent },
-  { path: 'search', component: SearchResultsComponent },
+  { path: 'search/:q', component: SearchResultsComponent },
   { path: 'new-project', component: NewProjectComponent },
   { path: 'my-projects', component: MyProjectsComponent },
-  { path: 'bids', component: BidsComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'bids/:id', component: BidsComponent },
+  { path: 'profile/:id', component: ProfileComponent },
   { path: 'sign-in', component: SignInComponent },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'categories', component: CategoriesComponent },
@@ -63,11 +66,14 @@ const appRoutes = [
   imports: [
     BrowserModule,
     RouterModule,
+    CurrencyMaskModule,
+    HttpClientModule,
 
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: false } // <-- debugging purposes only
-    )
+      {enableTracing: false} // <-- debugging purposes only
+    ),
+    FormsModule
 
   ],
   providers: [],

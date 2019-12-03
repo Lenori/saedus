@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from '../../services/auth/auth.service';
+import {Router} from '@angular/router';
+import {ProjectService} from '../../services/project/project.service';
 
 @Component({
   selector: 'app-new-project',
@@ -7,9 +10,45 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewProjectComponent implements OnInit {
 
-  constructor() { }
+  form: any = {};
+  user: any;
+
+  loading = false;
+
+  constructor(
+    private authService: AuthService,
+    private projectService: ProjectService,
+    public router: Router
+  ) { }
 
   ngOnInit() {
+
+    this.authService.getUser().then(
+      data => {
+        if (data == null) {
+          this.router.navigate(['sign-in']);
+        } else {
+          this.user = data;
+        }
+      }
+    );
+
+  }
+
+  onSubmit() {
+
+    this.loading = true;
+
+    this.projectService.create(this.user, this.form.title, this.form.description, this.form.tags, this.form.budget).then(
+      data => {
+        if (data.success === true) {
+          this.router.navigate(['my-projects']);
+        } else if (data.error === true) {
+          alert(data.message);
+        }
+        this.loading = false;
+      }
+    );
   }
 
 }

@@ -2,11 +2,11 @@
 
   <div class="content content-title header-profile-content">
 
-    <div class="profile-line">
+    <div *ngIf="this.loaded" class="profile-line">
 
       <div class="profile-line-01">
 
-        <h1>Elliot March</h1>
+        <h1>{{profile.fname + ' ' + profile.lname}}</h1>
 
         <div class="profile-info">
           <i class="fas fa-star fa-star-selected"></i>
@@ -18,7 +18,7 @@
           <p class="highlight highlight-menu chat-button">CHAT</p>
         </div>
 
-        <p>5+ years as eletrician, contractor and general handyman. Check my profile to see past jobs.</p>
+        <p>{{profile.description}}</p>
 
       </div>
 
@@ -26,7 +26,7 @@
 
         <h4>$25 CAD/HOUR</h4>
 
-        <div class="profile-picture" style="background-image: url('../../../assets/profiles/01.jpg');"></div>
+        <div class="profile-picture" [ngStyle]="{ 'background-image': 'url(http://18.224.180.162/api/resources/profile/avatar/' + profile.id + '.jpg)'}"></div>
 
       </div>
 
@@ -36,7 +36,7 @@
 
 </div>
 
-<div class="content">
+<div *ngIf="this.loaded" class="content">
 
   <div class="profile-status">
 
@@ -55,39 +55,22 @@
 
   <div class="profile-reviews">
 
-    <div class="profile-review-item">
+    <div *ngFor="let review of reviews" class="profile-review-item">
 
-      <img src="../../../assets/profiles/02.jpg" alt="profile" />
+      <a routerLink="/profile/{{review.creator}}"><div class="review-image" [ngStyle]="{ 'background-image': 'url(http://18.224.180.162/api/resources/profile/avatar/' + review.creator + '.jpg)'}"></div></a>
 
       <div class="review-info">
-        <h4>Abel Hall</h4>
+        <a routerLink="/profile/{{review.creator}}"><h4>{{review.creator_fname + ' ' + review.creator_lname}}</h4></a>
         <p>Very professional, quick and precise. 100% would hire again!</p>
-        <i class="fas fa-star fa-star-selected"></i>
-        <i class="fas fa-star fa-star-selected"></i>
-        <i class="fas fa-star fa-star-selected"></i>
-        <i class="fas fa-star fa-star-selected"></i>
-        <i class="fas fa-star"></i>
-        <span>Project: new outlets on room</span>
+
+        <i *ngFor="let count of ' '.repeat(5).split(''), let i = index" [ngClass]="[i > review.grade - 1 ? 'fas fa-star' : 'fas fa-star fa-star-selected']"></i>
+
+        <span>Project: {{review.project_title}}</span>
       </div>
 
     </div>
 
-    <div class="profile-review-item">
-
-      <img src="../../../assets/profiles/02.jpg" alt="profile" />
-
-      <div class="review-info">
-        <h4>Abel Hall</h4>
-        <p>Very professional, quick and precise. 100% would hire again!</p>
-        <i class="fas fa-star fa-star-selected"></i>
-        <i class="fas fa-star fa-star-selected"></i>
-        <i class="fas fa-star fa-star-selected"></i>
-        <i class="fas fa-star fa-star-selected"></i>
-        <i class="fas fa-star"></i>
-        <span>Project: new outlets on room</span>
-      </div>
-
-    </div>
+    <p *ngIf="numberReviews == 0">No reviews yet.</p>
 
   </div>
 
@@ -100,38 +83,18 @@
 
   <div class="profile-certificates">
 
-    <div class="profile-certificate-item">
+    <div *ngFor="let certificate of certificates" class="profile-certificate-item">
 
       <i class="fas fa-star"></i>
       <div class="profile-certificate-info">
-        <h4>Skilled Electrician</h4>
-        <p>Certificate for skilled Electrician</p>
-        <span>The Electricians Guild of America</span>
+        <h4>{{certificate.title}}</h4>
+        <p>{{certificate.description}}</p>
+        <span>{{certificate.issuer}}</span>
       </div>
 
     </div>
 
-    <div class="profile-certificate-item">
-
-      <i class="fas fa-star"></i>
-      <div class="profile-certificate-info">
-        <h4>Skilled Electrician</h4>
-        <p>Certificate for skilled Electrician</p>
-        <span>The Electricians Guild of America</span>
-      </div>
-
-    </div>
-
-    <div class="profile-certificate-item">
-
-      <i class="fas fa-star"></i>
-      <div class="profile-certificate-info">
-        <h4>Skilled Electrician</h4>
-        <p>Certificate for skilled Electrician</p>
-        <span>The Electricians Guild of America</span>
-      </div>
-
-    </div>
+    <p *ngIf="numberCertificates == 0">No certificates yet.</p>
 
   </div>
 

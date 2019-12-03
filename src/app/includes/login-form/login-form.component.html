@@ -6,12 +6,12 @@
 
     <form>
 
-      <input type="text" name="email" id="email" placeholder="E-mail" required />
-      <input type="password" name="password" id="password" placeholder="Password" required />
+      <input type="email" name="email" id="email" placeholder="E-mail" required [(ngModel)]="form.email" #email="ngModel" />
+      <input type="password" name="password" id="password" placeholder="Password" required [(ngModel)]="form.password" #password="ngModel" />
 
       <span>Forgot your password?</span>
 
-      <p class="highlight-dark">Login</p>
+      <p (click)="onSubmit()" class="highlight-dark">{{loading ? 'Loading...' : 'Login'}}</p>
 
     </form>
 
@@ -22,9 +22,6 @@
     <h3>Or create a new one</h3>
 
     <form>
-
-      <input type="text" name="fulln" id="fulln" placeholder="Password" required />
-      <input type="text" name="email" id="email-new" placeholder="E-mail" required />
 
       <a routerLink="/sign-up"><p class="highlight-dark">Create account</p></a>
 

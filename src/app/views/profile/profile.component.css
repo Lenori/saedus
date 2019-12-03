@@ -57,7 +57,7 @@
 
 .profile-picture {
 
-  background-color: pink;
+  background-color: #252525;
   height: 260px;
   width: 260px;
   overflow: visible;
@@ -125,6 +125,14 @@
 
 }
 
+.profile-reviews p {
+
+  font-weight: 100;
+  color: #343434;
+  margin: 10px 0;
+
+}
+
 .profile-review-item {
 
   display: flex;
@@ -135,9 +143,11 @@
 
 }
 
-.profile-review-item img {
+.review-image {
 
-  max-width: 150px;
+  background-size: cover;
+  width: 100px;
+  height: 80px;
   margin: 0 20px 0 0;
 
 }
@@ -172,6 +182,14 @@
   justify-content: space-between;
   align-items: center;
   margin: 35px 0;
+
+}
+
+.profile-certificates p {
+
+  font-weight: 100;
+  color: #343434;
+  margin: 10px 0;
 
 }
 

@@ -6,7 +6,7 @@
 
 .how-works h1 {
 
-  font-size: 50px;
+  font-size: 35px;
   margin: 50px auto -25px;
   border-bottom: 2px solid #323232;
   font-weight: 100;
@@ -17,7 +17,7 @@
 
 .how-works h2 {
 
-  font-size: 50px;
+  font-size: 35px;
   margin: 60px auto 10px;
   font-weight: 100;
   width: 35%;
@@ -28,7 +28,7 @@
 .how-works p {
 
   font-weight: 100;
-  font-size: 22px;
+  font-size: 19px;
   margin: auto;
   width: 250px;
 
