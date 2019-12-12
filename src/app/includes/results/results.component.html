@@ -26,7 +26,7 @@
 
   </div>
 
-  <div class="results-data">
+  <div *ngIf="type == 'bids'" class="results-data">
 
     <div *ngFor="let result of data" class="results-profile">
 
@@ -35,20 +35,51 @@
       <div class="results-profile-info">
 
         <a routerLink="/profile/{{result.user}}"><h3>{{result.professional_fname + ' ' + result.professional_lname}}</h3></a>
-        <p>5+ years as eletrician, contractor and general handyman. Check my profile to see past jobs.</p>
+        <p>{{result.professional_description}}</p>
         <i class="fas fa-star fa-star-selected"></i>
         <i class="fas fa-star fa-star-selected"></i>
         <i class="fas fa-star fa-star-selected"></i>
         <i class="fas fa-star fa-star-selected"></i>
         <i class="fas fa-star"></i>
-        <span>108 reviews | Toronto | Eletricist, handyman, contractor</span>
+        <span>108 reviews | Toronto</span>
+        <p class="user-categories"><span *ngFor="let category of result[0]">{{category.category_name}}</span></p>
 
       </div>
 
       <div class="results-profile-hire">
 
-        <span *ngIf="type == 'bids'">${{result.bid}} CAD</span>
-        <span *ngIf="type == 'search'">$20 CAD/hour</span>
+        <span>${{result.bid}} CAD</span>
+        <p class="highlight highlight-menu">HIRE ME</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div *ngIf="type == 'search'" class="results-data">
+
+    <div *ngFor="let result of data" class="results-profile">
+
+      <a routerLink="/profile/{{result.id}}"><div class="profile-image" [ngStyle]="{ 'background-image': 'url(http://18.224.180.162/api/resources/profile/avatar/' + result.id + '.jpg)'}"></div></a>
+
+      <div class="results-profile-info">
+
+        <a routerLink="/profile/{{result.id}}"><h3>{{result.fname + ' ' + result.lname}}</h3></a>
+        <p>{{result.description}}</p>
+        <i class="fas fa-star fa-star-selected"></i>
+        <i class="fas fa-star fa-star-selected"></i>
+        <i class="fas fa-star fa-star-selected"></i>
+        <i class="fas fa-star fa-star-selected"></i>
+        <i class="fas fa-star"></i>
+        <span>108 reviews | Toronto</span>
+        <p class="user-categories"><span *ngFor="let category of result[0]">{{category.category_name}}</span></p>
+
+      </div>
+
+      <div class="results-profile-hire">
+
+        <span>$20 CAD/hour</span>
         <p class="highlight highlight-menu">HIRE ME</p>
 
       </div>

@@ -110,6 +110,15 @@
 
 }
 
+.user-categories span {
+
+  margin: 0 15px 0 0 !important;
+  display: inline !important;
+  border-bottom: 1px solid #737373;
+  padding: 0 0 3px;
+
+}
+
 .results-profile-hire {
 
   width: 17%;

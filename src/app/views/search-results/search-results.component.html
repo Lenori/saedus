@@ -4,10 +4,10 @@
 
     <app-search></app-search>
 
-    <p>125 results for eletrician</p>
+    <p *ngIf="loaded">{{total}} results for {{term}}</p>
 
   </div>
 
 </div>
 
-<app-results></app-results>
+<app-results *ngIf="loaded" [type]="type" [data]="professionals"></app-results>

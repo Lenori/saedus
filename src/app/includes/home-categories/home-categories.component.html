@@ -4,14 +4,7 @@
 
   <ul>
 
-    <a routerLink="/search"><li>GENERAL CONTRACTORS</li></a>
-    <a routerLink="/search"><li>HANDYMAN SERVICES</li></a>
-    <a routerLink="/search"><li>BATHROOM RENOVATIONS</li></a>
-    <a routerLink="/search"><li>ELETRICIANS</li></a>
-    <a routerLink="/search"><li>DESIGNERS</li></a>
-    <a routerLink="/search"><li>LANDSCAPE</li></a>
-    <a routerLink="/search"><li>SMART HOME</li></a>
-    <a routerLink="/search"><li>SECURITY</li></a>
+    <a *ngFor="let cat of categories" routerLink="/search/{{urlHyphen(cat.name)}}"><li>{{cat.name.toUpperCase()}}</li></a>
 
   </ul>
 
