@@ -60,6 +60,42 @@ export class ProjectService {
 
   }
 
+  async bid(id, user, value): Promise<any> {
+
+    const endpoint = 'methods/project/bid/bid.php';
+    const params = {
+      id: id,
+      user: user,
+      value: value
+    };
+
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    const response = await this.http.post(this.url + '/' + endpoint, params, {headers}).toPromise();
+    return response;
+
+  }
+
+  async update(project, status, professional, bid, value): Promise<any> {
+
+    const endpoint = 'methods/project/status/status.php';
+    const params = {
+      project: project,
+      status: status,
+      professional: professional,
+      bid: bid,
+      value: value
+    };
+
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    const response = await this.http.post(this.url + '/' + endpoint, params, {headers}).toPromise();
+    return response;
+
+  }
+
   constructor(
     private http: HttpClient,
   ) {

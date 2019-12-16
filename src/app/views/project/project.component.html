@@ -1,0 +1,55 @@
+<ng-container *ngIf="loaded">
+
+  <div class="header header-project">
+
+    <div class="content content-title">
+
+      <h1>{{project.title}}</h1>
+      <h2>${{project.budget}} CAD</h2>
+
+    </div>
+
+  </div>
+
+  <div class="content content-project">
+
+    <div class="content-three">
+
+      <a routerLink="/profile/{{owner.owner_id}}"><div class="profile-image" [ngStyle]="{ 'background-image': 'url(http://18.224.180.162/api/resources/profile/avatar/' + owner.owner_id + '.jpg)'}"></div></a>
+      <a routerLink="/profile/{{owner.owner_id}}"><h3>{{owner.owner_fname + ' ' + owner.owner_lname}}</h3></a>
+      <p>Owner</p>
+
+    </div>
+
+    <div class="content-four project-info">
+
+      <h2>Project description</h2>
+
+      <p>{{project.description}}</p>
+
+    </div>
+
+    <div class="content-three project-actions">
+
+      <ng-container *ngIf="project.status == 0">
+
+        <h2>Leave a bid on this project!</h2>
+
+        <p (click)="openBid()" class="highlight highlight-menu">MAKE BID</p>
+
+      </ng-container>
+
+      <ng-container *ngIf="project.status == 1">
+
+        <a routerLink="/profile/{{owner.owner_id}}"><div class="profile-image" [ngStyle]="{ 'background-image': 'url(http://18.224.180.162/api/resources/profile/avatar/' + owner.owner_id + '.jpg)'}"></div></a>
+        <a routerLink="/profile/{{owner.owner_id}}"><h3>{{owner.owner_fname + ' ' + owner.owner_lname}}</h3></a>
+        <p>Awarded</p>
+
+      </ng-container>
+
+    </div>
+
+  </div>
+
+</ng-container>
+

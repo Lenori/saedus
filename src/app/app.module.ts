@@ -25,6 +25,10 @@ import { SignUpComponent } from './views/sign-up/sign-up.component';
 import { AccountFormComponent } from './includes/account-form/account-form.component';
 import { CategoriesComponent } from './views/categories/categories.component';
 import {FormsModule} from '@angular/forms';
+import { ProjectComponent } from './views/project/project.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BidComponent } from './views/bid/bid.component';
 
 const appRoutes = [
 
@@ -37,6 +41,7 @@ const appRoutes = [
   { path: 'sign-in', component: SignInComponent },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'categories', component: CategoriesComponent },
+  { path: 'project/:id', component: ProjectComponent },
 
 ];
 
@@ -62,18 +67,23 @@ const appRoutes = [
     SignUpComponent,
     AccountFormComponent,
     CategoriesComponent,
+    ProjectComponent,
+    BidComponent,
   ],
+  entryComponents: [BidComponent],
   imports: [
     BrowserModule,
     RouterModule,
     CurrencyMaskModule,
     HttpClientModule,
+    MatDialogModule,
 
     RouterModule.forRoot(
       appRoutes,
       {enableTracing: false} // <-- debugging purposes only
     ),
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
 
   ],
   providers: [],

@@ -1,0 +1,50 @@
+.header-project h2 {
+
+  color: white;
+
+}
+
+.content-project {
+
+  padding: 20px 0;
+
+}
+
+.content-project h3 {
+
+  margin: 20px 0 0;
+
+}
+
+.content-project p {
+
+  margin: 0;
+
+}
+
+.profile-image {
+
+  width: 150px;
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+
+}
+
+.project-info h2 {
+
+  margin: 0 0 20px;
+
+}
+
+.project-actions h2 {
+
+  margin: 0 0 20px;
+
+}
+
+.project-actions p {
+
+  display: inline-block;
+
+}

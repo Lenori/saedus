@@ -49,7 +49,7 @@
       <div class="results-profile-hire">
 
         <span>${{result.bid}} CAD</span>
-        <p class="highlight highlight-menu">HIRE ME</p>
+        <p (click)="updateProject(result.user, result.id, result.bid)" class="highlight highlight-menu">HIRE ME</p>
 
       </div>
 
