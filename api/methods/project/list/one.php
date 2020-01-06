@@ -37,6 +37,15 @@ else {
     $response->project = $data;
     $response->error = false;
 
+    $owner = $data['owner'];
+
+    $sql = "SELECT id AS owner_id, fname AS owner_fname, lname AS owner_lname FROM users WHERE id = '$owner'";
+    $rst = mysqli_query($conn, $sql);
+
+    $data = mysqli_fetch_assoc($rst);
+    $response->owner = $data;
+
+
     $sql = "SELECT
             b.*,
             u.fname AS professional_fname,

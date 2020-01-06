@@ -37,14 +37,8 @@
 
 }
 
-.project-actions h2 {
+.project-info p {
 
-  margin: 0 0 20px;
-
-}
-
-.project-actions p {
-
-  display: inline-block;
+  width: 70%;
 
 }

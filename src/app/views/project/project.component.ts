@@ -17,7 +17,9 @@ export class ProjectComponent implements OnInit {
   loaded: any;
   user: any;
   owner: any;
+  awarded: any;
   edit: any;
+  milestones: any;
 
   constructor(
     private authService: AuthService,
@@ -62,14 +64,17 @@ export class ProjectComponent implements OnInit {
           this.projectService.one(this.id).then(
             info => {
               if (info.success === true) {
+                this.project = info.project;
+                this.owner = info.owner;
+                this.awarded = info.awarded;
+                this.milestones = info.milestones;
+                console.log(info);
                 if (info.project.owner === data) {
-                  this.project = info.project;
-                  this.owner = info.owner;
                   this.edit = true;
-                  this.loaded = true;
                 } else {
                   this.edit = false;
                 }
+                this.loaded = true;
               } else if (info.error === true) {
                 alert(info.message);
                 this.router.navigate(['']);

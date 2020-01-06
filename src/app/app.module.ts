@@ -29,6 +29,7 @@ import { ProjectComponent } from './views/project/project.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BidComponent } from './views/bid/bid.component';
+import { MilestonesComponent } from './includes/milestones/milestones.component';
 
 const appRoutes = [
 
@@ -69,6 +70,7 @@ const appRoutes = [
     CategoriesComponent,
     ProjectComponent,
     BidComponent,
+    MilestonesComponent,
   ],
   entryComponents: [BidComponent],
   imports: [

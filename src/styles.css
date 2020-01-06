@@ -149,7 +149,7 @@ label {
 
   color: #323232;
   font-size: 16px;
-  font-weight: 800;
+  font-weight: 700;
   display: inline-block;
 
 }
@@ -220,6 +220,12 @@ label {
 
   #hidden-menu-open {
     display: block;
+  }
+
+  .content-three, .content-four, .content-seven {
+    width: 100%;
+    float: left;
+    margin: 0 0 50px 0;
   }
 
 }

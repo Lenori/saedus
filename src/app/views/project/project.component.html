@@ -29,7 +29,7 @@
 
     </div>
 
-    <div class="content-three project-actions">
+    <div class="content-three">
 
       <ng-container *ngIf="project.status == 0">
 
@@ -41,8 +41,8 @@
 
       <ng-container *ngIf="project.status == 1">
 
-        <a routerLink="/profile/{{owner.owner_id}}"><div class="profile-image" [ngStyle]="{ 'background-image': 'url(http://18.224.180.162/api/resources/profile/avatar/' + owner.owner_id + '.jpg)'}"></div></a>
-        <a routerLink="/profile/{{owner.owner_id}}"><h3>{{owner.owner_fname + ' ' + owner.owner_lname}}</h3></a>
+        <a routerLink="/profile/{{awarded.awarded_id}}"><div class="profile-image" [ngStyle]="{ 'background-image': 'url(http://18.224.180.162/api/resources/profile/avatar/' + awarded.awarded_id + '.jpg)'}"></div></a>
+        <a routerLink="/profile/{{awarded.awarded_id}}"><h3>{{awarded.awarded_fname + ' ' + awarded.awarded_lname}}</h3></a>
         <p>Awarded</p>
 
       </ng-container>
@@ -50,6 +50,8 @@
     </div>
 
   </div>
+
+  <app-milestones *ngIf="edit && project.status == 1" [milestones]="milestones"></app-milestones>
 
 </ng-container>
 

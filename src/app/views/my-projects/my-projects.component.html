@@ -15,7 +15,7 @@
 
     <div class="project-item-info">
 
-      <a routerLink="/bids/{{project.id}}"><h3>{{project.title}}</h3></a>
+      <a routerLink="/{{project.status == 0 ? 'bids' : 'project'}}/{{project.id}}"><h3>{{project.title}}</h3></a>
       <p>{{project.description}}</p>
       <span>32 bids | Eletricist | Published 20 minutes ago</span>
 
