@@ -32,12 +32,14 @@ if (mysqli_num_rows($rst) == 0) {
 else {
 
     $data = mysqli_fetch_assoc($rst);
+    $project_price = (float)str_replace(',', '.', $data['price']);
 
     $response->success = true;
     $response->project = $data;
     $response->error = false;
 
     $owner = $data['owner'];
+    $awarded = $data['awarded'];
 
     $sql = "SELECT id AS owner_id, fname AS owner_fname, lname AS owner_lname FROM users WHERE id = '$owner'";
     $rst = mysqli_query($conn, $sql);
@@ -45,6 +47,39 @@ else {
     $data = mysqli_fetch_assoc($rst);
     $response->owner = $data;
 
+    if ($awarded <> null) {
+
+        $sql = "SELECT id AS awarded_id, fname AS awarded_fname, lname AS awarded_lname FROM users WHERE id = '$awarded'";
+        $rst = mysqli_query($conn, $sql);
+
+        $data = mysqli_fetch_assoc($rst);
+        $response->awarded = $data;
+
+    }
+
+    $sql = "SELECT * FROM milestones WHERE project = '$id' ORDER BY status";
+    $rst = mysqli_query($conn, $sql);
+
+    $milestones = [];
+    $released = 0;
+
+    while ($mileDB = mysqli_fetch_assoc($rst))
+        $milestones[] = $mileDB;
+    
+    $response->milestones = $milestones;
+
+    foreach ($milestones as $mileDB) {
+
+        if ($mileDB['status'] == 1) {
+            $released = $released + (float)str_replace(',', '.', $mileDB['price']);
+        }
+
+    }
+
+    if ($released >= $project_price)
+        $response->paid = true;
+    else
+        $response->paid = false;
 
     $sql = "SELECT
             b.*,

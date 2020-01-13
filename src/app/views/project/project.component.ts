@@ -20,6 +20,7 @@ export class ProjectComponent implements OnInit {
   awarded: any;
   edit: any;
   milestones: any;
+  paid: any;
 
   constructor(
     private authService: AuthService,
@@ -35,15 +36,19 @@ export class ProjectComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(value => {
 
-      this.projectService.bid(this.id, this.user, value).then(
-        data => {
-          if (data.success === true) {
-            this.router.navigate(['bids/' + this.id]);
-          } else if (data.error === true) {
-            alert(data.message);
+      if (value) {
+
+        this.projectService.bid(this.id, this.user, value).then(
+          data => {
+            if (data.success === true) {
+              this.router.navigate(['bids/' + this.id]);
+            } else if (data.error === true) {
+              alert(data.message);
+            }
           }
-        }
-      );
+        );
+
+      }
 
     });
   }
@@ -68,6 +73,7 @@ export class ProjectComponent implements OnInit {
                 this.owner = info.owner;
                 this.awarded = info.awarded;
                 this.milestones = info.milestones;
+                this.paid = info.paid;
                 console.log(info);
                 if (info.project.owner === data) {
                   this.edit = true;

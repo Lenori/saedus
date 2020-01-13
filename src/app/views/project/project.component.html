@@ -5,7 +5,7 @@
     <div class="content content-title">
 
       <h1>{{project.title}}</h1>
-      <h2>${{project.budget}} CAD</h2>
+      <h2>${{project.price}} CAD</h2>
 
     </div>
 
@@ -51,7 +51,11 @@
 
   </div>
 
-  <app-milestones *ngIf="edit && project.status == 1" [milestones]="milestones"></app-milestones>
+  <app-milestones *ngIf="edit && project.status == 1" [project]="id" [milestones]="milestones"></app-milestones>
+
+  <div class="content">
+    <p *ngIf="paid" (click)="openMilestone()" class="highlight highlight-success project-actions">Complete project</p>
+  </div>
 
 </ng-container>
 

@@ -48,6 +48,13 @@ div {
 
 }
 
+.highlight-success {
+
+  color: white !important;
+  background-color: #178f0f !important;
+
+}
+
 .fa-star {
 
   color: #ECECEC;

@@ -31,6 +31,8 @@
 
           <a routerLink="/my-projects"><li>My projects</li></a>
 
+          <a class="wallet-menu" routerLink="/my-wallet"><li>CAD {{wallet.value}}</li></a>
+
           <a routerLink="/profile/{{user}}"><div class="profile-icon" [ngStyle]="{ 'background-image': 'url(http://18.224.180.162/api/resources/profile/avatar/' + user + '.jpg)'}"></div></a>
           <li class="highlight highlight-menu">Logout</li>
 

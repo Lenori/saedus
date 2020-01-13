@@ -77,6 +77,38 @@ export class ProjectService {
 
   }
 
+  async milestone(id, title, value): Promise<any> {
+
+    const endpoint = 'methods/project/milestone/create.php';
+    const params = {
+      project: id,
+      title: title,
+      value: value
+    };
+
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    const response = await this.http.post(this.url + '/' + endpoint, params, {headers}).toPromise();
+    return response;
+
+  }
+
+  async releaseMilestone(id): Promise<any> {
+
+    const endpoint = 'methods/project/milestone/release.php';
+    const params = {
+      id: id,
+    };
+
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    const response = await this.http.post(this.url + '/' + endpoint, params, {headers}).toPromise();
+    return response;
+
+  }
+
   async update(project, status, professional, bid, value): Promise<any> {
 
     const endpoint = 'methods/project/status/status.php';
