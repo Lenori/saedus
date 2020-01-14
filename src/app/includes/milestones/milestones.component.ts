@@ -17,7 +17,8 @@ export class MilestonesComponent implements OnInit {
   @Input()
   project: any;
 
-  released: any;
+  @Input()
+  prof: any;
 
   openMilestone() {
     const dialogConfig = new MatDialogConfig();
@@ -44,7 +45,7 @@ export class MilestonesComponent implements OnInit {
 
   releaseMilestone(id) {
 
-    this.projectService.releaseMilestone(id).then(
+    this.projectService.releaseMilestone(id, this.prof).then(
       response => {
         if (response.success === true) {
           window.location.reload();

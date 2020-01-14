@@ -74,7 +74,6 @@ export class ProjectComponent implements OnInit {
                 this.awarded = info.awarded;
                 this.milestones = info.milestones;
                 this.paid = info.paid;
-                console.log(info);
                 if (info.project.owner === data) {
                   this.edit = true;
                 } else {

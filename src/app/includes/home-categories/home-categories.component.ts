@@ -29,7 +29,6 @@ export class HomeCategoriesComponent implements OnInit {
           this.categories = data.data;
           this.loaded = true;
         } else if (data.error === true) {
-          console.log(data.message);
         }
       }
     );

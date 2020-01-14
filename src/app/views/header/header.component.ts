@@ -27,10 +27,9 @@ export class HeaderComponent implements OnInit {
         this.user = info;
         this.walletService.get(this.user).then(
           data => {
-            console.log(data);
-            if (data.success == true) {
+            if (data.success === true) {
               this.wallet = data.wallet;
-            } else if (data.error == true) {
+            } else if (data.error === true) {
               alert(data.message);
             }
           });

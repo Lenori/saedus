@@ -94,11 +94,12 @@ export class ProjectService {
 
   }
 
-  async releaseMilestone(id): Promise<any> {
+  async releaseMilestone(id, prof): Promise<any> {
 
     const endpoint = 'methods/project/milestone/release.php';
     const params = {
       id: id,
+      prof: prof
     };
 
     const headers = new HttpHeaders();

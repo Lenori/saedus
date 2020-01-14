@@ -34,7 +34,6 @@ export class SearchResultsComponent implements OnInit {
       data => {
         if (data.success === true) {
           this.professionals = data.data;
-          console.log(this.professionals);
           this.total = data.total;
           this.loaded = true;
         } else if (data.error === true) {

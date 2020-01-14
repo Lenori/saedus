@@ -34,7 +34,11 @@ else {
 
     $sql = "INSERT INTO users (email, password, fname, lname, address1, address2, zip) VALUES ('$email', '$password', '$fname', '$lname', '$add1', '$add2', '$zip')";
     $rst = mysqli_query($conn, $sql);
+    
+    $user = $conn->insert_id;
 
+    $sql = "INSERT INTO wallet (user) VALUES ('$user')";
+    $rst = mysqli_query($conn, $sql);
 
     $response->success = true;
     $response->id = $conn->insert_id;
