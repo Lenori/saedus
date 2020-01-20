@@ -82,18 +82,27 @@ else {
         $response->paid = false;
 
     $sql = "SELECT
+            COUNT(r.id) AS number_reviews,
+            ROUND(AVG(r.grade)) AS avg_review,
             b.*,
             u.fname AS professional_fname,
             u.lname AS professional_lname,
-            u.description AS professional_description
-        FROM
-            bids AS b
-        INNER JOIN
-            users AS u
-        ON
-            b.user = u.id
-        WHERE
-            project = '$id'";
+            u.description AS professional_description,
+            u.city AS professional_city
+            FROM
+                bids AS b
+            INNER JOIN
+                users AS u
+                ON
+                b.user = u.id
+            INNER JOIN
+                reviews AS r
+                ON
+                r.user = u.id
+            WHERE
+                b.project = '$id'
+            GROUP BY b.id
+            ORDER BY b.published";
     $rst = mysqli_query($conn, $sql);
 
     $data = [];
@@ -106,7 +115,7 @@ else {
     foreach ($profiles as $prof) {
 
         $meta = [];
-        $id = $prof['id'];
+        $id = $prof['user'];
 
         $sql = "SELECT s.*, c.id AS category_id, c.name AS category_name FROM selectedCategories AS s INNER JOIN categories AS c ON c.id = s.category WHERE s.user = '$id'";
         $rst = mysqli_query($conn, $sql);

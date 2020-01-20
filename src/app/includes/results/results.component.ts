@@ -38,6 +38,9 @@ export class ResultsComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    console.log(this.data);
+
   }
 
 }

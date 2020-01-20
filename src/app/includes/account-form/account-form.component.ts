@@ -25,11 +25,12 @@ export class AccountFormComponent implements OnInit {
 
     this.loading = true;
 
-    this.authService.create(this.form.fname, this.form.lname, this.form.email, this.md5.appendStr(this.form.password).end(), this.form.add1, this.form.add2, this.form.zip).then(
+    this.authService.create(this.form.fname, this.form.lname, this.form.email, this.md5.appendStr(this.form.password).end(), this.form.add1, this.form.add2, this.form.city, this.form.zip).then(
       data => {
         if (data.success === true) {
           this.authService.login(data.id);
           this.router.navigate(['']);
+          window.location.reload();
         } else if (data.error === true) {
           alert(data.message);
           window.location.reload();

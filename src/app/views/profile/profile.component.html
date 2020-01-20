@@ -9,12 +9,8 @@
         <h1>{{profile.fname + ' ' + profile.lname}}</h1>
 
         <div class="profile-info">
-          <i class="fas fa-star fa-star-selected"></i>
-          <i class="fas fa-star fa-star-selected"></i>
-          <i class="fas fa-star fa-star-selected"></i>
-          <i class="fas fa-star fa-star-selected"></i>
-          <i class="fas fa-star"></i>
-          <span>108 reviews | Toronto | Eletricist, handyman, contractor</span>
+          <i *ngFor="let count of ' '.repeat(5).split(''), let i = index" [ngClass]="[i > profile.avg_review - 1 ? 'fas fa-star' : 'fas fa-star fa-star-selected']"></i>
+          <span>{{profile.number_reviews}} reviews | {{profile.city}} | </span><p class="user-categories"><span *ngFor="let category of categories">{{category.category_name}}</span></p>
           <p class="highlight highlight-menu chat-button">CHAT</p>
         </div>
 

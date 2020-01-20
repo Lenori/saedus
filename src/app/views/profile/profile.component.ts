@@ -12,6 +12,7 @@ export class ProfileComponent implements OnInit {
   id: any;
   loaded: any;
   profile: any;
+  categories: any;
   reviews: any;
   numberReviews: any;
   certificates: any;
@@ -37,6 +38,7 @@ export class ProfileComponent implements OnInit {
       data => {
         if (data.success === true) {
           this.profile = data.data;
+          this.categories = data.categories;
           this.reviews = data.reviews;
           this.numberReviews = data.number_reviews;
           this.certificates = data.certificates;

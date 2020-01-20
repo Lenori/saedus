@@ -22,13 +22,13 @@
 
 .chat-button {
 
-  margin: 0 0 0 15px;
+  margin: 25px 0 0 0;
   padding: 15px 40px;
   font-size: 11px !important;
   width: 50px;
   text-align: center;
   font-weight: 400;
-  display: inline;
+  color: #252525 !important;
 
 }
 
@@ -108,6 +108,23 @@
   float: left;
 
 }
+
+.user-categories {
+
+  display: block;
+  margin: 15px 0 0;
+
+}
+
+.user-categories span {
+
+  margin: 0 15px 0 0 !important;
+  display: inline !important;
+  border-bottom: 1px solid #737373;
+  padding: 0 0 3px;
+
+}
+
 
 .divisor {
 
@@ -257,6 +274,15 @@
 
   .profile-status {
     width: 35%;
+  }
+
+  .user-categories {
+    text-align: center;
+    margin: 15px auto;
+  }
+
+  .chat-button {
+    margin: 25px auto;
   }
 
 }

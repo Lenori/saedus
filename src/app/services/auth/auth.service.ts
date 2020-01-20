@@ -11,7 +11,7 @@ export class AuthService {
 
   id: any;
 
-  async create(fname, lname, email, password, add1, add2, zip): Promise<any> {
+  async create(fname, lname, email, password, add1, add2, city, zip): Promise<any> {
 
     const endpoint = 'methods/auth/create/create.php';
     const params = {
@@ -21,6 +21,7 @@ export class AuthService {
       password: password,
       add1: add1,
       add2: add2,
+      city: city,
       zip: zip
     };
 
@@ -63,9 +64,11 @@ export class AuthService {
 
   }
 
-  logout() {
+  async logout() {
 
     localStorage.removeItem('user');
+
+    return 'Logout OK';
 
   }
 

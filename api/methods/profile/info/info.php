@@ -13,7 +13,15 @@ $id = $data->id;
 
 $response = new stdClass();
 
-$sql = "SELECT * FROM users WHERE id = '$id'";
+$sql = "SELECT
+            a.*,
+            COUNT(r.id) AS number_reviews,
+            ROUND(AVG(r.grade)) AS avg_review
+        FROM users AS a
+        INNER JOIN
+            reviews AS r
+        ON r.user = a.id
+        WHERE a.id = '$id'";
 $rst = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($rst) == 0) {
@@ -31,6 +39,24 @@ else {
     $response->success = true;
     $response->data = $profile;
     $response->error = false;
+
+    $sql = "SELECT
+                s.*,
+                c.id AS category_id,
+                c.name AS category_name
+            FROM selectedCategories AS s
+            INNER JOIN
+                categories AS c
+            ON c.id = s.category
+            WHERE s.user = '$id'";
+
+    $rst = mysqli_query($conn, $sql);
+    $cat = [];
+
+    while ($catDB = mysqli_fetch_assoc($rst))
+        $cat[] = $catDB;
+
+    $response->categories = $cat;
 
     $sql = "SELECT
                 a.*, u.fname AS creator_fname,

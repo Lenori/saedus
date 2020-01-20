@@ -30,6 +30,7 @@ export class LoginFormComponent implements OnInit {
         if (data.success === true) {
           this.authService.login(data.id);
           this.router.navigate(['']);
+          window.location.reload();
         } else if (data.error === true) {
           alert(data.message);
           window.location.reload();

@@ -11,6 +11,7 @@
     <input type="text" name="address1" id="address1" placeholder="Address Line 01" required [(ngModel)]="form.add1" #add1="ngModel" />
     <input type="text" name="address2" id="address2" placeholder="Address Line 02" required [(ngModel)]="form.add2" #add2="ngModel" />
 
+    <input type="text" name="city" id="city" placeholder="City" required [(ngModel)]="form.city" #city="ngModel" />
     <input type="text" name="zip" id="zip" placeholder="Zip code" required [(ngModel)]="form.zip" #zip="ngModel" />
 
     <p (click)="onSubmit()" class="highlight-dark">{{loading ? 'Loading...' : 'Create Account'}}</p>

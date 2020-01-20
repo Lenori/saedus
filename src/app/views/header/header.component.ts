@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth/auth.service';
 import {WalletService} from '../../services/wallet/wallet.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -16,8 +17,20 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private walletService: WalletService
+    private walletService: WalletService,
+    public router: Router
   ) { }
+
+  logout() {
+
+    this.authService.logout().then(
+      data => {
+        this.user = null;
+        location.reload();
+      }
+    );
+
+  }
 
   ngOnInit() {
 
@@ -34,8 +47,6 @@ export class HeaderComponent implements OnInit {
             }
           });
       });
-
-
 
   }
 
