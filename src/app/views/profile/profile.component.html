@@ -10,8 +10,10 @@
 
         <div class="profile-info">
           <i *ngFor="let count of ' '.repeat(5).split(''), let i = index" [ngClass]="[i > profile.avg_review - 1 ? 'fas fa-star' : 'fas fa-star fa-star-selected']"></i>
-          <span>{{profile.number_reviews}} reviews | {{profile.city}} | </span><p class="user-categories"><span *ngFor="let category of categories">{{category.category_name}}</span></p>
-          <p class="highlight highlight-menu chat-button">CHAT</p>
+          <span>{{profile.number_reviews}} reviews | {{profile.city}}</span>
+          <p class="user-categories"><span *ngFor="let category of categories">{{category.category_name}}</span></p>
+          <p *ngIf="!edit" class="highlight highlight-menu chat-button">CHAT</p>
+          <a routerLink="/edit/profile/{{id}}"><p *ngIf="edit" class="highlight highlight-menu chat-button">EDIT</p></a>
         </div>
 
         <p>{{profile.description}}</p>
@@ -20,7 +22,7 @@
 
       <div class="profile-line-02">
 
-        <h4>$25 CAD/HOUR</h4>
+        <h4>${{profile.rate}} CAD/HOUR</h4>
 
         <div class="profile-picture" [ngStyle]="{ 'background-image': 'url(http://18.224.180.162/api/resources/profile/avatar/' + profile.id + '.jpg)'}"></div>
 

@@ -65,20 +65,17 @@
 
         <a routerLink="/profile/{{result.id}}"><h3>{{result.fname + ' ' + result.lname}}</h3></a>
         <p>{{result.description}}</p>
-        <i class="fas fa-star fa-star-selected"></i>
-        <i class="fas fa-star fa-star-selected"></i>
-        <i class="fas fa-star fa-star-selected"></i>
-        <i class="fas fa-star fa-star-selected"></i>
-        <i class="fas fa-star"></i>
-        <span>108 reviews | Toronto</span>
+
+        <i *ngFor="let count of ' '.repeat(5).split(''), let i = index" [ngClass]="[i > result.avg_review - 1 ? 'fas fa-star' : 'fas fa-star fa-star-selected']"></i>
+
+        <span>{{result.number_reviews}} reviews | {{result.city}}</span>
         <p class="user-categories"><span *ngFor="let category of result[0]">{{category.category_name}}</span></p>
 
       </div>
 
       <div class="results-profile-hire">
 
-        <span>$20 CAD/hour</span>
-        <p class="highlight highlight-menu">HIRE ME</p>
+        <span>${{result.rate}} CAD/hour</span>
 
       </div>
 

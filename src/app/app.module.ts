@@ -31,6 +31,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { BidComponent } from './views/bid/bid.component';
 import { MilestonesComponent } from './includes/milestones/milestones.component';
 import { MilestoneComponent } from './views/milestone/milestone.component';
+import { ProjectsComponent } from './views/projects/projects.component';
+import { EditComponent } from './views/edit/edit.component';
+import { EditProfileComponent } from './includes/edit-profile/edit-profile.component';
+import { EditProjectComponent } from './includes/edit-project/edit-project.component';
 
 const appRoutes = [
 
@@ -44,6 +48,8 @@ const appRoutes = [
   { path: 'sign-up', component: SignUpComponent },
   { path: 'categories', component: CategoriesComponent },
   { path: 'project/:id', component: ProjectComponent },
+  { path: 'projects', component: ProjectsComponent },
+  { path: 'edit/:type/:id', component: EditComponent },
 
 ];
 
@@ -73,6 +79,10 @@ const appRoutes = [
     BidComponent,
     MilestonesComponent,
     MilestoneComponent,
+    ProjectsComponent,
+    EditComponent,
+    EditProfileComponent,
+    EditProjectComponent,
   ],
   entryComponents: [BidComponent, MilestoneComponent],
   imports: [

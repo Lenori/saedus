@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ProfessionalService} from '../../services/professional/professional.service';
+import {SearchService} from '../../services/search/search.service';
 
 @Component({
   selector: 'app-search-results',
@@ -19,7 +19,7 @@ export class SearchResultsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     public router: Router,
-    private professionalService: ProfessionalService
+    private searchService: SearchService
   ) { }
 
   urlDehyphen(str) {
@@ -30,7 +30,7 @@ export class SearchResultsComponent implements OnInit {
 
     this.term = this.urlDehyphen(this.route.snapshot.params.q);
 
-    this.professionalService.search(this.term).then(
+    this.searchService.searchProfessionals(this.term).then(
       data => {
         if (data.success === true) {
           this.professionals = data.data;

@@ -129,6 +129,25 @@ export class ProjectService {
 
   }
 
+  async edit(id, form): Promise<any> {
+
+    const endpoint = 'methods/edit/project/project.php';
+    const params = {
+      id: id,
+      title: form.title,
+      description: form.description,
+      tags: form.tags,
+      budget: form.budget
+    };
+
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    const response = await this.http.post(this.url + '/' + endpoint, params, {headers}).toPromise();
+    return response;
+
+  }
+
   constructor(
     private http: HttpClient,
   ) {

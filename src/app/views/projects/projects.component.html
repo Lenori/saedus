@@ -1,0 +1,32 @@
+<div class="header header-projects">
+
+  <div class="content content-title">
+
+    <h1>Available projects</h1>
+    <p>Here you can see all of published projects. Good luck finding your next job!</p>
+
+  </div>
+
+</div>
+
+<div class="content content-fillable">
+
+  <div *ngFor="let project of projects;" class="project-item">
+
+    <div class="project-item-info">
+
+      <a routerLink="/project/{{project.id}}"><h3>{{project.title}}</h3></a>
+      <p>{{project.description}}</p>
+      <span>{{project.bids_count}} bids | {{project.tags}} | Published {{(project.published | date : 'mediumDate')}}</span>
+
+    </div>
+
+    <div class="project-item-actions">
+
+      <h3>${{project.budget}} CAD</h3>
+
+    </div>
+
+  </div>
+
+</div>

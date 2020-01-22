@@ -22,6 +22,52 @@ export class ProfileService {
     headers.append('Content-Type', 'application/json');
 
     const response = await this.http.post(this.url + '/' + endpoint, params, {headers}).toPromise();
+    console.log('response: ' + response);
+    return response;
+
+  }
+
+  async removeCertificate(user, certificate): Promise<any> {
+
+    const endpoint = 'methods/edit/profile/certificates.php';
+    const params = {
+      id: user,
+      cremove: certificate
+    };
+
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    const response = await this.http.post(this.url + '/' + endpoint, params, {headers}).toPromise();
+    return response;
+
+  }
+
+  async edit(id, form, categories): Promise<any> {
+
+    const endpoint = 'methods/edit/profile/profile.php';
+    const params = {
+      id: id,
+      fname: form.fname,
+      lname: form.lname,
+      email: form.email,
+      add1: form.add1,
+      add2: form.add2,
+      city: form.city,
+      zip: form.zip,
+      password: form.password,
+      rate: form.rate,
+      description: form.description,
+      ctitle: form.ctitle,
+      cdesc: form.cdesc,
+      cissuer: form.cissuer,
+      categories: categories
+    };
+
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    const response = await this.http.post(this.url + '/' + endpoint, params, {headers}).toPromise();
     return response;
 
   }

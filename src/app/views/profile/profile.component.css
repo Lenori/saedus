@@ -196,7 +196,8 @@
 .profile-certificates {
 
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  flex-wrap: wrap;
   align-items: center;
   margin: 35px 0;
 
@@ -213,8 +214,9 @@
 .profile-certificate-item {
 
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  width: 33.33%;
+  margin: 0 0 60px 0;
 
 }
 
@@ -255,13 +257,8 @@
 
 @media screen and (max-width: 1300px) {
 
-  .profile-certificates {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
   .profile-certificate-item{
-    margin: 20px 0;
+    width: 50%;
   }
 
 }
@@ -317,6 +314,10 @@
   .chat-button {
     margin: 20px auto 0;
     display: block;
+  }
+
+  .profile-certificate-item{
+    width: 90%;
   }
 
 }

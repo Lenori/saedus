@@ -126,6 +126,12 @@ label {
 
 }
 
+.content-fillable {
+
+  min-height: 360px;
+
+}
+
 .content-title {
 
   color: white;
