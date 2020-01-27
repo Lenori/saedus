@@ -139,3 +139,18 @@
   padding: 10px;
 
 }
+
+@media screen and (max-width: 1125px) {
+
+  .profile-icon {
+    background-color: #343434;
+    margin: 0;
+  }
+
+  .wallet-menu {
+    border: none;
+    padding: 0;
+    font-weight: 800;
+  }
+
+}

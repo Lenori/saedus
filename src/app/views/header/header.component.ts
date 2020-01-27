@@ -34,6 +34,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
 
+    this.showMenu = false;
+
     this.user = null;
     this.authService.getUser().then(
       info => {

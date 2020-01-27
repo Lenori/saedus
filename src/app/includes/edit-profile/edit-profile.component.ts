@@ -129,7 +129,10 @@ export class EditProfileComponent implements OnInit {
                   this.form.city = this.profile.city;
                   this.form.zip = this.profile.zip;
                   this.form.description = this.profile.description;
-                  this.form.rate = this.profile.rate.replace(',', '.');
+
+                  if (this.profile.rate) {
+                    this.form.rate = this.profile.rate.replace(',', '.');
+                  }
 
                   this.form.ctitle = null;
                   this.form.cdesc = null;

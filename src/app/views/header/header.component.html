@@ -10,7 +10,7 @@
 
     <i id="hidden-menu-open" (click)="showMenu = true" class="fas fa-bars"></i>
 
-    <div [className]="showMenu ? 'hidden-header-menu-items' : 'header-menu-items'">
+    <div (click)="showMenu = false" [className]="showMenu ? 'hidden-header-menu-items' : 'header-menu-items'">
 
       <ul>
 
