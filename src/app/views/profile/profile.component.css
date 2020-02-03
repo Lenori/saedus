@@ -69,27 +69,42 @@
 
 }
 
-.profile-status {
+.profile-social {
 
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   width: 30%;
   color: #343434;
+  padding: 15px 0 0 0;
 
 }
 
-.profile-status p {
+.profile-social i {
 
-  text-align: center;
+  margin: 0 20px 0 0;
+  font-size: 23px;
+
+}
+
+.profile-languages {
+
+  padding: 10px 0;
+
+}
+
+.profile-languages p {
+
+  font-weight: 600;
+
+}
+
+.profile-languages span {
+
   font-weight: 100;
-
-}
-
-.profile-status span {
-
-  font-weight: 700;
-  font-size: 27px;
+  font-size: 15px;
+  margin: 0 10px 0 0;
+  border-bottom: 1px solid #343434;
 
 }
 
@@ -269,7 +284,7 @@
     text-align: center;
   }
 
-  .profile-status {
+  .profile-social {
     width: 35%;
   }
 
@@ -302,7 +317,7 @@
     position: inherit;
   }
 
-  .profile-status {
+  .profile-social {
     width: 50%;
     margin: auto;
   }
@@ -324,7 +339,7 @@
 
 @media screen and (max-width: 750px) {
 
-  .profile-status {
+  .profile-social {
     width: 80%;
   }
 

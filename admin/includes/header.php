@@ -2,6 +2,14 @@
 
 include('db_conn.php');
 
+$sql = "SELECT * FROM categories";
+$rst = mysqli_query($conn, $sql);
+
+$categories = [];
+
+while ($catDB = mysqli_fetch_assoc($rst))
+    $categories[] = $catDB;
+
 $sql = "SELECT * FROM users";
 $rst = mysqli_query($conn, $sql);
 
@@ -52,6 +60,57 @@ $milestones = [];
 
 while ($milesDB = mysqli_fetch_assoc($rst))
     $milestones[] = $milesDB;
+
+if (isset($_GET['delete']) && $_GET['delete'] == true) {
+
+    echo '<script>alert("Are you sure?")</script>';
+
+    $delete = $_GET['id'];
+
+    if ($_GET['type'] == 1) {
+
+        $sql = "DELETE FROM users WHERE id = '$delete'";
+        $rst = mysqli_query($conn, $sql);
+
+        header('Location: /admin/users.php');
+
+    }
+
+
+    if ($_GET['type'] == 2) {
+
+        $sql = "DELETE FROM projects WHERE id = '$delete'";
+        $rst = mysqli_query($conn, $sql);
+
+        header('Location: /admin/projects.php');
+
+    }
+
+
+    if ($_GET['type'] == 3) {
+
+        $sql = "DELETE FROM categories WHERE id = '$delete'";
+        $rst = mysqli_query($conn, $sql);
+
+        $sql = "DELETE FROM selectedCategories WHERE category = '$delete'";
+        $rst = mysqli_query($conn, $sql);
+
+        header('Location: /admin/categories.php');
+
+    }
+
+}
+
+if (isset($_POST['cmd']) && $_POST['cmd'] == 'add_cat') {
+
+    $name = $_POST['name'];
+
+    $sql = "INSERT INTO categories (name) VALUES ('$name')";
+    $rst = mysqli_query($conn, $sql);
+
+    header('Location: /admin/categories.php');
+
+}
 
 ?>
 

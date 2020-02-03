@@ -22,6 +22,7 @@ export class EditProfileComponent implements OnInit {
 
   profile: any;
   certificates: any;
+  languages: any;
   categories: any;
   cats: any;
 
@@ -43,6 +44,19 @@ export class EditProfileComponent implements OnInit {
   removeCertificate(certificate) {
 
     this.profileService.removeCertificate(this.id, certificate).then(
+      data => {
+        if (data.success === true) {
+          window.location.reload();
+        } else if (data.error === true) {
+          alert(data.message);
+          window.location.reload();
+        }
+    });
+  }
+
+  removeLanguage(lang) {
+
+    this.profileService.removeLanguage(this.id, lang).then(
       data => {
         if (data.success === true) {
           window.location.reload();
@@ -114,6 +128,7 @@ export class EditProfileComponent implements OnInit {
 
                   this.profile = data.data;
                   this.certificates = data.certificates;
+                  this.languages = data.languages;
 
                   this.categories = [];
 
@@ -129,6 +144,10 @@ export class EditProfileComponent implements OnInit {
                   this.form.city = this.profile.city;
                   this.form.zip = this.profile.zip;
                   this.form.description = this.profile.description;
+                  this.form.website = this.profile.website;
+                  this.form.facebook = this.profile.facebook;
+                  this.form.instagram = this.profile.instagram;
+                  this.form.twitter = this.profile.twitter;
 
                   if (this.profile.rate) {
                     this.form.rate = this.profile.rate.replace(',', '.');
@@ -137,6 +156,8 @@ export class EditProfileComponent implements OnInit {
                   this.form.ctitle = null;
                   this.form.cdesc = null;
                   this.form.cissuer = null;
+
+                  this.form.ltitle = null;
 
                   this.categoryService.all('all').then(
                     cat => {

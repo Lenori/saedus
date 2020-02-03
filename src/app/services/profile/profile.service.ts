@@ -43,6 +43,22 @@ export class ProfileService {
 
   }
 
+  async removeLanguage(user, lang): Promise<any> {
+
+    const endpoint = 'methods/edit/profile/languages.php';
+    const params = {
+      id: user,
+      lremove: lang
+    };
+
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    const response = await this.http.post(this.url + '/' + endpoint, params, {headers}).toPromise();
+    return response;
+
+  }
+
   async edit(id, form, categories): Promise<any> {
 
     const endpoint = 'methods/edit/profile/profile.php';
@@ -61,6 +77,11 @@ export class ProfileService {
       ctitle: form.ctitle,
       cdesc: form.cdesc,
       cissuer: form.cissuer,
+      ltitle: form.ltitle,
+      website: form.website,
+      facebook: form.facebook,
+      instagram: form.instagram,
+      twitter: form.twitter,
       categories: categories
     };
 

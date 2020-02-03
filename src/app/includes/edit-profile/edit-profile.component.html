@@ -17,6 +17,26 @@
     <input type="text" name="city" id="city" placeholder="City" required [(ngModel)]="form.city" #city="ngModel" />
     <input type="text" name="zip" id="zip" placeholder="Zip code" required [(ngModel)]="form.zip" #zip="ngModel" />
 
+    <h2>Your Social Links</h2>
+
+    <input type="text" name="website" id="website" placeholder="Website" required [(ngModel)]="form.website" #website="ngModel" />
+    <input type="text" name="facebook" id="facebook" placeholder="Facebook" required [(ngModel)]="form.facebook" #facebook="ngModel" />
+    <input type="text" name="instagram" id="instagram" placeholder="Instagram" required [(ngModel)]="form.instagram" #instagram="ngModel" />
+    <input type="text" name="twitter" id="twitter" placeholder="Twitter" required [(ngModel)]="form.twitter" #twitter="ngModel" />
+
+    <h2>Add new language you speak</h2>
+
+    <input type="text" name="ltitle" id="ltitle" placeholder="New language" required [(ngModel)]="form.ltitle" #ltitle="ngModel" />
+
+    <div class="list-certificates">
+
+      <div *ngFor="let l of languages" class="certificate">
+        <p>{{l.lang}}</p>
+        <span (click)="removeLanguage(l.id)">DELETE</span>
+      </div>
+
+    </div>
+
     <h2>Want to apply as a professional? Don't forget to fill the info below!</h2>
 
     <textarea name="description" id="description" placeholder="Description" [(ngModel)]="form.description" #description="ngModel"></textarea>

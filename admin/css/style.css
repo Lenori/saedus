@@ -172,3 +172,29 @@ button {
     letter-spacing: 4px;
 
 }
+
+.form {
+
+    margin: 50px 0;
+
+}
+
+.form h2 {
+
+    font-weight: 200;
+
+}
+
+.form input {
+
+    float: left;
+    padding: 15px;
+    width: 400px;
+
+}
+
+.form button {
+
+    margin: 0 0 0 20px;
+
+}

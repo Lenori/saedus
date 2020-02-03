@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth/auth.service';
 import {WalletService} from '../../services/wallet/wallet.service';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -15,11 +15,18 @@ export class HeaderComponent implements OnInit {
   user: any;
   wallet: any;
 
+  username: any;
+
   constructor(
     private authService: AuthService,
     private walletService: WalletService,
-    public router: Router
-  ) { }
+    public router: Router,
+    private route: ActivatedRoute
+  ) {
+    this.route.queryParams.subscribe(params => {
+      this.username = params['username'];
+    });
+  }
 
   logout() {
 

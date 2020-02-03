@@ -94,6 +94,16 @@ else {
     $response->certificates = $data;
     $response->number_certificates = mysqli_num_rows($rst);
 
+    $sql = "SELECT * FROM selectedLanguages WHERE user = '$id'";
+    $rst = mysqli_query($conn, $sql);
+
+    $data = [];
+
+    while ($dataDB = mysqli_fetch_assoc($rst))
+        $data[] = $dataDB;
+
+    $response->languages = $data;
+
 }
 
 echo json_encode($response);

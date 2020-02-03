@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth/auth.service';
-import {Router} from '@angular/router';
+import {Router, NavigationExtras} from '@angular/router';
 import {Md5} from 'ts-md5/dist/md5';
 
 @Component({
@@ -29,8 +29,15 @@ export class LoginFormComponent implements OnInit {
       data => {
         if (data.success === true) {
           this.authService.login(data.id);
-          this.router.navigate(['']);
-          window.location.reload();
+
+          const extras: NavigationExtras = {
+            queryParams: {
+              username: data.fname
+            }
+          };
+
+          this.router.navigate([''], extras);
+          setTimeout(() => window.location.replace(location.pathname), 2000);
         } else if (data.error === true) {
           alert(data.message);
           window.location.reload();

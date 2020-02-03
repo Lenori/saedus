@@ -31,6 +31,7 @@ else {
 
     $response->success = true;
     $response->id = $customer['id'];
+    $response->fname = $customer['fname'];
     $response->error = false;
 
 }

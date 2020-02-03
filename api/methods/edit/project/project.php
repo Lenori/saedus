@@ -9,25 +9,24 @@ require_once('../../../access.php');
 $postdata = file_get_contents("php://input");
 $data = json_decode($postdata);
 
-$list = $data->list;
+$id = $data->id;
+$title = $data->title;
+$description = $data->description;
+$tags = $data->tags;
+$budget = number_format($data->budget, 2, ',', '.');
 
 $response = new stdClass();
 
-if ($list == 'home')
-    $sql = "SELECT * FROM categories ORDER BY rand() LIMIT 8";
-
-else if ($list == 'all')
-    $sql = "SELECT * FROM categories ORDER BY name";
+$sql = "UPDATE projects SET
+            title = '$title',
+            description = '$description',
+            tags = '$tags',
+            budget = '$budget'
+        WHERE id = '$id'";
 
 $rst = mysqli_query($conn, $sql);
 
-$data = [];
-
-while ($dataDB = mysqli_fetch_assoc($rst))
-    $data[] = $dataDB;
-
 $response->success = true;
-$response->data = $data;
 $response->error = false;
 
 echo json_encode($response);

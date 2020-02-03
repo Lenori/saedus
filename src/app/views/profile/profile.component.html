@@ -36,11 +36,20 @@
 
 <div *ngIf="this.loaded" class="content">
 
-  <div class="profile-status">
+  <div class="profile-social">
 
-    <p><span>100%</span><br>on time</p>
-    <p><span>100%</span><br>on time</p>
-    <p><span>100%</span><br>on time</p>
+    <a href="{{this.profile.website}}"><i class="fas fa-globe"></i></a>
+    <a href="{{this.profile.facebook}}"><i class="fab fa-facebook"></i></a>
+    <a href="{{this.profile.instagram}}"><i class="fab fa-instagram"></i></a>
+    <a href="{{this.profile.twitter}}"><i class="fab fa-twitter"></i></a>
+
+  </div>
+
+  <div class="profile-languages">
+
+    <p>Languages:</p>
+
+    <span *ngFor="let l of languages">{{l.lang}}</span>
 
   </div>
 
