@@ -14,7 +14,7 @@ $list = $data->list;
 $response = new stdClass();
 
 if ($list == 'home')
-    $sql = "SELECT * FROM categories ORDER BY rand() LIMIT 8";
+    $sql = "SELECT * FROM categories WHERE home = 1 ORDER BY rand()";
 
 else if ($list == 'all')
     $sql = "SELECT * FROM categories ORDER BY name";

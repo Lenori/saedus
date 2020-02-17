@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit {
   reviews: any;
   numberReviews: any;
   certificates: any;
+  portfolios: any;
   languages: any;
   numberCertificates: any;
 
@@ -58,6 +59,7 @@ export class ProfileComponent implements OnInit {
               this.reviews = data.reviews;
               this.numberReviews = data.number_reviews;
               this.certificates = data.certificates;
+              this.portfolios = data.portfolio;
               this.numberCertificates = data.number_certificates;
               this.languages = data.languages;
 

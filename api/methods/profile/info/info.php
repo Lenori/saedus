@@ -104,6 +104,16 @@ else {
 
     $response->languages = $data;
 
+    $sql = "SELECT * FROM portfolio WHERE user = '$id'";
+    $rst = mysqli_query($conn, $sql);
+
+    $data = [];
+
+    while ($dataDB = mysqli_fetch_assoc($rst))
+        $data[] = $dataDB;
+
+    $response->portfolio = $data;
+
 }
 
 echo json_encode($response);

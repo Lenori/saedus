@@ -23,14 +23,49 @@ export class EditProfileComponent implements OnInit {
   profile: any;
   certificates: any;
   languages: any;
+  portfolios: any;
   categories: any;
   cats: any;
+  imgURL: any;
+  portfolioURL: any;
 
   loading = false;
   updating = false;
 
   fileInput(files: FileList) {
     this.form.pic = files.item(0);
+
+    const reader = new FileReader();
+    reader.readAsDataURL(this.form.pic);
+    reader.onload = (e) => {
+      this.imgURL = reader.result;
+    };
+
+  }
+
+  removePicture() {
+
+    this.form.pic = null;
+    this.imgURL = null;
+
+  }
+
+  portfolioInput(files: FileList) {
+    this.form.portfolio = files.item(0);
+
+    const reader = new FileReader();
+    reader.readAsDataURL(this.form.portfolio);
+    reader.onload = (e) => {
+      this.portfolioURL = reader.result;
+    };
+
+  }
+
+  removePortfolio() {
+
+    this.form.pic = null;
+    this.portfolioURL = null;
+
   }
 
   selectCategory(id) {
@@ -44,6 +79,19 @@ export class EditProfileComponent implements OnInit {
   removeCertificate(certificate) {
 
     this.profileService.removeCertificate(this.id, certificate).then(
+      data => {
+        if (data.success === true) {
+          window.location.reload();
+        } else if (data.error === true) {
+          alert(data.message);
+          window.location.reload();
+        }
+    });
+  }
+
+  removePortfolioItem(portfolio) {
+
+    this.profileService.removePortfolio(this.id, portfolio).then(
       data => {
         if (data.success === true) {
           window.location.reload();
@@ -83,6 +131,19 @@ export class EditProfileComponent implements OnInit {
       );
     }
 
+    if (this.form.portfolio) {
+      console.log(this.form.portfolio);
+      this.uploadService.uploadPortfolio(this.id, this.form.portfolio).then(
+        data => {
+          if (data.success === true) {
+          } else if (data.error === true) {
+            alert(data.message);
+            window.location.reload();
+          }
+        }
+      );
+    }
+
     if (this.form.password) {
       this.form.password = this.md5.appendStr(this.form.password).end();
     } else {
@@ -92,7 +153,7 @@ export class EditProfileComponent implements OnInit {
     this.profileService.edit(this.id, this.form, this.categories).then(
       data => {
         if (data.success === true) {
-          this.router.navigate(['profile/' + this.id]);
+          window.location.reload();
         } else if (data.error === true) {
           alert(data.message);
           window.location.reload();
@@ -129,6 +190,7 @@ export class EditProfileComponent implements OnInit {
                   this.profile = data.data;
                   this.certificates = data.certificates;
                   this.languages = data.languages;
+                  this.portfolios = data.portfolio;
 
                   this.categories = [];
 

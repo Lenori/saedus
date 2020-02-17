@@ -69,6 +69,19 @@
 
 }
 
+.profile-picture-desktop {
+
+  display: block;
+
+}
+
+.profile-picture-mobile {
+
+  display: none;
+  margin: 0 auto 10px auto !important;
+
+}
+
 .profile-social {
 
   display: flex;
@@ -218,6 +231,12 @@
 
 }
 
+.profile-certificates img {
+
+  max-width: 90%;
+
+}
+
 .profile-certificates p {
 
   font-weight: 100;
@@ -300,6 +319,14 @@
 }
 
 @media screen and (max-width: 1050px) {
+
+  .profile-picture-desktop {
+    display: none;
+  }
+
+  .profile-picture-mobile {
+    display: block;
+  }
 
   .profile-line {
     flex-direction: column;

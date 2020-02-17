@@ -2,8 +2,11 @@
 
   <form enctype="multipart/form-data" *ngIf="!loading">
 
-    <input type="file" name="pic" id="pic" (change)="fileInput($event.target.files)" />
+    <input type="file" name="pic" id="pic" #pic (change)="fileInput($event.target.files)" />
     <label for="pic">Upload your profile picture</label>
+
+    <img class="preview-pic" *ngIf="this.imgURL" src="{{this.imgURL}}" alt="profilepic" />
+    <p *ngIf="this.imgURL" (click)="pic.value = ''; removePicture()" class="preview-remove">REMOVE IMAGE</p>
 
     <input type="text" name="fn" id="fn" placeholder="First Name" required [(ngModel)]="form.fname" #fname="ngModel" />
     <input type="text" name="ln" id="ln" placeholder="Last Name" required [(ngModel)]="form.lname" #lname="ngModel" />
@@ -41,13 +44,32 @@
 
     <textarea name="description" id="description" placeholder="Description" [(ngModel)]="form.description" #description="ngModel"></textarea>
 
-    <input type="text" name="rate" id="rate" placeholder="Hourly rate" class="rate" currencyMask [options]="{ prefix: 'CAD ', thousands: '.', decimal: ',' }" [(ngModel)]="form.rate" #rate="ngModel" />
+    <input type="text" name="rate" id="rate" placeholder="Hourly rate" class="rate" currencyMask [options]="{ prefix: 'CAD ', thousands: '', decimal: ',' }" [(ngModel)]="form.rate" #rate="ngModel" />
 
     <p>Select your categories below:</p>
 
     <div class="list-categories">
 
       <p *ngFor="let cat of cats" (click)="selectCategory(cat.id)" [ngClass]="[categories.indexOf(cat.id) == -1 ? 'highlight' : 'highlight-dark']">{{cat.name}}</p>
+
+    </div>
+
+    <h2>Add new portfolio picture</h2>
+
+    <input type="file" name="portfolio" id="portfolio" #portfolio (change)="portfolioInput($event.target.files)" />
+    <label for="pic">Upload your portfolio picture</label>
+
+    <img class="preview-pic" *ngIf="this.portfolioURL" src="{{this.portfolioURL}}" alt="profilepic" />
+    <p *ngIf="this.portfolioURL" (click)="portfolio.value = ''; removePortfolio()" class="preview-remove">REMOVE IMAGE</p>
+
+    <div class="list-certificates">
+
+      <div *ngFor="let p of portfolios" class="certificate">
+
+        <img src="http://18.224.180.162/api/resources/profile/portfolio/{{p.id}}.{{p.ext}}" />
+        <span (click)="removePortfolioItem(p.id)">DELETE</span>
+
+      </div>
 
     </div>
 

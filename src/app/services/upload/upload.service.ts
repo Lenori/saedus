@@ -25,6 +25,22 @@ export class UploadService {
 
   }
 
+  async uploadPortfolio(id, file): Promise<any> {
+
+    const endpoint = 'methods/file/upload/portfolio.php';
+    const fd = new FormData();
+    fd.append('file', file);
+    fd.append('name', file.name);
+    fd.append('id', id);
+
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    const response = await this.http.post(this.url + '/' + endpoint, fd, {headers}).toPromise();
+    return response;
+
+  }
+
   constructor(
     private http: HttpClient,
   ) {

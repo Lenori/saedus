@@ -27,7 +27,7 @@ $instagram = $data->instagram;
 $twitter = $data->twitter;
 
 if (isset($data->rate))
-    $rate = number_format($data->rate, 2, ',', '.');
+    $rate = number_format($data->rate, 2, ',', '');
 else
     $rate = 0;
 

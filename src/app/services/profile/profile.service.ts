@@ -43,6 +43,22 @@ export class ProfileService {
 
   }
 
+  async removePortfolio(user, portfolio): Promise<any> {
+
+    const endpoint = 'methods/edit/profile/portfolio.php';
+    const params = {
+      id: user,
+      premove: portfolio
+    };
+
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    const response = await this.http.post(this.url + '/' + endpoint, params, {headers}).toPromise();
+    return response;
+
+  }
+
   async removeLanguage(user, lang): Promise<any> {
 
     const endpoint = 'methods/edit/profile/languages.php';

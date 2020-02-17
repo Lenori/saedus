@@ -6,6 +6,8 @@
 
       <div class="profile-line-01">
 
+        <div class="profile-picture profile-picture-mobile" [ngStyle]="{ 'background-image': 'url(http://18.224.180.162/api/resources/profile/avatar/' + profile.id + '.jpg)'}"></div>
+
         <h1>{{profile.fname + ' ' + profile.lname}}</h1>
 
         <div class="profile-info">
@@ -24,7 +26,7 @@
 
         <h4>${{profile.rate}} CAD/HOUR</h4>
 
-        <div class="profile-picture" [ngStyle]="{ 'background-image': 'url(http://18.224.180.162/api/resources/profile/avatar/' + profile.id + '.jpg)'}"></div>
+        <div class="profile-picture profile-picture-desktop" [ngStyle]="{ 'background-image': 'url(http://18.224.180.162/api/resources/profile/avatar/' + profile.id + '.jpg)'}"></div>
 
       </div>
 
@@ -38,10 +40,10 @@
 
   <div class="profile-social">
 
-    <a href="{{this.profile.website}}"><i class="fas fa-globe"></i></a>
-    <a href="{{this.profile.facebook}}"><i class="fab fa-facebook"></i></a>
-    <a href="{{this.profile.instagram}}"><i class="fab fa-instagram"></i></a>
-    <a href="{{this.profile.twitter}}"><i class="fab fa-twitter"></i></a>
+    <a *ngIf="this.profile.website" href="{{this.profile.website}}"><i class="fas fa-globe"></i></a>
+    <a *ngIf="this.profile.facebook" href="{{this.profile.facebook}}"><i class="fab fa-facebook"></i></a>
+    <a *ngIf="this.profile.instagram" href="{{this.profile.instagram}}"><i class="fab fa-instagram"></i></a>
+    <a *ngIf="this.profile.twitter" href="{{this.profile.twitter}}"><i class="fab fa-twitter"></i></a>
 
   </div>
 
@@ -50,6 +52,25 @@
     <p>Languages:</p>
 
     <span *ngFor="let l of languages">{{l.lang}}</span>
+
+  </div>
+
+  <div class="profile-section">
+
+    <h4>Portfolio</h4>
+    <div class="divisor"></div>
+
+  </div>
+
+  <div class="profile-certificates">
+
+    <div *ngFor="let p of portfolios" class="profile-certificate-item">
+
+      <img src="http://18.224.180.162/api/resources/profile/portfolio/{{p.id}}.{{p.ext}}" />
+
+    </div>
+
+    <p *ngIf="numberCertificates == 0">No certificates yet.</p>
 
   </div>
 
@@ -92,7 +113,7 @@
 
     <div *ngFor="let certificate of certificates" class="profile-certificate-item">
 
-      <i class="fas fa-star"></i>
+      <i class="fas fa-graduation-cap"></i>
       <div class="profile-certificate-info">
         <h4>{{certificate.title}}</h4>
         <p>{{certificate.description}}</p>

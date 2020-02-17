@@ -4,6 +4,8 @@
   justify-content: center;
   flex-wrap: wrap;
   margin: 85px auto;
+  border-top: 1px solid #252525;
+  padding-top: 40px;
 
 }
 
