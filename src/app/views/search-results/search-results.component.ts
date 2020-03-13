@@ -33,7 +33,9 @@ export class SearchResultsComponent implements OnInit {
     this.searchService.searchProfessionals(this.term).then(
       data => {
         if (data.success === true) {
-          this.professionals = data.data;
+          this.professionals = data.data.filter(p => {
+            return p['0'] && p['0'][0] && p['0'][0].category_name;
+          });
           this.total = data.total;
           this.loaded = true;
         } else if (data.error === true) {

@@ -11,10 +11,14 @@ $data = json_decode($postdata);
 
 $term = $data->term;
 
+if (!isset($term) || trim($term) === '') {
+  $term = '%';
+}
+
 $response = new stdClass();
 
 $sql = "SELECT
-            u.*,       
+            u.*,
             COUNT(r.id) AS number_reviews,
             ROUND(AVG(r.grade)) AS avg_review
         FROM users AS u
@@ -57,7 +61,7 @@ else {
                 INNER JOIN
                     categories AS c
                     ON c.id = s.category
-                WHERE s.user = '$id'";
+                WHERE s.user = '$id' AND c.name LIKE '$term'";
 
         $rst = mysqli_query($conn, $sql);
 
