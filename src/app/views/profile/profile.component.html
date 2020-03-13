@@ -40,10 +40,10 @@
 
   <div class="profile-social">
 
-    <a *ngIf="this.profile.website" href="{{this.profile.website}}" target="_blank"><i class="fas fa-globe"></i></a>
-    <a *ngIf="this.profile.facebook" href="{{this.profile.facebook}}" target="_blank"><i class="fab fa-facebook"></i></a>
-    <a *ngIf="this.profile.instagram" href="{{this.profile.instagram}}" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a *ngIf="this.profile.twitter" href="{{this.profile.twitter}}" target="_blank"><i class="fab fa-twitter"></i></a>
+    <a *ngIf="this.profile.website" href="{{'//' + this.profile.website}}" target="_blank"><i class="fas fa-globe"></i></a>
+    <a *ngIf="this.profile.facebook" href="{{'//' + this.profile.facebook}}" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a *ngIf="this.profile.instagram" href="{{'//' + this.profile.instagram}}" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a *ngIf="this.profile.twitter" href="{{'//' + this.profile.twitter}}" target="_blank"><i class="fab fa-twitter"></i></a>
 
   </div>
 
