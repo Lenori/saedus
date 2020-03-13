@@ -30,11 +30,15 @@ export class SearchResultsComponent implements OnInit {
 
     this.term = this.urlDehyphen(this.route.snapshot.params.q);
 
+    if (this.term === 'undefined') {
+      this.term = '';
+    }
+
     this.searchService.searchProfessionals(this.term).then(
       data => {
         if (data.success === true) {
           this.professionals = data.data.filter(p => {
-            return p['0'] && p['0'][0] && p['0'][0].category_name;
+            return (p['0'] && p['0'][0] && p['0'][0].category_name) || !this.term;
           });
           this.total = data.total;
           this.loaded = true;
