@@ -35,7 +35,7 @@
 
       <div *ngFor="let l of languages" class="certificate">
         <p>{{l.lang}}</p>
-        <span (click)="removeLanguage(l.id)">DELETE</span>
+        <span class="clickable" (click)="removeLanguage(l.id)">DELETE</span>
       </div>
 
     </div>
@@ -50,7 +50,7 @@
 
     <div class="list-categories">
 
-      <p *ngFor="let cat of cats" (click)="selectCategory(cat.id)" [ngClass]="[categories.indexOf(cat.id) == -1 ? 'highlight' : 'highlight-dark']">{{cat.name}}</p>
+      <p class="clickable" *ngFor="let cat of cats" (click)="selectCategory(cat.id)" [ngClass]="[categories.indexOf(cat.id) == -1 ? 'highlight' : 'highlight-dark']">{{cat.name}}</p>
 
     </div>
 
@@ -67,7 +67,7 @@
       <div *ngFor="let p of portfolios" class="certificate">
 
         <img src="http://18.224.180.162/api/resources/profile/portfolio/{{p.id}}.{{p.ext}}" />
-        <span (click)="removePortfolioItem(p.id)">DELETE</span>
+        <span class="clickable" (click)="removePortfolioItem(p.id)">DELETE</span>
 
       </div>
 
@@ -83,12 +83,12 @@
 
       <div *ngFor="let c of certificates" class="certificate">
         <p>{{c.title}}</p>
-        <span (click)="removeCertificate(c.id)">DELETE</span>
+        <span class="clickable" (click)="removeCertificate(c.id)">DELETE</span>
       </div>
 
     </div>
 
-    <p (click)="onSubmit()" class="highlight-dark">{{updating ? 'Loading...' : 'Save profile'}}</p>
+    <p (click)="onSubmit()" class="highlight-dark clickable">{{updating ? 'Loading...' : 'Save profile'}}</p>
 
   </form>
 
