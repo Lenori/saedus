@@ -11,6 +11,8 @@
 
 <div class="content">
 
+  <h3 class="highlight-dark clickable" routerLink="/new-project">Create new project</h3>
+
   <div *ngFor="let project of projects;" [ngClass]="[project.status == 2 ? 'project-item project-complete' : 'project-item']">
 
     <div class="project-item-info">
@@ -20,14 +22,13 @@
       <span>{{project.bids_count}} bids | {{project.tags}} | Published {{(project.published | date : 'mediumDate')}}</span>
 
     </div>
-
     <ng-container *ngIf="project.status == 0">
 
       <div class="project-item-actions">
 
           <h3>${{project.budget}} CAD</h3>
-          <p class="highlight-dark">Edit</p>
-          <span>Unpublish</span>
+          <p class="highlight-dark clickable">Edit</p>
+          <span class="clickable">Unpublish</span>
 
       </div>
 

@@ -39,6 +39,12 @@ export class NewProjectComponent implements OnInit {
 
     this.loading = true;
 
+    if (!this.form.title || !this.form.description || !this.form.tags || !this.form.budget) {
+      alert('Please fill all the fields.');
+      this.loading = false;
+      return;
+    }
+
     this.projectService.create(this.user, this.form.title, this.form.description, this.form.tags, this.form.budget).then(
       data => {
         if (data.success === true) {
