@@ -54,7 +54,7 @@
   <app-milestones *ngIf="edit && project.status == 1" [project]="id" [prof]="awarded.awarded_id" [milestones]="milestones"></app-milestones>
 
   <div class="content">
-    <p *ngIf="project.status == 1 && paid" class="highlight highlight-success project-actions">Complete project</p>
+    <p *ngIf="project.status == 1 && paid" class="highlight highlight-success project-actions clickable">Complete project</p>
   </div>
 
 </ng-container>
