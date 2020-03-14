@@ -37,6 +37,14 @@ export class EditProfileComponent implements OnInit {
   loading = false;
   updating = false;
 
+  homeCats() {
+    return this.cats.filter(c => c.home == 1);
+  }
+
+  otherCats() {
+    return this.cats.filter(c => c.home == 0);
+  }
+
   fileInput(files: FileList) {
     this.form.pic = files.item(0);
 
