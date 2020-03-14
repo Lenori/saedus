@@ -39,6 +39,7 @@ import {RecoverPasswordComponent} from './views/recover-password/recover-passwor
 import {RecoverPasswordFormComponent} from './includes/recover-password-form/recover-password-form.component';
 import {ChangePasswordComponent} from './views/change-password/change-password.component';
 import {ChangePasswordFormComponent} from './includes/change-password-form/change-password-form.component';
+import {ConfirmEmailComponent} from './views/confirm-email/confirm-email.component';
 
 const appRoutes = [
 
@@ -52,6 +53,7 @@ const appRoutes = [
   { path: 'sign-up', component: SignUpComponent },
   { path: 'recover-password', component: RecoverPasswordComponent },
   { path: 'change-password', component: ChangePasswordComponent },
+  { path: 'confirm-email', component: ConfirmEmailComponent },
   { path: 'categories', component: CategoriesComponent },
   { path: 'project/:id', component: ProjectComponent },
   { path: 'projects', component: ProjectsComponent },
@@ -93,6 +95,7 @@ const appRoutes = [
     RecoverPasswordFormComponent,
     ChangePasswordComponent,
     ChangePasswordFormComponent,
+    ConfirmEmailComponent
   ],
   entryComponents: [BidComponent, MilestoneComponent],
   imports: [

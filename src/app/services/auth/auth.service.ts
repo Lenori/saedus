@@ -80,6 +80,21 @@ export class AuthService {
 
   }
 
+  async confirmEmail(code): Promise<any> {
+
+    const endpoint = 'methods/auth/email/email.php';
+    const params = {
+      code: code
+    };
+
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    const response = await this.http.post(this.url + '/' + endpoint, params, {headers}).toPromise();
+    return response;
+
+  }
+
   async login(id): Promise<any> {
 
     localStorage.removeItem('user');
