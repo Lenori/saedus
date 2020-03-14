@@ -21,6 +21,8 @@ $response = new stdClass();
 
 if (move_uploaded_file($_FILES['file']['tmp_name'], '../../../resources/profile/portfolio/' . $pic .'.' . $ext .'')) {
     $response->success = true;
+    $response->id = $pic;
+    $response->ext = $ext;
     $response->error = false;
 } else {
     $response->success = false;

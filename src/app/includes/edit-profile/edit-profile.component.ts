@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {Md5} from 'ts-md5/dist/md5';
 import {ProfileService} from '../../services/profile/profile.service';
@@ -17,6 +17,9 @@ export class EditProfileComponent implements OnInit {
 
   @Input()
   id: any;
+
+  @ViewChild('portfolio')
+  portfolioInputRef: ElementRef;
 
   form: any = {};
 
@@ -62,11 +65,12 @@ export class EditProfileComponent implements OnInit {
       this.portfolioURL = reader.result;
     };
 
+    this.addPortfolioItem();
   }
 
   removePortfolio() {
 
-    this.form.pic = null;
+    this.portfolioInputRef.nativeElement.value = '';
     this.portfolioURL = null;
 
   }
@@ -97,12 +101,33 @@ export class EditProfileComponent implements OnInit {
     this.profileService.removePortfolio(this.id, portfolio).then(
       data => {
         if (data.success === true) {
-          window.location.reload();
+          this.portfolios = this.portfolios.filter(p => p.id !== portfolio);
         } else if (data.error === true) {
           alert(data.message);
-          window.location.reload();
         }
-    });
+      });
+  }
+
+  addPortfolioItem() {
+
+    if (this.portfolios.length >= 5) {
+      alert('The portfolio can only have 5 items.');
+      this.removePortfolio();
+      return;
+    }
+
+    if (this.form.portfolio) {
+      this.uploadService.uploadPortfolio(this.id, this.form.portfolio).then(
+        data => {
+          if (data.success === true) {
+            this.portfolios.push({id: data.id, user: this.id, ext: data.ext});
+            this.removePortfolio();
+          } else if (data.error === true) {
+            alert(data.message);
+          }
+        }
+      );
+    }
   }
 
   removeLanguage(lang) {
@@ -139,18 +164,6 @@ export class EditProfileComponent implements OnInit {
           if (data.success === true) {
           } else if (data.error === true) {
             //alert(data.message);
-          }
-        }
-      );
-    }
-
-    if (this.form.portfolio) {
-      console.log(this.form.portfolio);
-      this.uploadService.uploadPortfolio(this.id, this.form.portfolio).then(
-        data => {
-          if (data.success === true) {
-          } else if (data.error === true) {
-            alert(data.message);
           }
         }
       );

@@ -64,9 +64,6 @@
     <input type="file" name="portfolio" id="portfolio" #portfolio (change)="portfolioInput($event.target.files)" />
     <label for="pic">Upload your portfolio picture</label>
 
-    <img class="preview-pic" *ngIf="this.portfolioURL" src="{{this.portfolioURL}}" alt="profilepic" />
-    <p *ngIf="this.portfolioURL" (click)="portfolio.value = ''; removePortfolio()" class="preview-remove">REMOVE IMAGE</p>
-
     <div class="list-certificates">
 
       <div *ngFor="let p of portfolios" class="certificate">
