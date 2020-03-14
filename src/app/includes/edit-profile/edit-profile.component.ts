@@ -29,6 +29,8 @@ export class EditProfileComponent implements OnInit {
   imgURL: any;
   portfolioURL: any;
 
+  picRemoved = false;
+
   loading = false;
   updating = false;
 
@@ -41,13 +43,14 @@ export class EditProfileComponent implements OnInit {
       this.imgURL = reader.result;
     };
 
+    this.picRemoved = false;
   }
 
   removePicture() {
 
     this.form.pic = null;
     this.imgURL = null;
-
+    this.picRemoved = true;
   }
 
   portfolioInput(files: FileList) {
@@ -125,7 +128,17 @@ export class EditProfileComponent implements OnInit {
           if (data.success === true) {
           } else if (data.error === true) {
             alert(data.message);
-            window.location.reload();
+          }
+        }
+      );
+    }
+
+    if (this.picRemoved) {
+      this.uploadService.deletePic(this.id).then(
+        data => {
+          if (data.success === true) {
+          } else if (data.error === true) {
+            //alert(data.message);
           }
         }
       );
@@ -138,7 +151,6 @@ export class EditProfileComponent implements OnInit {
           if (data.success === true) {
           } else if (data.error === true) {
             alert(data.message);
-            window.location.reload();
           }
         }
       );
@@ -153,6 +165,7 @@ export class EditProfileComponent implements OnInit {
     this.profileService.edit(this.id, this.form, this.categories).then(
       data => {
         if (data.success === true) {
+          alert('Profile updated with success');
           window.location.reload();
         } else if (data.error === true) {
           alert(data.message);

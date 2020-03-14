@@ -2,11 +2,16 @@
 
   <form enctype="multipart/form-data" *ngIf="!loading">
 
+    <img class="preview-pic" *ngIf="!this.imgURL && !picRemoved; else newPic" src="{{'http://18.224.180.162/api/resources/profile/avatar/' + id + '.jpg'}}" alt="profilepic" />
+
     <input type="file" name="pic" id="pic" #pic (change)="fileInput($event.target.files)" />
     <label for="pic">Upload your profile picture</label>
 
-    <img class="preview-pic" *ngIf="this.imgURL" src="{{this.imgURL}}" alt="profilepic" />
-    <p *ngIf="this.imgURL" (click)="pic.value = ''; removePicture()" class="preview-remove">REMOVE IMAGE</p>
+    <ng-template #newPic>
+      <img class="preview-pic" src="{{this.imgURL}}" alt="profilepic" />
+    </ng-template>
+
+    <p (click)="pic.value = ''; removePicture()" class="preview-remove clickable">REMOVE IMAGE</p>
 
     <input type="text" name="fn" id="fn" placeholder="First Name" required [(ngModel)]="form.fname" #fname="ngModel" />
     <input type="text" name="ln" id="ln" placeholder="Last Name" required [(ngModel)]="form.lname" #lname="ngModel" />

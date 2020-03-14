@@ -24,6 +24,19 @@ export class UploadService {
     return response;
 
   }
+  async deletePic(id): Promise<any> {
+
+    const endpoint = 'methods/file/upload/delete_pic.php';
+    const fd = new FormData();
+    fd.append('id', id);
+
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    const response = await this.http.post(this.url + '/' + endpoint, fd, {headers}).toPromise();
+    return response;
+
+  }
 
   async uploadPortfolio(id, file): Promise<any> {
 
