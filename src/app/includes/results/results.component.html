@@ -35,6 +35,9 @@
       <div class="results-profile-info">
 
         <a routerLink="/profile/{{result.user}}"><h3>{{result.professional_fname + ' ' + result.professional_lname}}</h3></a>
+
+        <p>{{result.proposal}}</p>
+
         <p>{{result.professional_description}}</p>
 
         <i *ngFor="let count of ' '.repeat(5).split(''), let i = index" [ngClass]="[i > result.avg_review - 1 ? 'fas fa-star' : 'fas fa-star fa-star-selected']"></i>

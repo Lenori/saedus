@@ -4,14 +4,15 @@
 
   <form autocomplete="off">
 
-    <input type="budget" autocomplete="off" name="title" id="price" placeholder="Price" class="price" currencyMask [options]="{ prefix: 'CAD ', thousands: '.', decimal: ',' }" [(ngModel)]="form.price" #price="ngModel" />
+    <input type="budget" autocomplete="off" name="title" id="price" placeholder="Price" currencyMask [options]="{ prefix: 'CAD ', thousands: '.', decimal: ',' }" [(ngModel)]="form.price" #price="ngModel" />
+    <input type="text" autocomplete="off" name="title" id="proposal" placeholder="Proposal" [(ngModel)]="form.proposal" maxlength="500" #proposal="ngModel" />
 
-    <p (click)="onSubmit()" class="highlight-dark">{{loading ? 'Loading...' : 'PLACE BID'}}</p>
+    <p (click)="onSubmit()" class="highlight-dark clickable">{{loading ? 'Loading...' : 'PLACE BID'}}</p>
 
   </form>
 
 </mat-dialog-content>
 
 <mat-dialog-actions>
-  <button class="mat-raised-button" (click)="close()">Close</button>
+  <button class="mat-raised-button clickable" (click)="close()">Close</button>
 </mat-dialog-actions>

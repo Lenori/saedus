@@ -34,11 +34,11 @@ export class ProjectComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     const dialogRef = this.matDialog.open(BidComponent, dialogConfig);
 
-    dialogRef.afterClosed().subscribe(value => {
+    dialogRef.afterClosed().subscribe(bid => {
 
-      if (value) {
+      if (bid.price && bid.proposal) {
 
-        this.projectService.bid(this.id, this.user, value).then(
+        this.projectService.bid(this.id, this.user, bid.price, bid.proposal).then(
           data => {
             if (data.success === true) {
               this.router.navigate(['bids/' + this.id]);

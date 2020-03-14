@@ -12,10 +12,11 @@ $data = json_decode($postdata);
 $project = $data->id;
 $professional = $data->user;
 $value = number_format($data->value, 2, ',', '.');
+$proposal = $data->proposal;
 
 $response = new stdClass();
 
-$sql = "INSERT INTO bids (project, user, bid) VALUES ('$project', '$professional', '$value')";
+$sql = "INSERT INTO bids (project, user, bid, proposal) VALUES ('$project', '$professional', '$value', '$proposal')";
 $rst = mysqli_query($conn, $sql);
 
 $response->success = true;

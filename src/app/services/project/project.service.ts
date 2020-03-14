@@ -60,13 +60,14 @@ export class ProjectService {
 
   }
 
-  async bid(id, user, value): Promise<any> {
+  async bid(id, user, value, proposal): Promise<any> {
 
     const endpoint = 'methods/project/bid/bid.php';
     const params = {
       id: id,
       user: user,
-      value: value
+      value: value,
+      proposal: proposal
     };
 
     const headers = new HttpHeaders();
