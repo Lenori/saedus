@@ -9,7 +9,9 @@
       <input type="email" name="email" id="email" placeholder="E-mail" required [(ngModel)]="form.email" #email="ngModel" />
       <input type="password" name="password" id="password" placeholder="Password" required [(ngModel)]="form.password" #password="ngModel" />
 
-      <span>Forgot your password?</span>
+      <span>
+        <a routerLink="/recover-password">Forgot your password?</a>
+      </span>
 
       <p (click)="onSubmit()" class="highlight-dark">{{loading ? 'Loading...' : 'Login'}}</p>
 

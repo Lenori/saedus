@@ -35,6 +35,10 @@ import { ProjectsComponent } from './views/projects/projects.component';
 import { EditComponent } from './views/edit/edit.component';
 import { EditProfileComponent } from './includes/edit-profile/edit-profile.component';
 import { EditProjectComponent } from './includes/edit-project/edit-project.component';
+import {RecoverPasswordComponent} from './views/recover-password/recover-password.component';
+import {RecoverPasswordFormComponent} from './includes/recover-password-form/recover-password-form.component';
+import {ChangePasswordComponent} from './views/change-password/change-password.component';
+import {ChangePasswordFormComponent} from './includes/change-password-form/change-password-form.component';
 
 const appRoutes = [
 
@@ -46,6 +50,8 @@ const appRoutes = [
   { path: 'profile/:id', component: ProfileComponent },
   { path: 'sign-in', component: SignInComponent },
   { path: 'sign-up', component: SignUpComponent },
+  { path: 'recover-password', component: RecoverPasswordComponent },
+  { path: 'change-password', component: ChangePasswordComponent },
   { path: 'categories', component: CategoriesComponent },
   { path: 'project/:id', component: ProjectComponent },
   { path: 'projects', component: ProjectsComponent },
@@ -73,6 +79,7 @@ const appRoutes = [
     SignInComponent,
     LoginFormComponent,
     SignUpComponent,
+    RecoverPasswordComponent,
     AccountFormComponent,
     CategoriesComponent,
     ProjectComponent,
@@ -83,6 +90,9 @@ const appRoutes = [
     EditComponent,
     EditProfileComponent,
     EditProjectComponent,
+    RecoverPasswordFormComponent,
+    ChangePasswordComponent,
+    ChangePasswordFormComponent,
   ],
   entryComponents: [BidComponent, MilestoneComponent],
   imports: [

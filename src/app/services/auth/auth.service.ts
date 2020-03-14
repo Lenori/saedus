@@ -49,6 +49,37 @@ export class AuthService {
 
   }
 
+  async recoverPassword(email): Promise<any> {
+
+    const endpoint = 'methods/auth/recover/recover.php';
+    const params = {
+      email: email
+    };
+
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    const response = await this.http.post(this.url + '/' + endpoint, params, {headers}).toPromise();
+    return response;
+
+  }
+
+  async changePassword(code, password): Promise<any> {
+
+    const endpoint = 'methods/auth/password/password.php';
+    const params = {
+      code: code,
+      password: password
+    };
+
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    const response = await this.http.post(this.url + '/' + endpoint, params, {headers}).toPromise();
+    return response;
+
+  }
+
   async login(id): Promise<any> {
 
     localStorage.removeItem('user');
