@@ -5,7 +5,7 @@
   <form autocomplete="off">
 
     <input type="text" autocomplete="off" name="title" id="title" placeholder="Title" class="title" [(ngModel)]="form.title" #title="ngModel" />
-    <input type="text" autocomplete="off" name="price" id="price" placeholder="Price" class="price" currencyMask [options]="{ prefix: 'CAD ', thousands: '.', decimal: ',' }" [(ngModel)]="form.price" #price="ngModel" />
+    <input type="text" autocomplete="off" name="price" id="price" placeholder="Price" class="price" currencyMask [options]="{ prefix: 'CAD ', thousands: '', decimal: ',' }" [(ngModel)]="form.price" #price="ngModel" />
 
     <p (click)="onSubmit()" class="highlight-dark">{{loading ? 'Loading...' : 'CREATE MILESTONE'}}</p>
 

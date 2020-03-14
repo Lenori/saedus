@@ -8,7 +8,7 @@
 
     <input type="text" name="tags" id="tags" placeholder="Tags (separated by commas)" [(ngModel)]="form.tags" #tags="ngModel" />
 
-    <input type="text" name="budget" id="budget" placeholder="Budget" class="budget" currencyMask [options]="{ prefix: 'CAD ', thousands: '.', decimal: ',' }" [(ngModel)]="form.budget" #budget="ngModel" />
+    <input type="text" name="budget" id="budget" placeholder="Budget" class="budget" currencyMask [options]="{ prefix: 'CAD ', thousands: '', decimal: ',' }" [(ngModel)]="form.budget" #budget="ngModel" />
 
     <p (click)="onSubmit()" class="highlight-dark">{{updating ? 'Loading...' : 'Save project'}}</p>
 

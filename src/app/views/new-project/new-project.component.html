@@ -22,7 +22,7 @@
     <input type="tags" name="title" id="tags" placeholder="Tags (separated by commas)" [(ngModel)]="form.tags" #tags="ngModel" />
     <label for="tags">Tags will help us to direct your project to the right professional. Enter as many as you want, but try to keep them under the same subject.</label>
 
-    <input type="budget" name="title" id="budget" placeholder="Budget" class="budget" currencyMask [options]="{ prefix: 'CAD ', thousands: '.', decimal: ',' }" [(ngModel)]="form.budget" #budget="ngModel" />
+    <input type="budget" name="title" id="budget" placeholder="Budget" class="budget" currencyMask [options]="{ prefix: 'CAD ', thousands: '', decimal: ',' }" [(ngModel)]="form.budget" #budget="ngModel" />
     <label for="budget">Enter the budget you have to show professionals how much you are willing to spend on the project. Keep in mind that professionals can bid higher or lower than your budget.</label>
 
     <p (click)="onSubmit()" class="highlight-dark">{{loading ? 'Loading...' : 'PUBLISH PROJECT'}}</p>
