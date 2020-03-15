@@ -18,7 +18,7 @@ export class EditProfileComponent implements OnInit {
   @Input()
   id: any;
 
-  @ViewChild('portfolio')
+  @ViewChild('portfolio', {static: false})
   portfolioInputRef: ElementRef;
 
   form: any = {};
