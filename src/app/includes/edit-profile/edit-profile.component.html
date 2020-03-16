@@ -60,10 +60,18 @@
       </select>
     </div>
 
+    <div>
+      <p class="highlight">Other Categories:</p>
+      <select class="highlight" multiple>
+        <option class="clickable" *ngFor="let cat of otherCats()" (click)="selectCategory(cat.id)" [ngClass]="[categories.indexOf(cat.id) == -1 ? 'highlight' : 'highlight-dark option-focused']">{{cat.name}}</option>
+      </select>
+    </div>
 
     <div class="list-categories">
-      <p class="clickable" *ngFor="let cat of otherCats()" (click)="selectCategory(cat.id)" [ngClass]="[categories.indexOf(cat.id) == -1 ? 'highlight' : 'highlight-dark']">{{cat.name}}</p>
+      <p *ngFor="let cat of selectedCats()" class="highlight-dark">{{cat.name}}</p>
     </div>
+
+    <p (click)="openNewCategory()" class="highlight highlight-menu clickable">New Category</p>
 
     <h2>Add new portfolio picture</h2>
 

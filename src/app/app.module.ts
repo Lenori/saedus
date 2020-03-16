@@ -40,6 +40,7 @@ import {RecoverPasswordFormComponent} from './includes/recover-password-form/rec
 import {ChangePasswordComponent} from './views/change-password/change-password.component';
 import {ChangePasswordFormComponent} from './includes/change-password-form/change-password-form.component';
 import {ConfirmEmailComponent} from './views/confirm-email/confirm-email.component';
+import {NewCategoryComponent} from './includes/new-category/new-catergory.component';
 
 const appRoutes = [
 
@@ -86,6 +87,7 @@ const appRoutes = [
     CategoriesComponent,
     ProjectComponent,
     BidComponent,
+    NewCategoryComponent,
     MilestonesComponent,
     MilestoneComponent,
     ProjectsComponent,
@@ -97,7 +99,7 @@ const appRoutes = [
     ChangePasswordFormComponent,
     ConfirmEmailComponent
   ],
-  entryComponents: [BidComponent, MilestoneComponent],
+  entryComponents: [BidComponent, MilestoneComponent, NewCategoryComponent],
   imports: [
     BrowserModule,
     RouterModule,

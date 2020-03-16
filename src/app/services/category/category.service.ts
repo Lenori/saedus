@@ -24,6 +24,23 @@ export class CategoryService {
 
   }
 
+
+  async create(name, home): Promise<any> {
+
+    const endpoint = 'methods/category/create/create.php';
+    const params = {
+      name: name,
+      home: home
+    };
+
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    const response = await this.http.post(this.url + '/' + endpoint, params, {headers}).toPromise();
+    return response;
+  }
+
+
   constructor(
     private http: HttpClient,
   ) {

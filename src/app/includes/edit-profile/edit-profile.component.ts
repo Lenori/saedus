@@ -5,6 +5,9 @@ import {ProfileService} from '../../services/profile/profile.service';
 import {AuthService} from '../../services/auth/auth.service';
 import {CategoryService} from '../../services/category/category.service';
 import {UploadService} from '../../services/upload/upload.service';
+import {MatDialog, MatDialogConfig} from '@angular/material';
+import {BidComponent} from '../../views/bid/bid.component';
+import {NewCategoryComponent} from '../new-category/new-catergory.component';
 
 @Component({
   selector: 'app-edit-profile',
@@ -36,6 +39,37 @@ export class EditProfileComponent implements OnInit {
 
   loading = false;
   updating = false;
+
+  openNewCategory() {
+    const dialogConfig = new MatDialogConfig();
+    const dialogRef = this.matDialog.open(NewCategoryComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(category => {
+
+      if (category.name) {
+        this.categoryService.create(category.name, category.home ? '1' : '0').then(
+          data => {
+            if (data.success === true) {
+              console.log(data);
+              this.cats.push({name: data.name, home: data.home});
+            } else if (data.error === true) {
+              alert(data.message);
+            }
+          });
+      }
+
+    });
+  }
+
+  selectedCats() {
+    return this.categories.map(c => {
+      for (const cat of this.cats) {
+        if (cat.id == c) {
+          return cat;
+        }
+      }
+    });
+  }
 
   homeCats() {
     return this.cats.filter(c => c.home == 1);
@@ -202,7 +236,8 @@ export class EditProfileComponent implements OnInit {
     private profileService: ProfileService,
     private authService: AuthService,
     private categoryService: CategoryService,
-    private uploadService: UploadService
+    private uploadService: UploadService,
+    private matDialog: MatDialog
   ) { }
 
   ngOnInit() {
