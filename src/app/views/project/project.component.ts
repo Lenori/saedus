@@ -22,6 +22,7 @@ export class ProjectComponent implements OnInit {
   milestones: any;
   paid: any;
   review: any;
+  ownBid: any;
 
   constructor(
     private authService: AuthService,
@@ -81,6 +82,9 @@ export class ProjectComponent implements OnInit {
                 } else {
                   this.edit = false;
                 }
+
+
+                this.ownBid = info.bids.find(bid => bid.user == this.user);
 
                 this.projectService.getReview(this.user, this.id).then(
                   reviewData => {
