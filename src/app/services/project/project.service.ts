@@ -130,6 +130,37 @@ export class ProjectService {
 
   }
 
+  async unpublish(project): Promise<any> {
+
+    const endpoint = 'methods/project/unpublish/unpublish.php';
+    const params = {
+      project: project,
+      status: 3,
+    };
+
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    const response = await this.http.post(this.url + '/' + endpoint, params, {headers}).toPromise();
+    return response;
+
+  }
+  async publish(project): Promise<any> {
+
+    const endpoint = 'methods/project/publish/publish.php';
+    const params = {
+      project: project,
+      status: 0,
+    };
+
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    const response = await this.http.post(this.url + '/' + endpoint, params, {headers}).toPromise();
+    return response;
+
+  }
+
   async edit(id, form): Promise<any> {
 
     const endpoint = 'methods/edit/project/project.php';
