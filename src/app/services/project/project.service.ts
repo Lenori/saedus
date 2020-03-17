@@ -180,6 +180,41 @@ export class ProjectService {
 
   }
 
+  async review(creatorId, reviewedUserId, projectId, review, grade): Promise<any> {
+
+    const endpoint = 'methods/project/review/create.php';
+    const params = {
+      creator: creatorId,
+      user: reviewedUserId,
+      project: projectId,
+      review: review,
+      grade: grade
+    };
+
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    const response = await this.http.post(this.url + '/' + endpoint, params, {headers}).toPromise();
+    return response;
+
+  }
+
+  async getReview(creatorId, projectId): Promise<any> {
+
+    const endpoint = 'methods/project/review/get.php';
+    const params = {
+      creator: creatorId,
+      project: projectId,
+    };
+
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    const response = await this.http.post(this.url + '/' + endpoint, params, {headers}).toPromise();
+    return response;
+
+  }
+
   constructor(
     private http: HttpClient,
   ) {

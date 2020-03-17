@@ -41,6 +41,8 @@ import {ChangePasswordComponent} from './views/change-password/change-password.c
 import {ChangePasswordFormComponent} from './includes/change-password-form/change-password-form.component';
 import {ConfirmEmailComponent} from './views/confirm-email/confirm-email.component';
 import {NewCategoryComponent} from './includes/new-category/new-catergory.component';
+import {ReviewFormComponent} from './includes/review-form/review-form.component';
+import {ReviewComponent} from './includes/review/review.component';
 
 const appRoutes = [
 
@@ -97,7 +99,9 @@ const appRoutes = [
     RecoverPasswordFormComponent,
     ChangePasswordComponent,
     ChangePasswordFormComponent,
-    ConfirmEmailComponent
+    ConfirmEmailComponent,
+    ReviewFormComponent,
+    ReviewComponent
   ],
   entryComponents: [BidComponent, MilestoneComponent, NewCategoryComponent],
   imports: [

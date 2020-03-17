@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProfileService} from '../../services/profile/profile.service';
 import {AuthService} from '../../services/auth/auth.service';
+import {EventEmitterService} from '../../services/chat/event-emitter.service';
 
 @Component({
   selector: 'app-profile',
@@ -27,11 +28,16 @@ export class ProfileComponent implements OnInit {
     private profileService: ProfileService,
     public router: Router,
     private route: ActivatedRoute,
-    private authService: AuthService
+    private authService: AuthService,
+    private eventEmitterService: EventEmitterService
   ) {
 
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
 
+  }
+
+  openChat() {
+    this.eventEmitterService.onChatOpen(this.id);
   }
 
   ngOnInit() {

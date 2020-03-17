@@ -39,7 +39,7 @@
 
       </ng-container>
 
-      <ng-container *ngIf="project.status == 1">
+      <ng-container *ngIf="project.status == 1 || project.status == 2">
 
         <a routerLink="/profile/{{awarded.awarded_id}}"><div class="profile-image" [ngStyle]="{ 'background-image': 'url(http://18.224.180.162/api/resources/profile/avatar/' + awarded.awarded_id + '.jpg)'}"></div></a>
         <a routerLink="/profile/{{awarded.awarded_id}}"><h3>{{awarded.awarded_fname + ' ' + awarded.awarded_lname}}</h3></a>
@@ -55,6 +55,11 @@
 
   <div class="content">
     <p *ngIf="project.status == 1 && paid" class="highlight highlight-success project-actions clickable">Complete project</p>
+  </div>
+
+  <div class="content">
+    <app-review-form *ngIf="project.status == 2 && !review" projectId="{{project.id}}" creatorId="{{user}}" userId="{{user == owner.owner_id ? awarded.awarded_id : owner.owner_id}}"></app-review-form>
+    <app-review *ngIf="project.status == 2 && review" review="{{review.review}}" grade="{{review.grade}}"></app-review>
   </div>
 
 </ng-container>

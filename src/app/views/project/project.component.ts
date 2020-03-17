@@ -21,6 +21,7 @@ export class ProjectComponent implements OnInit {
   edit: any;
   milestones: any;
   paid: any;
+  review: any;
 
   constructor(
     private authService: AuthService,
@@ -74,11 +75,23 @@ export class ProjectComponent implements OnInit {
                 this.awarded = info.awarded;
                 this.milestones = info.milestones;
                 this.paid = info.paid;
+
                 if (info.project.owner === data) {
                   this.edit = true;
                 } else {
                   this.edit = false;
                 }
+
+                this.projectService.getReview(this.user, this.id).then(
+                  reviewData => {
+                    if (reviewData.success === true) {
+                      this.review = reviewData.review;
+                    } else if (reviewData.error === true) {
+                      console.log('error', reviewData.message)
+                      this.review = null;
+                    }
+                  }
+                );
                 this.loaded = true;
               } else if (info.error === true) {
                 alert(info.message);
