@@ -89,7 +89,7 @@
 
       <div class="review-info">
         <a routerLink="/profile/{{review.creator}}"><h4>{{review.creator_fname + ' ' + review.creator_lname}}</h4></a>
-        <p>Very professional, quick and precise. 100% would hire again!</p>
+        <p>{{review.review}}</p>
 
         <i *ngFor="let count of ' '.repeat(5).split(''), let i = index" [ngClass]="[i > review.grade - 1 ? 'fas fa-star' : 'fas fa-star fa-star-selected']"></i>
 
