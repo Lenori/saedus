@@ -55,6 +55,7 @@ export class ProfileComponent implements OnInit {
 
               this.profile = data.data;
               console.log(this.profile);
+              this.profile.rate = parseInt(this.profile.rate);
               this.categories = data.categories;
               this.reviews = data.reviews;
               this.numberReviews = data.number_reviews;
