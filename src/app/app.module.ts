@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {EventEmitter, NgModule} from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { NgChatModule } from 'ng-chat';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
@@ -110,6 +111,7 @@ const appRoutes = [
     CurrencyMaskModule,
     HttpClientModule,
     MatDialogModule,
+    NgChatModule,
 
     RouterModule.forRoot(
       appRoutes,
@@ -119,7 +121,7 @@ const appRoutes = [
     BrowserAnimationsModule
 
   ],
-  providers: [],
+  providers: [EventEmitter],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
