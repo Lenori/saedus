@@ -72,11 +72,16 @@ export class DemoAdapter extends ChatAdapter implements IChatGroupAdapter {
     return this.http.post(this.url + '/' + endpoint, params, {headers}).pipe(
       map((res: any) => {
         return res.data.map(m => {
+          // Split timestamp into [ Y, M, D, h, m, s ]
+          const t = m.date.split(/[- :]/);
+          // Apply each element to the Date function
+          const d = new Date(Date.UTC(t[0], t[1] - 1, t[2], t[3], t[4], t[5]));
+
           return {
             fromId: m.from,
             toId: m.to,
             message: m.message,
-            dateSent: m.date
+            dateSent: d
           };
         });
       }),
@@ -91,7 +96,7 @@ export class DemoAdapter extends ChatAdapter implements IChatGroupAdapter {
       to: message.toId,
       message: message.message
     };
-    
+
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
 

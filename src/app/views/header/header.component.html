@@ -51,11 +51,13 @@
 
 </div>
 
-<ng-chat *ngIf="user"
-         [adapter]="adapter"
-         [userId]="user"
-         [title]="'Contacts'"
-         [isCollapsed]="true"
-         [pollFriendsList]="true"
-         #ngChatInstance>
-</ng-chat>
+<div class="chat">
+  <ng-chat *ngIf="user"
+           [adapter]="adapter"
+           [userId]="user"
+           [title]="'Contacts'"
+           [isCollapsed]="true"
+           [pollFriendsList]="true"
+           #ngChatInstance>
+  </ng-chat>
+</div>

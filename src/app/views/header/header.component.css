@@ -153,6 +153,10 @@
 
 }
 
+div >>> div{
+  overflow: visible !important;
+}
+
 @media screen and (max-width: 1125px) {
 
   .profile-icon {
