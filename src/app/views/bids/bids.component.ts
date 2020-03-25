@@ -43,7 +43,6 @@ export class BidsComponent implements OnInit {
                   this.bids = info.bids;
                   this.loaded = true;
                 } else {
-                  alert('Unauthorized');
                   this.router.navigate(['']);
                 }
               } else if (info.error === true) {

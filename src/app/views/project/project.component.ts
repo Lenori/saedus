@@ -43,8 +43,10 @@ export class ProjectComponent implements OnInit {
         this.projectService.bid(this.id, this.user, bid.price, bid.proposal).then(
           data => {
             if (data.success === true) {
-              this.router.navigate(['bids/' + this.id]);
+              alert('Bid posted with success');
+              this.router.navigate(['']);
             } else if (data.error === true) {
+              console.log(data)
               alert(data.message);
             }
           }

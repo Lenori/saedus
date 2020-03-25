@@ -221,7 +221,7 @@ export class EditProfileComponent implements OnInit {
       data => {
         if (data.success === true) {
           alert('Profile updated with success');
-          window.location.reload();
+          this.router.navigate(['/profile/' + this.id]);
         } else if (data.error === true) {
           alert(data.message);
           window.location.reload();

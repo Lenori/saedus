@@ -4,7 +4,7 @@
 
     <h3>Login to your account</h3>
 
-    <form>
+    <form (keyup.enter)="onSubmit()">
 
       <input type="email" name="email" id="email" placeholder="E-mail" required [(ngModel)]="form.email" #email="ngModel" />
       <input type="password" name="password" id="password" placeholder="Password" required [(ngModel)]="form.password" #password="ngModel" />

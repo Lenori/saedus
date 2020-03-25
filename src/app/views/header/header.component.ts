@@ -62,7 +62,16 @@ export class HeaderComponent implements OnInit {
         this.adapter = new DemoAdapter(this.user, this.http);
         if (this.eventEmitterService.subsVar == undefined) {
           this.eventEmitterService.subsVar = this.eventEmitterService.invokeFirstComponentFunction.subscribe((userId) => {
-            this.adapter.listFriends().toPromise().then(all => this.ngChatInstance.triggerOpenChatWindow(all.find(c => c.participant.id == userId).participant));
+            this.adapter.listFriends().toPromise().then(all => {
+              const participant = all.find(c => c.participant.id == userId).participant;
+              if (participant) {
+                this.ngChatInstance.triggerOpenChatWindow(participant);
+              } else {
+                this.adapter.sendMessage({fromId: this.user, toId: userId, message: 'Hi. I would like to chat with you!' });
+                this.adapter.listFriends();
+                this.ngChatInstance.triggerOpenChatWindow(participant);
+              }
+            });
           });
         }
 
