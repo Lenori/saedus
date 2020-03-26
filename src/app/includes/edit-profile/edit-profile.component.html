@@ -89,16 +89,13 @@
 
     </div>
 
-    <h2>Add new certificate</h2>
-
-    <input type="text" name="ctitle" id="ctitle" placeholder="Title" required [(ngModel)]="form.ctitle" #ctitle="ngModel" />
-    <input type="text" name="cdesc" id="cdesc" placeholder="Description" required [(ngModel)]="form.cdesc" #cdesc="ngModel" />
-    <input type="text" name="cissuer" id="cissuer" placeholder="Issuer" required [(ngModel)]="form.cissuer" #cissuer="ngModel" />
+    <p (click)="openNewCertificate()" class="highlight highlight-menu clickable">New Certificate</p>
 
     <div class="list-certificates">
 
       <div *ngFor="let c of certificates" class="certificate">
         <p>{{c.title}}</p>
+        <span class="clickable" (click)="openEditCertificate(c)">EDIT</span>
         <span class="clickable" (click)="removeCertificate(c.id)">DELETE</span>
       </div>
 

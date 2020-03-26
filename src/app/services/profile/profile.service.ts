@@ -29,10 +29,27 @@ export class ProfileService {
 
   async removeCertificate(user, certificate): Promise<any> {
 
-    const endpoint = 'methods/edit/profile/certificates.php';
+    const endpoint = 'methods/edit/profile/delete-certificates.php';
     const params = {
       id: user,
       cremove: certificate
+    };
+
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    const response = await this.http.post(this.url + '/' + endpoint, params, {headers}).toPromise();
+    return response;
+
+  }
+  async addCertificate(user, certificate): Promise<any> {
+
+    const endpoint = 'methods/edit/profile/add-certificates.php';
+    const params = {
+      id: user,
+      ctitle: certificate.ctitle,
+      cdesc: certificate.cdesc,
+      cissuer: certificate.cissuer
     };
 
     const headers = new HttpHeaders();
@@ -90,9 +107,6 @@ export class ProfileService {
       password: form.password,
       rate: form.rate,
       description: form.description,
-      ctitle: form.ctitle,
-      cdesc: form.cdesc,
-      cissuer: form.cissuer,
       ltitle: form.ltitle,
       website: form.website,
       facebook: form.facebook,

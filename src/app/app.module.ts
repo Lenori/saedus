@@ -44,6 +44,7 @@ import {ConfirmEmailComponent} from './views/confirm-email/confirm-email.compone
 import {NewCategoryComponent} from './includes/new-category/new-catergory.component';
 import {ReviewFormComponent} from './includes/review-form/review-form.component';
 import {ReviewComponent} from './includes/review/review.component';
+import {NewCertificateComponent} from './includes/new-certificate/new-certificate.component';
 
 const appRoutes = [
 
@@ -102,9 +103,10 @@ const appRoutes = [
     ChangePasswordFormComponent,
     ConfirmEmailComponent,
     ReviewFormComponent,
-    ReviewComponent
+    ReviewComponent,
+    NewCertificateComponent
   ],
-  entryComponents: [BidComponent, MilestoneComponent, NewCategoryComponent],
+  entryComponents: [BidComponent, MilestoneComponent, NewCategoryComponent, NewCertificateComponent],
   imports: [
     BrowserModule,
     RouterModule,

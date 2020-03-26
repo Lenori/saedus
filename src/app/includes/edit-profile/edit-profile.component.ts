@@ -8,6 +8,7 @@ import {UploadService} from '../../services/upload/upload.service';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import {BidComponent} from '../../views/bid/bid.component';
 import {NewCategoryComponent} from '../new-category/new-catergory.component';
+import {NewCertificateComponent} from '../new-certificate/new-certificate.component';
 
 @Component({
   selector: 'app-edit-profile',
@@ -56,6 +57,34 @@ export class EditProfileComponent implements OnInit {
               alert(data.message);
             }
           });
+      }
+
+    });
+  }
+
+  openNewCertificate() {
+    const dialogConfig = new MatDialogConfig();
+    const dialogRef = this.matDialog.open(NewCertificateComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(certificate => {
+
+      if (certificate) {
+        this.addCertificate(certificate);
+      }
+
+    });
+  }
+
+  openEditCertificate(oldCert) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = oldCert;
+
+    const dialogRef = this.matDialog.open(NewCertificateComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(certificate => {
+
+      if (certificate) {
+        this.addCertificate(certificate);
       }
 
     });
@@ -130,12 +159,26 @@ export class EditProfileComponent implements OnInit {
     this.profileService.removeCertificate(this.id, certificate).then(
       data => {
         if (data.success === true) {
-          window.location.reload();
+          this.certificates = this.certificates.filter(p => p.id !== certificate);
         } else if (data.error === true) {
           alert(data.message);
-          window.location.reload();
         }
     });
+  }
+
+  addCertificate(certificate: any) {
+    this.profileService.addCertificate(this.id, certificate).then(
+      data => {
+        if (data.success === true) {
+          if (certificate.edit) {
+            this.removeCertificate(certificate.id);
+          }
+          this.certificates.push({id: data.id, user: this.id, title: certificate.ctitle, description: certificate.cdesc, issuer: certificate.cissuer});
+        } else if (data.error === true) {
+          alert(data.message);
+        }
+      }
+    );
   }
 
   removePortfolioItem(portfolio) {
@@ -205,7 +248,7 @@ export class EditProfileComponent implements OnInit {
         data => {
           if (data.success === true) {
           } else if (data.error === true) {
-            //alert(data.message);
+            // alert(data.message);
           }
         }
       );

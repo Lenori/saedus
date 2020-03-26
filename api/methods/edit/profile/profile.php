@@ -93,13 +93,6 @@ foreach ($categories AS $cat) {
 
 }
 
-if ($ctitle <> NULL AND $cdesc <> NULL AND $cissuer <> NULL) {
-
-    $sql = "INSERT INTO certificates (user, title, description, issuer) VALUES ('$id', '$ctitle', '$cdesc', '$cissuer')";
-    $rst = mysqli_query($conn, $sql);
-
-}
-
 if ($ltitle <> NULL) {
 
     $sql = "INSERT INTO selectedLanguages (user, lang) VALUES ('$id', '$ltitle')";

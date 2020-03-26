@@ -1,0 +1,20 @@
+<h2 mat-dialog-title></h2>
+
+<mat-dialog-content>
+
+  <form autocomplete="off">
+
+
+    <input type="text" name="ctitle" id="ctitle" placeholder="Title" required [(ngModel)]="form.ctitle" #ctitle="ngModel" />
+    <input type="text" name="cdesc" id="cdesc" placeholder="Description" required [(ngModel)]="form.cdesc" #cdesc="ngModel" />
+    <input type="text" name="cissuer" id="cissuer" placeholder="Issuer" required [(ngModel)]="form.cissuer" #cissuer="ngModel" />
+
+    <p (click)="onSubmit()" class="highlight-dark clickable">{{loading ? 'Loading...' : 'Add certificate'}}</p>
+
+  </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button class="mat-raised-button clickable" (click)="close()">Close</button>
+</mat-dialog-actions>
