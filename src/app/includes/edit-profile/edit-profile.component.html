@@ -73,6 +73,18 @@
 
     <p (click)="openNewCategory()" class="highlight highlight-menu clickable">New Category</p>
 
+    <p (click)="openNewCertificate()" class="highlight highlight-menu clickable">New Certificate</p>
+
+    <div class="list-certificates">
+
+      <div *ngFor="let c of certificates" class="certificate">
+        <p>{{c.title}}</p>
+        <span class="clickable" (click)="openEditCertificate(c)">EDIT</span>
+        <span class="clickable" (click)="removeCertificate(c.id)">DELETE</span>
+      </div>
+
+    </div>
+
     <h2>Add new portfolio picture</h2>
 
     <input type="file" name="portfolio" id="portfolio" #portfolio (change)="portfolioInput($event.target.files)" />
@@ -85,18 +97,6 @@
         <img src="http://18.224.180.162/api/resources/profile/portfolio/{{p.id}}.{{p.ext}}" />
         <span class="clickable" (click)="removePortfolioItem(p.id)">DELETE</span>
 
-      </div>
-
-    </div>
-
-    <p (click)="openNewCertificate()" class="highlight highlight-menu clickable">New Certificate</p>
-
-    <div class="list-certificates">
-
-      <div *ngFor="let c of certificates" class="certificate">
-        <p>{{c.title}}</p>
-        <span class="clickable" (click)="openEditCertificate(c)">EDIT</span>
-        <span class="clickable" (click)="removeCertificate(c.id)">DELETE</span>
       </div>
 
     </div>

@@ -57,25 +57,6 @@
 
   <div class="profile-section">
 
-    <h4>Portfolio</h4>
-    <div class="divisor"></div>
-
-  </div>
-
-  <div class="profile-certificates">
-
-    <div *ngFor="let p of portfolios" class="profile-certificate-item">
-
-      <img src="http://18.224.180.162/api/resources/profile/portfolio/{{p.id}}.{{p.ext}}" />
-
-    </div>
-
-    <p *ngIf="numberCertificates == 0">No certificates yet.</p>
-
-  </div>
-
-  <div class="profile-section">
-
     <h4>Reviews</h4>
     <div class="divisor"></div>
 
@@ -119,6 +100,26 @@
         <p>{{certificate.description}}</p>
         <span>{{certificate.issuer}}</span>
       </div>
+
+    </div>
+
+    <p *ngIf="numberCertificates == 0">No certificates yet.</p>
+
+  </div>
+
+
+  <div class="profile-section">
+
+    <h4>Portfolio</h4>
+    <div class="divisor"></div>
+
+  </div>
+
+  <div class="profile-certificates">
+
+    <div *ngFor="let p of portfolios" class="profile-certificate-item">
+
+      <img src="http://18.224.180.162/api/resources/profile/portfolio/{{p.id}}.{{p.ext}}" />
 
     </div>
 
