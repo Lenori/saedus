@@ -45,6 +45,16 @@ import {NewCategoryComponent} from './includes/new-category/new-catergory.compon
 import {ReviewFormComponent} from './includes/review-form/review-form.component';
 import {ReviewComponent} from './includes/review/review.component';
 import {NewCertificateComponent} from './includes/new-certificate/new-certificate.component';
+import {ShowcaseComponent} from './views/showcase/showcase.component';
+import {HowItWorksComponent} from './views/how-it-works/how-it-works.component';
+import {QuotesComponent} from './views/quotes/quotes.component';
+import {InvestorComponent} from './views/investor/investor.component';
+import {ContactUsComponent} from './views/contact-us/contact-us.component';
+import {SecurityComponent} from './views/security/security.component';
+import {PrivacyPolicyComponent} from './views/privacy-policy/privacy-policy.component';
+import {CopyrightPolicyComponent} from './views/copyright-policy/copyright-policy.component';
+import {TermsAndConditionsComponent} from './views/terms-and-conditions/terms-and-conditions.component';
+import {FeesAndChargesComponent} from './views/fees-and-charges/fees-and-charges.component';
 
 const appRoutes = [
 
@@ -63,6 +73,16 @@ const appRoutes = [
   { path: 'project/:id', component: ProjectComponent },
   { path: 'projects', component: ProjectsComponent },
   { path: 'edit/:type/:id', component: EditComponent },
+  { path: 'showcase', component: ShowcaseComponent },
+  { path: 'contact-us', component: ContactUsComponent },
+  { path: 'how-it-works', component: HowItWorksComponent },
+  { path: 'security', component: SecurityComponent },
+  { path: 'investor', component: InvestorComponent },
+  { path: 'quotes', component: QuotesComponent },
+  { path: 'privacy-policy', component: PrivacyPolicyComponent },
+  { path: 'terms-and-conditions', component: TermsAndConditionsComponent },
+  { path: 'copyright-policy', component: CopyrightPolicyComponent },
+  { path: 'fees-and-charges', component: FeesAndChargesComponent },
 
 ];
 
@@ -104,7 +124,17 @@ const appRoutes = [
     ConfirmEmailComponent,
     ReviewFormComponent,
     ReviewComponent,
-    NewCertificateComponent
+    NewCertificateComponent,
+    ShowcaseComponent,
+    HowItWorksComponent,
+    QuotesComponent,
+    InvestorComponent,
+    ContactUsComponent,
+    SecurityComponent,
+    PrivacyPolicyComponent,
+    CopyrightPolicyComponent,
+    TermsAndConditionsComponent,
+    FeesAndChargesComponent
   ],
   entryComponents: [BidComponent, MilestoneComponent, NewCategoryComponent, NewCertificateComponent],
   imports: [
