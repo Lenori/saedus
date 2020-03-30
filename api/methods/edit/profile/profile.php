@@ -31,10 +31,6 @@ if (isset($data->rate))
 else
     $rate = 0;
 
-$ctitle = $data->ctitle;
-$cdesc = $data->cdesc;
-$cissuer = $data->cissuer;
-
 $ltitle = $data->ltitle;
 
 $categories = $data->categories;
