@@ -13,7 +13,7 @@
 
 .filter-item {
 
-  margin: 40px 0 0 0;
+  margin: 20px 0 20px 0;
   color: #343434;
   font-weight: 100;
 
@@ -140,23 +140,22 @@
 }
 
 .filter-slider {
-
-  height: 50px;
-
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-right: 8px
 }
 
 .filter-slider p {
-
-  float: left;
-  font-weight: 800;
-  margin: 0 10px 0 0;
-
+  font-weight: 600;
+  margin: 0;
 }
 
 .slider {
   -webkit-appearance: none;
   appearance: none;
-  width: 70%;
+  /*width: 70%;*/
   height: 2px;
   background: #343434;
   outline: none;
@@ -167,8 +166,8 @@
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 25px;
-  height: 25px;
+  width: 15px;
+  height: 15px;
   background: #ffffff;
   border: 2px solid #343434;
   border-radius: 50%;
@@ -176,8 +175,8 @@
 }
 
 .slider::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
+  width: 15px;
+  height: 15px;
   background: #ffffff;
   border: 2px solid #343434;
   border-radius: 50%;

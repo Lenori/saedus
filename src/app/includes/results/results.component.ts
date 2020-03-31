@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {ProjectService} from '../../services/project/project.service';
 import {Router} from '@angular/router';
 
@@ -18,10 +18,23 @@ export class ResultsComponent implements OnInit {
   @Input()
   project: any;
 
+  @Output()
+  onApplyFilters: EventEmitter<any> = new EventEmitter();
+
+  filtersForm: any = {};
+
   constructor(
     private projectService: ProjectService,
     public router: Router
   ) { }
+
+  changeRatingFilter(value) {
+    this.filtersForm.rating = value;
+  }
+
+  applyFilters() {
+    this.onApplyFilters.emit(this.filtersForm);
+  }
 
   updateProject(professional, bid, value) {
 
@@ -38,9 +51,9 @@ export class ResultsComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.filtersForm.rating = 0;
+    this.filtersForm.price = 0;
     console.log(this.data);
-
   }
 
 }

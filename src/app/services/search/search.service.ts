@@ -23,11 +23,13 @@ export class SearchService {
 
   }
 
-  async searchProfessionals(term): Promise<any> {
+  async searchProfessionals(term, rating = 0, price = 0): Promise<any> {
 
     const endpoint = 'methods/search/professionals/professionals.php';
     const params = {
-      term: term
+      term: term,
+      rating: rating,
+      price: price
     };
 
     const headers = new HttpHeaders();

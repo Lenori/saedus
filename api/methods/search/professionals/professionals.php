@@ -10,6 +10,9 @@ $postdata = file_get_contents("php://input");
 $data = json_decode($postdata);
 
 $term = $data->term;
+$rating = intval($data->rating);
+$price = intval($data->price);
+
 
 if (!isset($term) || trim($term) === '') {
   $term = '%';
@@ -24,8 +27,10 @@ $sql = "SELECT
         FROM users AS u
         LEFT OUTER JOIN
             reviews AS r
-            ON r.user = u.id
-        GROUP BY u.id";
+            ON r.user = u.id"
+        .($price != 0 ? " WHERE CAST(u.rate AS DECIMAL(10,2)) <= $price" : "")
+        ." GROUP BY u.id"
+        .($rating != 0 ? " HAVING ROUND(AVG(r.grade)) >= $rating" : "");
 
 $rst = mysqli_query($conn, $sql);
 

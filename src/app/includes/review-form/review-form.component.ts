@@ -1,7 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {AuthService} from '../../services/auth/auth.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Md5} from 'ts-md5/dist/md5';
+import {Router} from '@angular/router';
 import {ProjectService} from '../../services/project/project.service';
 
 @Component({
