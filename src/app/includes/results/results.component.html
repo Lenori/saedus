@@ -12,19 +12,46 @@
     -->
 
     <div class="filter-item filter-reviews">
-      <i *ngFor="let count of ' '.repeat(5).split(''), let i = index"[ngClass]="[i > filtersForm.rating - 1 ? 'fas fa-star' : 'fas fa-star fa-star-selected']" (click)="changeRatingFilter(i+1)"></i>
+      <p>Name</p>
+      <input type="text" id="name" [(ngModel)]="filtersForm.name" #name="ngModel" name="name">
+    </div>
 
+    <div class="filter-item filter-reviews">
       <p>Reviews</p>
+      <i *ngFor="let count of ' '.repeat(5).split(''), let i = index"[ngClass]="[i > filtersForm.rating - 1 ? 'fas fa-star' : 'fas fa-star fa-star-selected']" (click)="changeRatingFilter(i+1)"></i>
     </div>
 
     <div class="filter-item">
+      <p *ngIf="filtersForm.price > 15">Price range: CAD 15 - {{filtersForm.price}}</p>
+      <p *ngIf="filtersForm.price == 15">Price range: Any price</p>
       <div class="filter-slider">
-        <p>5</p>
-        <input type="range" min="5" max="200" step="5" class="slider" id="myRange" [(ngModel)]="filtersForm.price" #price="ngModel" name="price">
+        <p>15</p>
+        <input type="range" min="15" max="200" step="5" class="slider" id="myRange" [(ngModel)]="filtersForm.price" #price="ngModel" name="price">
         <p>200+</p>
       </div>
-      <p *ngIf="filtersForm.price > 0">Price range: CAD 5 - {{filtersForm.price}}</p>
-      <p *ngIf="filtersForm.price == 0">Price range: Any price</p>
+    </div>
+
+
+    <div class="filter-item">
+      <p>Languages</p>
+      <p *ngFor="let l of languages">
+        <input
+          type="checkbox"
+          (change)="toggleLanguageFilter(l)"
+        />
+        {{l}}
+      </p>
+    </div>
+
+    <div class="filter-item">
+      <p>Cities</p>
+      <p *ngFor="let c of cities">
+        <input
+          type="checkbox"
+          (change)="toggleCityFilter(c)"
+        />
+        {{c}}
+      </p>
     </div>
 
     <button type="submit" class="highlight-dark clickable" (click)="applyFilters()">Apply filters</button>

@@ -27,7 +27,8 @@ if (mysqli_num_rows($rstEmail) == 0) {
 
 else {
     $sql = "UPDATE users SET
-            password = '$password'
+            password = '$password',
+            password_recover_code = ''
             WHERE password_recover_code = '$code'";
 
     $rst = mysqli_query($conn, $sql);

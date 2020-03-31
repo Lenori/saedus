@@ -10,9 +10,14 @@ $postdata = file_get_contents("php://input");
 $data = json_decode($postdata);
 
 $term = $data->term;
+$name = $data->name;
 $rating = intval($data->rating);
 $price = intval($data->price);
+$languages = $data->languages;
+$cities = $data->cities;
 
+if ($cities == []) $cities = NULL;
+if ($languages == []) $languages = NULL;
 
 if (!isset($term) || trim($term) === '') {
   $term = '%';
@@ -26,11 +31,20 @@ $sql = "SELECT
             ROUND(AVG(r.grade)) AS avg_review
         FROM users AS u
         LEFT OUTER JOIN
+            selectedLanguages AS l
+            ON l.user = u.id
+        LEFT OUTER JOIN
             reviews AS r
             ON r.user = u.id"
-        .($price != 0 ? " WHERE CAST(u.rate AS DECIMAL(10,2)) <= $price" : "")
+        .(isset($name) || isset($price) || isset($cities) || isset($languages) ? " WHERE " : "")
+        .($price != 0 ? "CAST(u.rate AS DECIMAL(10,2)) <= $price" : "").((isset($price) && $price != 0) && (isset($name) || isset($cities)) ? " AND " : "")
+        .(isset($name) ? "(u.fname LIKE '$name' OR u.lname LIKE '$name')" : "").(isset($name) && (isset($cities) || isset($languages)) ? " AND " : "")
+        .(isset($cities) ? "u.city IN('".join("','", $cities)."')" : "").(isset($cities) && isset($languages) ? " AND " : "")
+        .(isset($languages) ? "l.lang IN('".join("','", $languages)."')" : "")
         ." GROUP BY u.id"
         .($rating != 0 ? " HAVING ROUND(AVG(r.grade)) >= $rating" : "");
+
+//echo $sql;
 
 $rst = mysqli_query($conn, $sql);
 

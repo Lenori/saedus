@@ -47,7 +47,7 @@ export class SearchResultsComponent implements OnInit {
   }
 
   searchWithFilters(filters) {
-    this.searchService.searchProfessionals(this.term, filters.rating, filters.price).then(
+    this.searchService.searchProfessionals(this.term, filters.name.trim() == '' ? '%' : filters.name.trim(), filters.rating, filters.price > 15 ? filters.price : 0, filters.languages, filters.cities).then(
       data => {
         if (data.success === true) {
           this.professionals = data.data.filter(p => {
