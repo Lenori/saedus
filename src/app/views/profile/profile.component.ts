@@ -41,7 +41,7 @@ export class ProfileComponent implements OnInit {
     if (this.loggedIn) {
       this.eventEmitterService.onChatOpen(this.id);
     } else {
-      this.router.navigate(['sign-up']);
+      this.router.navigate(['sign-in']);
     }
   }
 
