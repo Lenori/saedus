@@ -23,6 +23,7 @@ export class ProfileComponent implements OnInit {
   numberCertificates: any;
 
   edit = false;
+  loggedIn = false;
 
   constructor(
     private profileService: ProfileService,
@@ -37,7 +38,11 @@ export class ProfileComponent implements OnInit {
   }
 
   openChat() {
-    this.eventEmitterService.onChatOpen(this.id);
+    if (this.loggedIn) {
+      this.eventEmitterService.onChatOpen(this.id);
+    } else {
+      this.router.navigate(['sign-up']);
+    }
   }
 
   ngOnInit() {
@@ -55,7 +60,11 @@ export class ProfileComponent implements OnInit {
 
               if (user == null) {
                 this.edit = false;
-              } else if (data.data.id === user) {
+              } else {
+                this.loggedIn = true;
+              }
+
+              if (data.data.id === user) {
                 this.edit = true;
               }
 
