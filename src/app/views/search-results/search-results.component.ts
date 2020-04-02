@@ -34,7 +34,9 @@ export class SearchResultsComponent implements OnInit {
             this.professionals = data.data.filter(p => {
               return (p['0'] && p['0'][0] && p['0'][0].category_name) || !this.term;
             });
-            this.total = data.total;
+            console.log(this.professionals)
+
+            this.total = this.professionals.length;
             this.loaded = true;
             window.scroll(0, 0);
           } else if (data.error === true) {
@@ -47,13 +49,15 @@ export class SearchResultsComponent implements OnInit {
   }
 
   searchWithFilters(filters) {
-    this.searchService.searchProfessionals(this.term, filters.name.trim() == '' ? '%' : filters.name.trim(), filters.rating, filters.price > 15 ? filters.price : 0, filters.languages, filters.cities).then(
+    this.searchService.searchProfessionals(this.term, filters.rating, filters.price > 15 ? filters.price : 0, filters.languages, filters.cities).then(
       data => {
         if (data.success === true) {
           this.professionals = data.data.filter(p => {
             return (p['0'] && p['0'][0] && p['0'][0].category_name) || !this.term;
           });
-          this.total = data.total;
+          console.log(this.professionals)
+
+          this.total = this.professionals.length;
           this.loaded = true;
           window.scroll(0, 0);
         } else if (data.error === true) {

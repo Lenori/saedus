@@ -10,7 +10,6 @@ $postdata = file_get_contents("php://input");
 $data = json_decode($postdata);
 
 $term = $data->term;
-$name = $data->name;
 $rating = intval($data->rating);
 $price = intval($data->price);
 $languages = $data->languages;
@@ -36,9 +35,8 @@ $sql = "SELECT
         LEFT OUTER JOIN
             reviews AS r
             ON r.user = u.id"
-        .(isset($name) || isset($price) || isset($cities) || isset($languages) ? " WHERE " : "")
-        .($price != 0 ? "CAST(u.rate AS DECIMAL(10,2)) <= $price" : "").((isset($price) && $price != 0) && (isset($name) || isset($cities)) ? " AND " : "")
-        .(isset($name) ? "(u.fname LIKE '$name' OR u.lname LIKE '$name')" : "").(isset($name) && (isset($cities) || isset($languages)) ? " AND " : "")
+        .((isset($price) && $price != 0) || isset($cities) || isset($languages) ? " WHERE " : "")
+        .($price != 0 ? "CAST(u.rate AS DECIMAL(10,2)) <= $price" : "").((isset($price) && $price != 0) && ( isset($cities) || isset($languages)) ? " AND " : "")
         .(isset($cities) ? "u.city IN('".join("','", $cities)."')" : "").(isset($cities) && isset($languages) ? " AND " : "")
         .(isset($languages) ? "l.lang IN('".join("','", $languages)."')" : "")
         ." GROUP BY u.id"
@@ -80,7 +78,10 @@ else {
                 INNER JOIN
                     categories AS c
                     ON c.id = s.category
-                WHERE s.user = '$id' AND c.name LIKE '$term'";
+                LEFT OUTER JOIN
+                    users AS u
+                    ON s.user = u.id
+                WHERE s.user = '$id' AND (c.name LIKE '$term' OR u.fname LIKE '$term' OR u.lname LIKE '$term' )";
 
         $rst = mysqli_query($conn, $sql);
 
