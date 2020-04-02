@@ -50,11 +50,11 @@ else {
     require '../../email/phpmailer.php';
     $mail = new PHPMailer;
     $mail->IsSMTP();        //Sets Mailer to send message using SMTP
-    $mail->Host = 'email-smtp.us-east-1.amazonaws.com';  //Sets the SMTP hosts of your Email hosting, this for Godaddy
+    $mail->Host = $smtp_host;  //Sets the SMTP hosts of your Email hosting, this for Godaddy
     $mail->Port = '25';        //Sets the default SMTP server port
     $mail->SMTPAuth = true;       //Sets SMTP authentication. Utilizes the Username and Password variables
-    $mail->Username = 'AKIARAVQE42JK75QTYVS';     //Sets SMTP username
-    $mail->Password = 'BCJ9pGWfBw1NhwEGxShb7SUs4T5bP8U3IKnNpQNrm5Ef';     //Sets SMTP password
+    $mail->Username = $smtp_username;     //Sets SMTP username
+    $mail->Password = $smtp_password;     //Sets SMTP password
     $mail->SMTPSecure = 'tls';       //Sets connection prefix. Options are "", "ssl" or "tls"
     $mail->From = 'info@epropers.com';   //Sets the From email address for the message
     $mail->FromName = 'Epropers';     //Sets the From name of the message

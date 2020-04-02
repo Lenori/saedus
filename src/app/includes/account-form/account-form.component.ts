@@ -29,6 +29,7 @@ export class AccountFormComponent implements OnInit {
       data => {
         if (data.success === true) {
           this.authService.login(data.id);
+          alert('Account created. Check your email to confirm your account.');
           this.router.navigate(['']);
           window.location.reload();
         } else if (data.error === true) {
