@@ -122,8 +122,11 @@ include('./includes/side_menu.php');
 
         </div>
 
-        <button>DELETE</button>
-
+        <form method="post">
+            <button type="submit" id="delete-user-btn" name="delete" value="true">DELETE</button>
+            <input type="hidden" name="type" value="1">
+            <input type="hidden" name="id" value="<?php echo $id ?>">
+        </form>
     </div>
 
 <?php endif; ?>
