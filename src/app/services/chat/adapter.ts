@@ -1,5 +1,5 @@
-import { ChatAdapter, IChatGroupAdapter, Group, Message, ChatParticipantStatus, ParticipantResponse, ChatParticipantType } from 'ng-chat';
-import { Observable, of } from 'rxjs';
+import {ChatAdapter, ChatParticipantStatus, ChatParticipantType, Group, IChatGroupAdapter, Message, ParticipantResponse} from 'ng-chat';
+import {Observable} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
@@ -18,7 +18,12 @@ export class DemoAdapter extends ChatAdapter implements IChatGroupAdapter {
     }
   }
 
-  listFriends(): Observable<ParticipantResponse[]> {
+  async getParticipant(id) {
+    const all = await this.listFriends().toPromise();
+    return all.find(c => c.participant.id == id);
+  }
+
+  listFriends(): Observable < ParticipantResponse[] > {
     const endpoint = 'methods/message/chats/list.php';
     const params = {
       id: this.user
@@ -59,7 +64,7 @@ export class DemoAdapter extends ChatAdapter implements IChatGroupAdapter {
     );
   }
 
-  getMessageHistory(destinataryId: any): Observable<Message[]> {
+  getMessageHistory(destinataryId: any): Observable < Message[] > {
     const endpoint = 'methods/message/chats/get.php';
     const params = {
       user: this.user,
@@ -104,5 +109,5 @@ export class DemoAdapter extends ChatAdapter implements IChatGroupAdapter {
   }
 
   groupCreated(group: Group): void {
-  }
+  };
 }

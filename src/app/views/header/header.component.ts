@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {AuthService} from '../../services/auth/auth.service';
 import {WalletService} from '../../services/wallet/wallet.service';
 import {Router, ActivatedRoute} from '@angular/router';
-import {ChatAdapter, IChatController} from 'ng-chat';
+import {IChatController} from 'ng-chat';
 import {DemoAdapter} from '../../services/chat/adapter';
 import {EventEmitterService} from '../../services/chat/event-emitter.service';
 import {HttpClient} from '@angular/common/http';
@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
   @ViewChild('ngChatInstance', {static: false})
   protected ngChatInstance: IChatController;
 
-  public adapter: ChatAdapter;
+  public adapter: DemoAdapter;
 
   showMenu = null;
 
@@ -61,17 +61,15 @@ export class HeaderComponent implements OnInit {
 
         this.adapter = new DemoAdapter(this.user, this.http);
         if (this.eventEmitterService.subsVar == undefined) {
-          this.eventEmitterService.subsVar = this.eventEmitterService.invokeFirstComponentFunction.subscribe((userId) => {
-            this.adapter.listFriends().toPromise().then(all => {
-              const participant = all.find(c => c.participant.id == userId).participant;
+          this.eventEmitterService.subsVar = this.eventEmitterService.invokeFirstComponentFunction.subscribe(async (userId) => {
+              let participant = await this.adapter.getParticipant(userId);
               if (participant) {
-                this.ngChatInstance.triggerOpenChatWindow(participant);
+                this.ngChatInstance.triggerOpenChatWindow(participant.participant);
               } else {
                 this.adapter.sendMessage({fromId: this.user, toId: userId, message: 'Hi. I would like to chat with you!' });
-                this.adapter.listFriends();
-                this.ngChatInstance.triggerOpenChatWindow(participant);
+                participant = await this.adapter.getParticipant(userId);
+                this.ngChatInstance.triggerOpenChatWindow(participant.participant);
               }
-            });
           });
         }
 
