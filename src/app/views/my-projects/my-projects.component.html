@@ -27,7 +27,7 @@
       <div class="project-item-actions">
 
           <h3>${{project.budget}} CAD</h3>
-          <p class="highlight-dark clickable">Edit</p>
+          <p class="highlight-dark clickable" routerLink="/edit-project/{{project.id}}">Edit</p>
           <span class="clickable" (click)="unpublish(project.id)">Unpublish</span>
 
       </div>

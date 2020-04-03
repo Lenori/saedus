@@ -61,6 +61,7 @@ const appRoutes = [
   { path: '', component: HomeComponent },
   { path: 'search/:q', component: SearchResultsComponent },
   { path: 'new-project', component: NewProjectComponent },
+  { path: 'edit-project/:id', component: EditProjectComponent },
   { path: 'my-projects', component: MyProjectsComponent },
   { path: 'bids/:id', component: BidsComponent },
   { path: 'profile/:id', component: ProfileComponent },
