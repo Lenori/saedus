@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
+import cities from '../../cities';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,9 @@ export class CitiesService {
 
   private url = '/api';
 
-  async all(): Promise<any> {
+  all() {
 
+    /*
     const endpoint = 'methods/cities/list/list.php';
 
     const headers = new HttpHeaders();
@@ -18,7 +20,9 @@ export class CitiesService {
 
     const response = await this.http.post(this.url + '/' + endpoint, {}, {headers}).toPromise();
     return response;
+    */
 
+    return cities;
   }
 
   constructor(

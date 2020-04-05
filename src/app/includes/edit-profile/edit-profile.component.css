@@ -1,4 +1,4 @@
-input {
+input, select {
 
   width: 45%;
   margin: 0 10px 20px;
@@ -133,7 +133,7 @@ h2 {
 
 @media screen and (max-width: 1170px) {
 
-  input {
+  input, select {
     width: 100%;
     margin: 0 0 20px 0;
   }

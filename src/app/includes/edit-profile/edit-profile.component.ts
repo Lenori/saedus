@@ -6,9 +6,9 @@ import {AuthService} from '../../services/auth/auth.service';
 import {CategoryService} from '../../services/category/category.service';
 import {UploadService} from '../../services/upload/upload.service';
 import {MatDialog, MatDialogConfig} from '@angular/material';
-import {BidComponent} from '../../views/bid/bid.component';
 import {NewCategoryComponent} from '../new-category/new-catergory.component';
 import {NewCertificateComponent} from '../new-certificate/new-certificate.component';
+import cities from '../../cities';
 
 @Component({
   selector: 'app-edit-profile',
@@ -24,6 +24,8 @@ export class EditProfileComponent implements OnInit {
 
   @ViewChild('portfolio', {static: false})
   portfolioInputRef: ElementRef;
+
+  cities = cities;
 
   form: any = {};
 
@@ -229,7 +231,6 @@ export class EditProfileComponent implements OnInit {
   }
 
   onSubmit() {
-
     this.updating = true;
 
     if (this.form.pic) {
@@ -316,6 +317,7 @@ export class EditProfileComponent implements OnInit {
                   this.form.add1 = this.profile.address1;
                   this.form.add2 = this.profile.address2;
                   this.form.city = this.profile.city;
+                  console.log(this.form.city)
                   this.form.zip = this.profile.zip;
                   this.form.description = this.profile.description;
                   this.form.website = this.profile.website;

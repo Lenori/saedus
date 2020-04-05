@@ -81,7 +81,7 @@ else {
                 LEFT OUTER JOIN
                     users AS u
                     ON s.user = u.id
-                WHERE s.user = '$id' AND (c.name LIKE '$term' OR u.fname LIKE '$term' OR u.lname LIKE '$term' )";
+                WHERE (s.user = '$id' AND c.name LIKE '$term') OR (u.fname LIKE '$term' OR u.lname LIKE '$term')";
 
         $rst = mysqli_query($conn, $sql);
 

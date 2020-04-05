@@ -92,16 +92,7 @@ export class ResultsComponent implements OnInit {
       }
     );
 
-    this.citiesService.all().then(
-      data => {
-        if (data.success === true) {
-          this.cities = data.data.sort();
-        } else if (data.error === true) {
-          alert(data.message);
-          window.location.reload();
-        }
-      }
-    );
+    this.cities = this.citiesService.all();
   }
 
 }
