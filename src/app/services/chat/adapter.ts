@@ -94,7 +94,7 @@ export class DemoAdapter extends ChatAdapter implements IChatGroupAdapter {
     );
   }
 
-  sendMessage(message: Message): void {
+  sendMessage(message: Message): Promise<any> {
     const endpoint = 'methods/message/chats/create.php';
     const params = {
       from: message.fromId,
@@ -105,7 +105,8 @@ export class DemoAdapter extends ChatAdapter implements IChatGroupAdapter {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
 
-    this.http.post(this.url + '/' + endpoint, params, {headers}).toPromise().then(r => console.log(r));
+    const response = this.http.post(this.url + '/' + endpoint, params, {headers}).toPromise();
+    return response;
   }
 
   groupCreated(group: Group): void {

@@ -66,9 +66,10 @@ export class HeaderComponent implements OnInit {
               if (participant) {
                 this.ngChatInstance.triggerOpenChatWindow(participant.participant);
               } else {
-                this.adapter.sendMessage({fromId: this.user, toId: userId, message: 'Hi. I would like to chat with you!' });
-                participant = await this.adapter.getParticipant(userId);
-                this.ngChatInstance.triggerOpenChatWindow(participant.participant);
+                this.adapter.sendMessage({fromId: this.user, toId: userId, message: 'Hi. I would like to chat with you!' }).then(async () => {
+                  participant = await this.adapter.getParticipant(userId);
+                  this.ngChatInstance.triggerOpenChatWindow(participant.participant);
+                });
               }
           });
         }
