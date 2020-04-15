@@ -48,10 +48,7 @@ else {
     $sql = "INSERT INTO wallet (user) VALUES ('$user')";
     $rst = mysqli_query($conn, $sql);
 
-    $response->success = true;
     $response->id = $user;
-    $response->error = false;
-
 
     // base_url is defined in access.php
     $mail_body = "
@@ -78,7 +75,15 @@ else {
     $mail->Subject = 'Email Verification';   //Sets the Subject of the message
     $mail->Body = $mail_body;       //An HTML or plain text message body
 
-    $mail->Send();     //Send an Email. Return true on success or false on error
+    if($mail->Send())        //Send an Email. Return true on success or false on error
+    {
+      $response->success = true;
+      $response->error = false;
+    } else {
+      $response->success = false;
+      $response->error = true;
+      $response->message = 'Failed to send email.';
+    }
   }
 
 echo json_encode($response);
