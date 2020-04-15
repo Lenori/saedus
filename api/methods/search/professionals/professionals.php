@@ -42,7 +42,7 @@ $sql = "SELECT
         ." GROUP BY u.id"
         .($rating != 0 ? " HAVING ROUND(AVG(r.grade)) >= $rating" : "");
 
-//echo $sql;
+#echo $sql;
 
 $rst = mysqli_query($conn, $sql);
 
@@ -70,27 +70,59 @@ else {
         $meta = [];
         $id = $prof['id'];
 
-        $sql = "SELECT
-                    s.*,
-                    c.id AS category_id,
-                    c.name AS category_name
-                FROM selectedCategories AS s
-                INNER JOIN
-                    categories AS c
-                    ON c.id = s.category
-                LEFT OUTER JOIN
-                    users AS u
-                    ON s.user = u.id
-                WHERE (s.user = '$id' AND c.name LIKE '$term') OR (u.fname LIKE '$term' OR u.lname LIKE '$term')";
+        $sql = "SELECT *
+                FROM users
+                WHERE id = $id AND (fname LIKE '%$term%' OR lname LIKE '%$term%')";
+
 
         $rst = mysqli_query($conn, $sql);
 
-        while ($metaDB = mysqli_fetch_assoc($rst))
-            $meta[] = $metaDB;
+        if (mysqli_num_rows($rst) == 0) {
+            $sql = "SELECT
+                        s.*,
+                        c.id AS category_id,
+                        c.name AS category_name
+                    FROM selectedCategories AS s
+                    INNER JOIN
+                        categories AS c
+                        ON c.id = s.category
+                    LEFT OUTER JOIN
+                        users AS u
+                        ON s.user = u.id
+                    WHERE c.name LIKE '%$term%'";
 
-        $prof[] = $meta;
-        $data[] = $prof;
+            $rst = mysqli_query($conn, $sql);
 
+            if (mysqli_num_rows($rst) > 0) {
+              while ($metaDB = mysqli_fetch_assoc($rst))
+                  $meta[] = $metaDB;
+
+              $prof[] = $meta;
+
+              $data[] = $prof;
+            }
+        } else {
+            $sql = "SELECT
+                s.*,
+                c.id AS category_id,
+                c.name AS category_name
+            FROM selectedCategories AS s
+            INNER JOIN
+                categories AS c
+                ON c.id = s.category
+            LEFT OUTER JOIN
+                users AS u
+                ON s.user = u.id";
+
+            $rst = mysqli_query($conn, $sql);
+
+            while ($metaDB = mysqli_fetch_assoc($rst))
+              $meta[] = $metaDB;
+
+            $prof[] = $meta;
+
+            $data[] = $prof;
+        }
     }
 
     $response->success = true;
