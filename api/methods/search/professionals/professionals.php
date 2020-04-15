@@ -89,7 +89,7 @@ else {
                     LEFT OUTER JOIN
                         users AS u
                         ON s.user = u.id
-                    WHERE c.name LIKE '%$term%'";
+                    WHERE c.name LIKE '%$term%' AND s.user = '$id'";
 
             $rst = mysqli_query($conn, $sql);
 
@@ -112,7 +112,8 @@ else {
                 ON c.id = s.category
             LEFT OUTER JOIN
                 users AS u
-                ON s.user = u.id";
+                ON s.user = u.id
+            WHERE s.user = '$id'";
 
             $rst = mysqli_query($conn, $sql);
 
