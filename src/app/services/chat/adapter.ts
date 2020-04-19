@@ -43,20 +43,26 @@ export class DemoAdapter extends ChatAdapter implements IChatGroupAdapter {
           if (uniqueIds.indexOf(id) < 0) {
             uniqueIds.push(id);
           } else {
+            participantsFiltered.find(p => p.from == id || p.to == id).metadata.totalUnreadMessages += participantsFiltered[index].metadata.totalUnreadMessages;
             participantsFiltered.splice(index, 1);
           }
         });
 
         return res.data.map(c => {
           const otherUserIsFrom = c.from != this.user;
+
+          // tslint:disable-next-line:radix
+          c.metadata.totalUnreadMessages = parseInt(c.metadata.totalUnreadMessages);
+
           return {
             participant: {
               participantType: ChatParticipantType.User,
               id: otherUserIsFrom ? c.from : c.to,
               displayName: otherUserIsFrom ? c.from_fname + ' ' + c.from_lname : c.to_fname + ' ' + c.to_lname,
               avatar: 'http://18.224.180.162/api/resources/profile/avatar/'.concat(otherUserIsFrom ? c.from : c.to).concat('.jpg'),
-              status: ChatParticipantStatus.Offline
-            }
+              status: ChatParticipantStatus.Offline,
+            },
+            metadata: c.metadata
           };
         });
       }),
@@ -107,6 +113,19 @@ export class DemoAdapter extends ChatAdapter implements IChatGroupAdapter {
 
     const response = this.http.post(this.url + '/' + endpoint, params, {headers}).toPromise();
     return response;
+  }
+
+  changeAllToSeen(from, to) {
+    const endpoint = 'methods/message/chats/seen.php';
+    const params = {
+      from,
+      to,
+    };
+
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.post(this.url + '/' + endpoint, params, {headers}).toPromise();
   }
 
   groupCreated(group: Group): void {

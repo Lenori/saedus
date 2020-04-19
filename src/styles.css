@@ -296,10 +296,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   color: #FFF;
 }
 
-.custom-theme .unread-messages-counter-container, .custom-theme .ng-chat-people-action, .custom-theme .ng-chat-people-action > i
+.custom-theme .ng-chat-people-action, .custom-theme .ng-chat-people-action > i
 {
   background-color: #FFF;
   color: #343434;
+}
+.custom .unread-messages-counter-container{
+  background-color: #343434 !important;
 }
 .custom-theme .load-history-action
 {
@@ -336,4 +339,77 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .custom-theme .ng-chat-close {
   color: #fff;
+}
+
+.light-theme {
+  color: #FFF !important;
+}
+
+.light-theme .primary-background
+{
+  background-color: #fff !important;
+}
+.light-theme .secondary-background
+{
+  background-color: #343434 !important;
+}
+.light-theme .primary-outline-color
+{
+  border-color:#353535 !important;
+}
+.light-theme .primary-text
+{
+  color: #252525 !important;
+}
+.light-theme .friends-search-bar
+{
+  background-color: #343434 !important;
+  border: 1px solid #343434 !important;
+  color: #FFF !important;
+}
+
+.light-theme .ng-chat-people-action, .light-theme .ng-chat-people-action > i
+{
+  background-color: #FFF !important;
+  color: #343434 !important;
+}
+.light-theme .unread-messages-counter-container{
+  color: #FFF !important;
+  background-color: #343434 !important;
+}
+.light-theme .load-history-action
+{
+  background-color: #343434 !important;
+}
+.light-theme .chat-window-input
+{
+  background-color: #fff !important;
+  color: #343434 !important;
+}
+.light-theme .sent-chat-message-container, .light-theme .file-message-container
+{
+  border-color: #343434 !important;
+  background-color: #343434 !important;
+}
+.light-theme .received-chat-message-container, .light-theme .file-message-container.received
+{
+  background-color: #e8e8e8 !important;
+  border-color: #e8e8e8 !important;
+  color: #343434 !important;
+}
+.light-theme .ng-chat-footer
+{
+  background-color: #fff !important;
+}
+.light-theme .ng-chat-message a
+{
+  color: #FFF !important;
+}
+
+.light-theme .ng-chat-friends-list-container {
+  color: #343434 !important;
+}
+
+.light-theme .ng-chat-close {
+  color: #fff !important;
 }

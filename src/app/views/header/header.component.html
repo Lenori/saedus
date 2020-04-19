@@ -59,7 +59,7 @@
            [isCollapsed]="true"
            [pollFriendsList]="true"
            [isViewportOnMobileEnabled]="true"
-           [customTheme]="'src/styles.css'"
+           (onParticipantChatOpened)="onChatOpen($event)"
            #ngChatInstance>
   </ng-chat>
 </div>

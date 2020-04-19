@@ -43,6 +43,30 @@ $data = [];
 while ($dataDB = mysqli_fetch_assoc($rst))
     $data[] = $dataDB;
 
+foreach ($data as $key => $value) {
+
+    $from = $value["from"];
+
+    $sql = "SELECT
+            COUNT(*) as totalUnreadMessages
+            FROM messages
+            INNER JOIN
+                users AS u
+                ON
+                `from` = u.id
+            INNER JOIN
+                users AS u2
+                ON
+                `to` = u2.id
+            WHERE `to`='$id' AND `from` = '$from' AND seen = 0";
+
+    $rst = mysqli_query($conn, $sql);
+
+    $metadata = mysqli_fetch_assoc($rst);
+
+    $data[$key]["metadata"] = $metadata;
+}
+
 $response->success = true;
 $response->data = $data;
 $response->error = false;

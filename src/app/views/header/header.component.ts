@@ -6,6 +6,7 @@ import {IChatController} from 'ng-chat';
 import {DemoAdapter} from '../../services/chat/adapter';
 import {EventEmitterService} from '../../services/chat/event-emitter.service';
 import {HttpClient} from '@angular/common/http';
+import {Theme} from 'ng-chat';
 
 @Component({
   selector: 'app-header',
@@ -13,6 +14,8 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+
+  themes = Theme;
 
   @ViewChild('ngChatInstance', {static: false})
   protected ngChatInstance: IChatController;
@@ -83,6 +86,10 @@ export class HeaderComponent implements OnInit {
             }
           });
       });
+  }
+
+  onChatOpen(user) {
+    this.adapter.changeAllToSeen(user.id, this.user);
   }
 
 }
