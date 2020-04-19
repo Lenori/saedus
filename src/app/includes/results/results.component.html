@@ -36,24 +36,16 @@
 
     <div class="filter-item">
       <p>Languages</p>
-      <p *ngFor="let l of languages">
-        <input
-          type="checkbox"
-          (change)="toggleLanguageFilter(l)"
-        />
-        {{l}}
-      </p>
+      <select (change)="toggleLanguageFilter($event.target.value)">
+        <option *ngFor="let l of languages" class="clickable">{{l}}</option>
+      </select>
     </div>
 
     <div class="filter-item">
       <p>Cities</p>
-      <p *ngFor="let c of cities">
-        <input
-          type="checkbox"
-          (change)="toggleCityFilter(c)"
-        />
-        {{c}}
-      </p>
+      <select (change)="toggleCityFilter($event.target.value)">
+        <option *ngFor="let c of cities" class="clickable">{{c}}</option>
+      </select>
     </div>
 
     <button type="submit" class="highlight-dark clickable" (click)="applyFilters()">Apply filters</button>
