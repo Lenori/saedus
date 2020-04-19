@@ -11,15 +11,9 @@ $data = json_decode($postdata);
 
 $response = new stdClass();
 
-$sql = "SELECT
-            a.*,
-            count(b.id) AS bids_count
-        FROM projects AS a
-        INNER JOIN
-             bids AS b
-             ON b.project = a.id
-        WHERE a.status = 0
-        GROUP BY a.id";
+$sql = "SELECT *
+        FROM projects
+        WHERE status = 0";
 
 $rst = mysqli_query($conn, $sql);
 
@@ -27,6 +21,22 @@ $data = [];
 
 while ($dataDB = mysqli_fetch_assoc($rst))
     $data[] = $dataDB;
+
+foreach ($data as $key => $value) {
+
+    $project = $value["id"];
+
+    $sql = "SELECT
+            COUNT(*) as bids_count
+            FROM bids
+            WHERE project='$project'";
+
+    $rst = mysqli_query($conn, $sql);
+
+    $bids_count = mysqli_fetch_assoc($rst);
+
+    $data[$key]["bids_count"] = $bids_count["bids_count"];
+}
 
 $response->success = true;
 $response->projects = $data;
