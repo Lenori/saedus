@@ -8,13 +8,13 @@
 
       <p>{{milestone.title}}</p>
       <p>{{milestone.price}} CAD</p>
-      <p *ngIf="milestone.status == 0" (click)="releaseMilestone(milestone.id)" class="highlight highlight-menu">Release</p>
+      <p *ngIf="milestone.status == 0" (click)="releaseMilestone(milestone.id)" class="highlight highlight-menu clickable">Release</p>
       <p *ngIf="milestone.status == 1">Released {{milestone.released_date | date : 'mediumDate'}}</p>
 
     </div>
 
   </div>
 
-  <p (click)="openMilestone()" class="highlight highlight-menu project-actions">Create Milestone</p>
+  <p (click)="openMilestone()" class="highlight highlight-menu project-actions clickable">Create Milestone</p>
 
 </div>

@@ -61,13 +61,13 @@ $milestones = [];
 while ($milesDB = mysqli_fetch_assoc($rst))
     $milestones[] = $milesDB;
 
-if (isset($_GET['delete']) && $_GET['delete'] == true) {
+if (isset($_POST['delete']) && $_POST['delete'] == true) {
 
     echo '<script>alert("Are you sure?")</script>';
 
-    $delete = $_GET['id'];
+    $delete = $_POST['id'];
 
-    if ($_GET['type'] == 1) {
+    if ($_POST['type'] == 1) {
 
         $sql = "DELETE FROM users WHERE id = '$delete'";
         $rst = mysqli_query($conn, $sql);
@@ -77,7 +77,7 @@ if (isset($_GET['delete']) && $_GET['delete'] == true) {
     }
 
 
-    if ($_GET['type'] == 2) {
+    if ($_POST['type'] == 2) {
 
         $sql = "DELETE FROM projects WHERE id = '$delete'";
         $rst = mysqli_query($conn, $sql);
@@ -87,7 +87,7 @@ if (isset($_GET['delete']) && $_GET['delete'] == true) {
     }
 
 
-    if ($_GET['type'] == 3) {
+    if ($_POST['type'] == 3) {
 
         $sql = "DELETE FROM categories WHERE id = '$delete'";
         $rst = mysqli_query($conn, $sql);

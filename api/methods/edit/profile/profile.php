@@ -31,10 +31,6 @@ if (isset($data->rate))
 else
     $rate = 0;
 
-$ctitle = $data->ctitle;
-$cdesc = $data->cdesc;
-$cissuer = $data->cissuer;
-
 $ltitle = $data->ltitle;
 
 $categories = $data->categories;
@@ -89,13 +85,6 @@ $rst = mysqli_query($conn, $sql);
 foreach ($categories AS $cat) {
 
     $sql = "INSERT INTO selectedCategories (category, user) VALUES ('$cat', '$id')";
-    $rst = mysqli_query($conn, $sql);
-
-}
-
-if ($ctitle <> NULL AND $cdesc <> NULL AND $cissuer <> NULL) {
-
-    $sql = "INSERT INTO certificates (user, title, description, issuer) VALUES ('$id', '$ctitle', '$cdesc', '$cissuer')";
     $rst = mysqli_query($conn, $sql);
 
 }

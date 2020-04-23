@@ -9,9 +9,9 @@
   <div class="content content-menu">
 
     <div class="header-logo">
-
-      <a routerLink="/"><img src="../../../assets/logo/logo.png" alt="saedus" /></a>
-
+      <a routerLink="/">
+        <img  alt="Epropers" src="../../../assets/logo/image.png">
+      </a>
     </div>
 
     <i id="hidden-menu-open" (click)="showMenu = true" class="fas fa-bars"></i>
@@ -36,10 +36,10 @@
 
           <a routerLink="/my-projects"><li>My projects</li></a>
 
-          <a class="wallet-menu" routerLink="/my-wallet"><li>CAD {{wallet.value}}</li></a>
+          <a class="wallet-menu" routerLink="/my-wallet"><li>CAD {{wallet? wallet.value : ''}}</li></a>
 
           <a routerLink="/profile/{{user}}"><div class="profile-icon" [ngStyle]="{ 'background-image': 'url(http://18.224.180.162/api/resources/profile/avatar/' + user + '.jpg)'}"></div></a>
-          <li (click)="logout()" class="highlight highlight-menu">Logout</li>
+          <li (click)="logout()" class="highlight highlight-menu clickable">Logout</li>
 
         </ng-container>
 
@@ -49,4 +49,17 @@
 
   </div>
 
+</div>
+
+<div class="chat">
+  <ng-chat *ngIf="user"
+           [adapter]="adapter"
+           [userId]="user"
+           [title]="'Contacts'"
+           [isCollapsed]="true"
+           [pollFriendsList]="true"
+           [isViewportOnMobileEnabled]="true"
+           (onParticipantChatOpened)="onChatOpen($event)"
+           #ngChatInstance>
+  </ng-chat>
 </div>

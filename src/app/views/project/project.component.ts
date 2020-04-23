@@ -21,6 +21,8 @@ export class ProjectComponent implements OnInit {
   edit: any;
   milestones: any;
   paid: any;
+  review: any;
+  ownBid: any;
 
   constructor(
     private authService: AuthService,
@@ -34,15 +36,17 @@ export class ProjectComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     const dialogRef = this.matDialog.open(BidComponent, dialogConfig);
 
-    dialogRef.afterClosed().subscribe(value => {
+    dialogRef.afterClosed().subscribe(bid => {
 
-      if (value) {
+      if (bid.price && bid.proposal) {
 
-        this.projectService.bid(this.id, this.user, value).then(
+        this.projectService.bid(this.id, this.user, bid.price, bid.proposal).then(
           data => {
             if (data.success === true) {
-              this.router.navigate(['bids/' + this.id]);
+              alert('Bid posted with success');
+              this.router.navigate(['']);
             } else if (data.error === true) {
+              console.log(data)
               alert(data.message);
             }
           }
@@ -74,11 +78,26 @@ export class ProjectComponent implements OnInit {
                 this.awarded = info.awarded;
                 this.milestones = info.milestones;
                 this.paid = info.paid;
+
                 if (info.project.owner === data) {
                   this.edit = true;
                 } else {
                   this.edit = false;
                 }
+
+
+                this.ownBid = info.bids.find(bid => bid.user == this.user);
+
+                this.projectService.getReview(this.user, this.id).then(
+                  reviewData => {
+                    if (reviewData.success === true) {
+                      this.review = reviewData.review;
+                    } else if (reviewData.error === true) {
+                      console.log('error', reviewData.message)
+                      this.review = null;
+                    }
+                  }
+                );
                 this.loaded = true;
               } else if (info.error === true) {
                 alert(info.message);

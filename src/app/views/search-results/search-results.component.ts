@@ -20,29 +20,59 @@ export class SearchResultsComponent implements OnInit {
     private route: ActivatedRoute,
     public router: Router,
     private searchService: SearchService
-  ) { }
+  ) {
+    route.params.subscribe(val => {
+      this.term = this.urlDehyphen(this.route.snapshot.params.q);
 
-  urlDehyphen(str) {
-    return str.replace('-', ' ');
+      if (this.term === 'undefined') {
+        this.term = '';
+      }
+
+      this.searchService.searchProfessionals(this.term).then(
+        data => {
+          if (data.success === true) {
+            this.professionals = data.data.filter(p => {
+              return (p['0'] && p['0'][0] && p['0'][0].category_name) || !this.term;
+            });
+            console.log(this.professionals)
+
+            this.total = this.professionals.length;
+            this.loaded = true;
+            window.scroll(0, 0);
+          } else if (data.error === true) {
+            alert(data.message);
+            this.router.navigate(['']);
+          }
+        }
+      );
+    });
   }
 
-  ngOnInit() {
-
-    this.term = this.urlDehyphen(this.route.snapshot.params.q);
-
-    this.searchService.searchProfessionals(this.term).then(
+  searchWithFilters(filters) {
+    this.searchService.searchProfessionals(this.term, filters.rating, filters.price > 15 ? filters.price : 0, filters.languages, filters.cities).then(
       data => {
         if (data.success === true) {
-          this.professionals = data.data;
-          this.total = data.total;
+          this.professionals = data.data.filter(p => {
+            return (p['0'] && p['0'][0] && p['0'][0].category_name) || !this.term;
+          });
+          console.log(this.professionals)
+
+          this.total = this.professionals.length;
           this.loaded = true;
+          window.scroll(0, 0);
         } else if (data.error === true) {
           alert(data.message);
           this.router.navigate(['']);
         }
       }
     );
+  }
 
+  urlDehyphen(str) {
+    return str.replace('-', ' ');
+  }
+
+  ngOnInit() {
   }
 
 }

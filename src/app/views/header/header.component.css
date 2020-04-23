@@ -26,8 +26,11 @@
 
 .header-logo {
 
+}
 
-
+.header-logo a {
+  color: #ffffff;
+  font-size: large;
 }
 
 .header-logo img {
@@ -149,6 +152,12 @@
   padding: 10px;
 
 }
+
+/*
+div >>> div{
+  overflow: visible !important;
+}
+*/
 
 @media screen and (max-width: 1125px) {
 

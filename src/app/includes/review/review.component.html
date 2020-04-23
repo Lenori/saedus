@@ -1,0 +1,9 @@
+<div class="content content-review">
+
+    <span>Your review to this user on this project:</span>
+
+    <p>{{review}}</p>
+
+    <i *ngFor="let count of ' '.repeat(5).split(''), let i = index" [ngClass]="[i > grade - 1 ? 'fas fa-star' : 'fas fa-star fa-star-selected']"></i>
+
+</div>

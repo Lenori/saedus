@@ -2,11 +2,16 @@
 
   <form enctype="multipart/form-data" *ngIf="!loading">
 
+    <img class="preview-pic" *ngIf="!this.imgURL && !picRemoved; else newPic" src="{{'http://18.224.180.162/api/resources/profile/avatar/' + id + '.jpg'}}" alt="profilepic" />
+
     <input type="file" name="pic" id="pic" #pic (change)="fileInput($event.target.files)" />
     <label for="pic">Upload your profile picture</label>
 
-    <img class="preview-pic" *ngIf="this.imgURL" src="{{this.imgURL}}" alt="profilepic" />
-    <p *ngIf="this.imgURL" (click)="pic.value = ''; removePicture()" class="preview-remove">REMOVE IMAGE</p>
+    <ng-template #newPic>
+      <img class="preview-pic" src="{{this.imgURL}}" alt="profilepic" />
+    </ng-template>
+
+    <p (click)="pic.value = ''; removePicture()" class="preview-remove clickable">REMOVE IMAGE</p>
 
     <input type="text" name="fn" id="fn" placeholder="First Name" required [(ngModel)]="form.fname" #fname="ngModel" />
     <input type="text" name="ln" id="ln" placeholder="Last Name" required [(ngModel)]="form.lname" #lname="ngModel" />
@@ -17,7 +22,9 @@
     <input type="text" name="address1" id="address1" placeholder="Address Line 01" required [(ngModel)]="form.add1" #add1="ngModel" />
     <input type="text" name="address2" id="address2" placeholder="Address Line 02" required [(ngModel)]="form.add2" #add2="ngModel" />
 
-    <input type="text" name="city" id="city" placeholder="City" required [(ngModel)]="form.city" #city="ngModel" />
+    <select class="highlight" required [(ngModel)]="form.city" name="city" #city="ngModel">
+      <option class="clickable" *ngFor="let city of cities" [ngClass]="[form.city == city ? 'highlight' : 'highlight-dark option-focused']" [value]="city">{{city}}</option>
+    </select>
     <input type="text" name="zip" id="zip" placeholder="Zip code" required [(ngModel)]="form.zip" #zip="ngModel" />
 
     <h2>Your Social Links</h2>
@@ -35,7 +42,7 @@
 
       <div *ngFor="let l of languages" class="certificate">
         <p>{{l.lang}}</p>
-        <span (click)="removeLanguage(l.id)">DELETE</span>
+        <span class="clickable" (click)="removeLanguage(l.id)">DELETE</span>
       </div>
 
     </div>
@@ -48,9 +55,35 @@
 
     <p>Select your categories below:</p>
 
-    <div class="list-categories">
+    <div>
+      <p class="highlight">Home Construction:</p>
+      <select class="highlight" multiple>
+        <option class="clickable" *ngFor="let cat of homeCats()" (click)="selectCategory(cat.id)" [ngClass]="[categories.indexOf(cat.id) == -1 ? 'highlight' : 'highlight-dark option-focused']">{{cat.name}}</option>
+      </select>
+    </div>
 
-      <p *ngFor="let cat of cats" (click)="selectCategory(cat.id)" [ngClass]="[categories.indexOf(cat.id) == -1 ? 'highlight' : 'highlight-dark']">{{cat.name}}</p>
+    <div>
+      <p class="highlight">Other Categories:</p>
+      <select class="highlight" multiple>
+        <option class="clickable" *ngFor="let cat of otherCats()" (click)="selectCategory(cat.id)" [ngClass]="[categories.indexOf(cat.id) == -1 ? 'highlight' : 'highlight-dark option-focused']">{{cat.name}}</option>
+      </select>
+    </div>
+
+    <div class="list-categories">
+      <p *ngFor="let cat of selectedCats()" class="highlight-dark">{{cat.name}}</p>
+    </div>
+
+    <p (click)="openNewCategory()" class="highlight highlight-menu clickable">New Category</p>
+
+    <p (click)="openNewCertificate()" class="highlight highlight-menu clickable">New Certificate</p>
+
+    <div class="list-certificates">
+
+      <div *ngFor="let c of certificates" class="certificate">
+        <p>{{c.title}}</p>
+        <span class="clickable" (click)="openEditCertificate(c)">EDIT</span>
+        <span class="clickable" (click)="removeCertificate(c.id)">DELETE</span>
+      </div>
 
     </div>
 
@@ -59,36 +92,18 @@
     <input type="file" name="portfolio" id="portfolio" #portfolio (change)="portfolioInput($event.target.files)" />
     <label for="pic">Upload your portfolio picture</label>
 
-    <img class="preview-pic" *ngIf="this.portfolioURL" src="{{this.portfolioURL}}" alt="profilepic" />
-    <p *ngIf="this.portfolioURL" (click)="portfolio.value = ''; removePortfolio()" class="preview-remove">REMOVE IMAGE</p>
-
     <div class="list-certificates">
 
       <div *ngFor="let p of portfolios" class="certificate">
 
         <img src="http://18.224.180.162/api/resources/profile/portfolio/{{p.id}}.{{p.ext}}" />
-        <span (click)="removePortfolioItem(p.id)">DELETE</span>
+        <span class="clickable" (click)="removePortfolioItem(p.id)">DELETE</span>
 
       </div>
 
     </div>
 
-    <h2>Add new certificate</h2>
-
-    <input type="text" name="ctitle" id="ctitle" placeholder="Title" required [(ngModel)]="form.ctitle" #ctitle="ngModel" />
-    <input type="text" name="cdesc" id="cdesc" placeholder="Description" required [(ngModel)]="form.cdesc" #cdesc="ngModel" />
-    <input type="text" name="cissuer" id="cissuer" placeholder="Issuer" required [(ngModel)]="form.cissuer" #cissuer="ngModel" />
-
-    <div class="list-certificates">
-
-      <div *ngFor="let c of certificates" class="certificate">
-        <p>{{c.title}}</p>
-        <span (click)="removeCertificate(c.id)">DELETE</span>
-      </div>
-
-    </div>
-
-    <p (click)="onSubmit()" class="highlight-dark">{{updating ? 'Loading...' : 'Save profile'}}</p>
+    <p (click)="onSubmit()" class="highlight-dark clickable">{{updating ? 'Loading...' : 'Save profile'}}</p>
 
   </form>
 

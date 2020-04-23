@@ -14,7 +14,7 @@
           <i *ngFor="let count of ' '.repeat(5).split(''), let i = index" [ngClass]="[i > profile.avg_review - 1 ? 'fas fa-star' : 'fas fa-star fa-star-selected']"></i>
           <span>{{profile.number_reviews}} reviews | {{profile.city}}</span>
           <p class="user-categories"><span *ngFor="let category of categories">{{category.category_name}}</span></p>
-          <p *ngIf="!edit" class="highlight highlight-menu chat-button">CHAT</p>
+          <p *ngIf="!edit" class="highlight highlight-menu chat-button clickable" (click)="openChat()">CHAT</p>
           <a routerLink="/edit/profile/{{id}}"><p *ngIf="edit" class="highlight highlight-menu chat-button">EDIT</p></a>
         </div>
 
@@ -40,10 +40,10 @@
 
   <div class="profile-social">
 
-    <a *ngIf="this.profile.website" href="{{this.profile.website}}"><i class="fas fa-globe"></i></a>
-    <a *ngIf="this.profile.facebook" href="{{this.profile.facebook}}"><i class="fab fa-facebook"></i></a>
-    <a *ngIf="this.profile.instagram" href="{{this.profile.instagram}}"><i class="fab fa-instagram"></i></a>
-    <a *ngIf="this.profile.twitter" href="{{this.profile.twitter}}"><i class="fab fa-twitter"></i></a>
+    <a *ngIf="this.profile.website" href="{{'//' + this.profile.website}}" target="_blank"><i class="fas fa-globe"></i></a>
+    <a *ngIf="this.profile.facebook" href="{{'//' + this.profile.facebook}}" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a *ngIf="this.profile.instagram" href="{{'//' + this.profile.instagram}}" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a *ngIf="this.profile.twitter" href="{{'//' + this.profile.twitter}}" target="_blank"><i class="fab fa-twitter"></i></a>
 
   </div>
 
@@ -52,25 +52,6 @@
     <p>Languages:</p>
 
     <span *ngFor="let l of languages">{{l.lang}}</span>
-
-  </div>
-
-  <div class="profile-section">
-
-    <h4>Portfolio</h4>
-    <div class="divisor"></div>
-
-  </div>
-
-  <div class="profile-certificates">
-
-    <div *ngFor="let p of portfolios" class="profile-certificate-item">
-
-      <img src="http://18.224.180.162/api/resources/profile/portfolio/{{p.id}}.{{p.ext}}" />
-
-    </div>
-
-    <p *ngIf="numberCertificates == 0">No certificates yet.</p>
 
   </div>
 
@@ -89,7 +70,7 @@
 
       <div class="review-info">
         <a routerLink="/profile/{{review.creator}}"><h4>{{review.creator_fname + ' ' + review.creator_lname}}</h4></a>
-        <p>Very professional, quick and precise. 100% would hire again!</p>
+        <p>{{review.review}}</p>
 
         <i *ngFor="let count of ' '.repeat(5).split(''), let i = index" [ngClass]="[i > review.grade - 1 ? 'fas fa-star' : 'fas fa-star fa-star-selected']"></i>
 
@@ -104,7 +85,7 @@
 
   <div class="profile-section">
 
-    <h4>Certificates</h4>
+    <h4>Certificates & Education</h4>
     <div class="divisor"></div>
 
   </div>
@@ -119,6 +100,26 @@
         <p>{{certificate.description}}</p>
         <span>{{certificate.issuer}}</span>
       </div>
+
+    </div>
+
+    <p *ngIf="numberCertificates == 0">No certificates yet.</p>
+
+  </div>
+
+
+  <div class="profile-section">
+
+    <h4>Portfolio</h4>
+    <div class="divisor"></div>
+
+  </div>
+
+  <div class="profile-certificates">
+
+    <div *ngFor="let p of portfolios" class="profile-certificate-item">
+
+      <img src="http://18.224.180.162/api/resources/profile/portfolio/{{p.id}}.{{p.ext}}" />
 
     </div>
 

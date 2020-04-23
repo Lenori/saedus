@@ -19,7 +19,7 @@ export class BidComponent implements OnInit {
   onSubmit() {
 
     this.loading = true;
-    this.dialogRef.close(this.form.price);
+    this.dialogRef.close(this.form);
 
   }
 

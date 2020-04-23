@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {EventEmitter, NgModule} from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { NgChatModule } from 'ng-chat';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
@@ -35,21 +36,54 @@ import { ProjectsComponent } from './views/projects/projects.component';
 import { EditComponent } from './views/edit/edit.component';
 import { EditProfileComponent } from './includes/edit-profile/edit-profile.component';
 import { EditProjectComponent } from './includes/edit-project/edit-project.component';
+import {RecoverPasswordComponent} from './views/recover-password/recover-password.component';
+import {RecoverPasswordFormComponent} from './includes/recover-password-form/recover-password-form.component';
+import {ChangePasswordComponent} from './views/change-password/change-password.component';
+import {ChangePasswordFormComponent} from './includes/change-password-form/change-password-form.component';
+import {ConfirmEmailComponent} from './views/confirm-email/confirm-email.component';
+import {NewCategoryComponent} from './includes/new-category/new-catergory.component';
+import {ReviewFormComponent} from './includes/review-form/review-form.component';
+import {ReviewComponent} from './includes/review/review.component';
+import {NewCertificateComponent} from './includes/new-certificate/new-certificate.component';
+import {ShowcaseComponent} from './views/showcase/showcase.component';
+import {HowItWorksComponent} from './views/how-it-works/how-it-works.component';
+import {QuotesComponent} from './views/quotes/quotes.component';
+import {InvestorComponent} from './views/investor/investor.component';
+import {ContactUsComponent} from './views/contact-us/contact-us.component';
+import {SecurityComponent} from './views/security/security.component';
+import {PrivacyPolicyComponent} from './views/privacy-policy/privacy-policy.component';
+import {CopyrightPolicyComponent} from './views/copyright-policy/copyright-policy.component';
+import {TermsAndConditionsComponent} from './views/terms-and-conditions/terms-and-conditions.component';
+import {FeesAndChargesComponent} from './views/fees-and-charges/fees-and-charges.component';
 
 const appRoutes = [
 
   { path: '', component: HomeComponent },
   { path: 'search/:q', component: SearchResultsComponent },
   { path: 'new-project', component: NewProjectComponent },
+  { path: 'edit-project/:id', component: EditProjectComponent },
   { path: 'my-projects', component: MyProjectsComponent },
   { path: 'bids/:id', component: BidsComponent },
   { path: 'profile/:id', component: ProfileComponent },
   { path: 'sign-in', component: SignInComponent },
   { path: 'sign-up', component: SignUpComponent },
+  { path: 'recover-password', component: RecoverPasswordComponent },
+  { path: 'change-password', component: ChangePasswordComponent },
+  { path: 'confirm-email', component: ConfirmEmailComponent },
   { path: 'categories', component: CategoriesComponent },
   { path: 'project/:id', component: ProjectComponent },
   { path: 'projects', component: ProjectsComponent },
   { path: 'edit/:type/:id', component: EditComponent },
+  { path: 'showcase', component: ShowcaseComponent },
+  { path: 'contact-us', component: ContactUsComponent },
+  { path: 'how-it-works', component: HowItWorksComponent },
+  { path: 'security', component: SecurityComponent },
+  { path: 'investor', component: InvestorComponent },
+  { path: 'quotes', component: QuotesComponent },
+  { path: 'privacy-policy', component: PrivacyPolicyComponent },
+  { path: 'terms-and-conditions', component: TermsAndConditionsComponent },
+  { path: 'copyright-policy', component: CopyrightPolicyComponent },
+  { path: 'fees-and-charges', component: FeesAndChargesComponent },
 
 ];
 
@@ -73,24 +107,44 @@ const appRoutes = [
     SignInComponent,
     LoginFormComponent,
     SignUpComponent,
+    RecoverPasswordComponent,
     AccountFormComponent,
     CategoriesComponent,
     ProjectComponent,
     BidComponent,
+    NewCategoryComponent,
     MilestonesComponent,
     MilestoneComponent,
     ProjectsComponent,
     EditComponent,
     EditProfileComponent,
     EditProjectComponent,
+    RecoverPasswordFormComponent,
+    ChangePasswordComponent,
+    ChangePasswordFormComponent,
+    ConfirmEmailComponent,
+    ReviewFormComponent,
+    ReviewComponent,
+    NewCertificateComponent,
+    ShowcaseComponent,
+    HowItWorksComponent,
+    QuotesComponent,
+    InvestorComponent,
+    ContactUsComponent,
+    SecurityComponent,
+    PrivacyPolicyComponent,
+    CopyrightPolicyComponent,
+    TermsAndConditionsComponent,
+    FeesAndChargesComponent
   ],
-  entryComponents: [BidComponent, MilestoneComponent],
+  entryComponents: [BidComponent, MilestoneComponent, NewCategoryComponent, NewCertificateComponent],
   imports: [
     BrowserModule,
     RouterModule,
     CurrencyMaskModule,
     HttpClientModule,
     MatDialogModule,
+    NgChatModule,
 
     RouterModule.forRoot(
       appRoutes,
@@ -100,7 +154,7 @@ const appRoutes = [
     BrowserAnimationsModule
 
   ],
-  providers: [],
+  providers: [EventEmitter],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

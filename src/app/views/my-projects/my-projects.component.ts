@@ -13,6 +13,22 @@ export class MyProjectsComponent implements OnInit {
   projects: any;
   user: any;
 
+  unpublish(id) {
+    this.projectService.unpublish(id).then(
+      () => {
+        window.location.reload();
+      }
+    );
+  }
+
+  publish(id) {
+    this.projectService.publish(id).then(
+      () => {
+        window.location.reload();
+      }
+    );
+  }
+
   constructor(
     private authService: AuthService,
     private projectService: ProjectService,

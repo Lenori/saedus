@@ -10,4 +10,4 @@
 
 </div>
 
-<app-results *ngIf="loaded" [type]="type" [data]="professionals"></app-results>
+<app-results *ngIf="loaded" [type]="type" [data]="professionals" (onApplyFilters)="searchWithFilters($event)"></app-results>

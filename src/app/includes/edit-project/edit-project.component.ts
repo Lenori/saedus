@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ProjectService} from '../../services/project/project.service';
 import {Md5} from 'ts-md5';
 import {AuthService} from '../../services/auth/auth.service';
@@ -13,7 +13,6 @@ export class EditProjectComponent implements OnInit {
 
   md5 = new Md5();
 
-  @Input()
   id: any;
 
   project: any;
@@ -26,6 +25,7 @@ export class EditProjectComponent implements OnInit {
   onSubmit() {
 
     this.updating = true;
+
 
     this.projectService.edit(this.id, this.form).then(
       data => {
@@ -43,10 +43,13 @@ export class EditProjectComponent implements OnInit {
   constructor(
     public router: Router,
     private projectService: ProjectService,
-    private authService: AuthService
+    private authService: AuthService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
+
+    this.id = this.route.snapshot.params.id;
 
     this.loading = true;
 
@@ -67,7 +70,7 @@ export class EditProjectComponent implements OnInit {
                   this.form.title = this.project.title;
                   this.form.description = this.project.description;
                   this.form.tags = this.project.tags;
-                  this.form.budget = this.project.budget.replace(',', '.');
+                  this.form.budget = this.project.budget.split('.').join('').replace(',', '.');
 
                   this.loading = false;
 
@@ -85,7 +88,6 @@ export class EditProjectComponent implements OnInit {
         }
       }
     );
-
   }
 
 }

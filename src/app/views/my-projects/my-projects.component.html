@@ -11,23 +11,24 @@
 
 <div class="content">
 
-  <div *ngFor="let project of projects;" [ngClass]="[project.status == 2 ? 'project-item project-complete' : 'project-item']">
+  <h3 class="highlight-dark clickable" routerLink="/new-project">Create new project</h3>
+
+  <div *ngFor="let project of projects;" [ngClass]="[project.status == 2 ? 'project-item project-complete' : project.status == 3 ? 'project-item project-unpublished' : 'project-item']">
 
     <div class="project-item-info">
 
-      <a routerLink="/{{project.status == 0 ? 'bids' : 'project'}}/{{project.id}}"><h3>{{project.title}}</h3></a>
+      <a routerLink="/{{project.status == 0 ? 'bids' : 'project'}}/{{project.id}}"><h3>{{project.title.concat(project.status == 3 ? ' (Draft)' : '')}}</h3></a>
       <p>{{project.description}}</p>
-      <span>{{project.bids_count}} bids | {{project.tags}} | Published {{(project.published | date : 'mediumDate')}}</span>
+      <span>{{project.bids_count}} bids | {{project.tags}} | Created {{(project.published | date : 'mediumDate')}}</span>
 
     </div>
-
     <ng-container *ngIf="project.status == 0">
 
       <div class="project-item-actions">
 
           <h3>${{project.budget}} CAD</h3>
-          <p class="highlight-dark">Edit</p>
-          <span>Unpublish</span>
+          <p class="highlight-dark clickable" routerLink="/edit-project/{{project.id}}">Edit</p>
+          <span class="clickable" (click)="unpublish(project.id)">Unpublish</span>
 
       </div>
 
@@ -50,6 +51,18 @@
 
         <div class="profile-image" [ngStyle]="{ 'background-image': 'url(http://18.224.180.162/api/resources/profile/avatar/' + project.awarded + '.jpg)'}"></div>
         <p>Completed by<br><span><a routerLink="/profile/{{project.awarded}}">{{project.professional_fname + ' ' + project.professional_lname}}</a></span> for <span>${{project.price}} CAD</span></p>
+
+      </div>
+
+    </ng-container>
+
+    <ng-container *ngIf="project.status == 3">
+
+      <div class="project-item-actions">
+
+        <h3>${{project.budget}} CAD</h3>
+        <p class="highlight-dark clickable">Edit</p>
+        <span class="clickable" (click)="publish(project.id)">Publish</span>
 
       </div>
 

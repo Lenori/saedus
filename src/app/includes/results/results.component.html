@@ -1,30 +1,55 @@
 <div class="content results-page">
 
-  <div class="results-filters">
+  <form class="results-filters">
 
     <h2>FILTERS</h2>
 
+    <!--
     <div class="filter-item filter-online">
       <input type="checkbox" name="just-online" id="just-online" />
       <label for="just-online">Show only online professionals</label>
     </div>
+    -->
+
+    <!--
+    <div class="filter-item filter-reviews">
+      <p>Name</p>
+      <input type="text" id="name" [(ngModel)]="filtersForm.name" #name="ngModel" name="name">
+    </div>
+    -->
 
     <div class="filter-item filter-reviews">
-      <i class="fas fa-star fa-star-selected"></i>
-      <i class="fas fa-star fa-star-selected"></i>
-      <i class="fas fa-star fa-star-selected"></i>
-      <i class="fas fa-star"></i>
-      <i class="fas fa-star"></i>
-
       <p>Reviews</p>
+      <i *ngFor="let count of ' '.repeat(5).split(''), let i = index"[ngClass]="[i > filtersForm.rating - 1 ? 'fas fa-star' : 'fas fa-star fa-star-selected']" (click)="changeRatingFilter(i+1)"></i>
     </div>
 
-    <div class="filter-item filter-slider">
-      <p>$25</p>
-      <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+    <div class="filter-item">
+      <p *ngIf="filtersForm.price > 15">Price range: CAD 15 - {{filtersForm.price}}</p>
+      <p *ngIf="filtersForm.price == 15">Price range: Any price</p>
+      <div class="filter-slider">
+        <p>15</p>
+        <input type="range" min="15" max="200" step="5" class="slider" id="myRange" [(ngModel)]="filtersForm.price" #price="ngModel" name="price">
+        <p>200+</p>
+      </div>
     </div>
 
-  </div>
+
+    <div class="filter-item">
+      <p>Languages</p>
+      <select (change)="toggleLanguageFilter($event.target.value)">
+        <option *ngFor="let l of languages" class="clickable">{{l}}</option>
+      </select>
+    </div>
+
+    <div class="filter-item">
+      <p>Cities</p>
+      <select (change)="toggleCityFilter($event.target.value)">
+        <option *ngFor="let c of cities" class="clickable">{{c}}</option>
+      </select>
+    </div>
+
+    <button type="submit" class="highlight-dark clickable" (click)="applyFilters()">Apply filters</button>
+  </form>
 
   <div *ngIf="type == 'bids'" class="results-data">
 
@@ -35,6 +60,9 @@
       <div class="results-profile-info">
 
         <a routerLink="/profile/{{result.user}}"><h3>{{result.professional_fname + ' ' + result.professional_lname}}</h3></a>
+
+        <p>{{result.proposal}}</p>
+
         <p>{{result.professional_description}}</p>
 
         <i *ngFor="let count of ' '.repeat(5).split(''), let i = index" [ngClass]="[i > result.avg_review - 1 ? 'fas fa-star' : 'fas fa-star fa-star-selected']"></i>
