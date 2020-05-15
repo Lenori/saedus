@@ -1,0 +1,52 @@
+.create-project {
+
+  background-color: #343434;
+  text-align: center;
+  padding: 40px 0;
+
+}
+
+.create-project p {
+
+  color: white;
+  font-weight: 100;
+  font-size: 20px;
+  width: 40%;
+  margin: auto;
+
+}
+
+.create-project h2 {
+
+  color: white;
+  font-size: 30px;
+  margin: 35px 0;
+
+}
+
+.cta {
+
+  width: 25% !important;
+  margin: 55px auto !important;
+
+}
+
+@media screen and (max-width: 1450px) {
+
+  .create-project p {
+    width: 60%;
+  }
+
+}
+
+@media screen and (max-width: 900px) {
+
+  .create-project p {
+    width: 90%;
+  }
+
+  .cta {
+    width: 60% !important;
+  }
+
+}

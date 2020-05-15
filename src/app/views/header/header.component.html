@@ -1,0 +1,65 @@
+<div *ngIf="username" class="login-welcome">
+
+  <p>Welcome, {{username}}.</p>
+
+</div>
+
+<div class="header-menu">
+
+  <div class="content content-menu">
+
+    <div class="header-logo">
+      <a routerLink="/">
+        <img  alt="Epropers" src="../../../assets/logo/image.png">
+      </a>
+    </div>
+
+    <i id="hidden-menu-open" (click)="showMenu = true" class="fas fa-bars"></i>
+
+    <div (click)="showMenu = false" [className]="showMenu ? 'hidden-header-menu-items' : 'header-menu-items'">
+
+      <ul>
+
+        <i (click)="showMenu = false" class="fas fa-times"></i>
+
+        <a routerLink="/projects"><li>Available Projects</li></a>
+
+        <ng-container *ngIf="user == null">
+
+          <a routerLink="/"><li>How it Works</li></a>
+          <a routerLink="/sign-in"><li class="highlight highlight-menu">Sign in</li></a>
+          <a routerLink="/sign-up"><li class="highlight highlight-menu">Sign up</li></a>
+
+        </ng-container>
+
+        <ng-container *ngIf="user">
+
+          <a routerLink="/my-projects"><li>My projects</li></a>
+
+          <a class="wallet-menu" routerLink="/my-wallet"><li>CAD {{wallet? wallet.value : ''}}</li></a>
+
+          <a routerLink="/profile/{{user}}"><div class="profile-icon" [ngStyle]="{ 'background-image': 'url(http://18.224.180.162/api/resources/profile/avatar/' + user + '.jpg)'}"></div></a>
+          <li (click)="logout()" class="highlight highlight-menu clickable">Logout</li>
+
+        </ng-container>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="chat">
+  <ng-chat *ngIf="user"
+           [adapter]="adapter"
+           [userId]="user"
+           [title]="'Contacts'"
+           [isCollapsed]="true"
+           [pollFriendsList]="true"
+           [isViewportOnMobileEnabled]="true"
+           (onParticipantChatOpened)="onChatOpen($event)"
+           #ngChatInstance>
+  </ng-chat>
+</div>

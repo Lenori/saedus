@@ -1,0 +1,18 @@
+<h2 mat-dialog-title></h2>
+
+<mat-dialog-content>
+
+  <form autocomplete="off">
+
+    <input type="text" autocomplete="off" name="title" id="title" placeholder="Title" class="title" [(ngModel)]="form.title" #title="ngModel" />
+    <input type="text" autocomplete="off" name="price" id="price" placeholder="Price" class="price" currencyMask [options]="{ prefix: 'CAD ', thousands: '', decimal: ',' }" [(ngModel)]="form.price" #price="ngModel" />
+
+    <p (click)="onSubmit()" class="highlight-dark">{{loading ? 'Loading...' : 'CREATE MILESTONE'}}</p>
+
+  </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button class="mat-raised-button" (click)="close()">Close</button>
+</mat-dialog-actions>

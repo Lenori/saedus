@@ -1,0 +1,13 @@
+<div class="content home-categories">
+
+  <h2>OR SEARCH BY CATEGORY:</h2>
+
+  <ul>
+
+    <a *ngFor="let cat of categories" routerLink="/search/{{urlHyphen(cat.name)}}"><li>{{cat.name.toUpperCase()}}</li></a>
+
+  </ul>
+
+  <a routerLink="/categories"><p>View all categories</p></a>
+
+</div>

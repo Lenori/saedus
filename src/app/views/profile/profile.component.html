@@ -1,0 +1,130 @@
+<div class="header header-profile">
+
+  <div class="content content-title header-profile-content">
+
+    <div *ngIf="this.loaded" class="profile-line">
+
+      <div class="profile-line-01">
+
+        <div class="profile-picture profile-picture-mobile" [ngStyle]="{ 'background-image': 'url(http://18.224.180.162/api/resources/profile/avatar/' + profile.id + '.jpg)'}"></div>
+
+        <h1>{{profile.fname + ' ' + profile.lname}}</h1>
+
+        <div class="profile-info">
+          <i *ngFor="let count of ' '.repeat(5).split(''), let i = index" [ngClass]="[i > profile.avg_review - 1 ? 'fas fa-star' : 'fas fa-star fa-star-selected']"></i>
+          <span>{{profile.number_reviews}} reviews | {{profile.city}}</span>
+          <p class="user-categories"><span *ngFor="let category of categories">{{category.category_name}}</span></p>
+          <p *ngIf="!edit" class="highlight highlight-menu chat-button clickable" (click)="openChat()">CHAT</p>
+          <a routerLink="/edit/profile/{{id}}"><p *ngIf="edit" class="highlight highlight-menu chat-button">EDIT</p></a>
+        </div>
+
+        <p>{{profile.description}}</p>
+
+      </div>
+
+      <div class="profile-line-02">
+
+        <h4>${{profile.rate}} CAD/HOUR</h4>
+
+        <div class="profile-picture profile-picture-desktop" [ngStyle]="{ 'background-image': 'url(http://18.224.180.162/api/resources/profile/avatar/' + profile.id + '.jpg)'}"></div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div *ngIf="this.loaded" class="content">
+
+  <div class="profile-social">
+
+    <a *ngIf="this.profile.website" href="{{'//' + this.profile.website}}" target="_blank"><i class="fas fa-globe"></i></a>
+    <a *ngIf="this.profile.facebook" href="{{'//' + this.profile.facebook}}" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a *ngIf="this.profile.instagram" href="{{'//' + this.profile.instagram}}" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a *ngIf="this.profile.twitter" href="{{'//' + this.profile.twitter}}" target="_blank"><i class="fab fa-twitter"></i></a>
+
+  </div>
+
+  <div class="profile-languages">
+
+    <p>Languages:</p>
+
+    <span *ngFor="let l of languages">{{l.lang}}</span>
+
+  </div>
+
+  <div class="profile-section">
+
+    <h4>Reviews</h4>
+    <div class="divisor"></div>
+
+  </div>
+
+  <div class="profile-reviews">
+
+    <div *ngFor="let review of reviews" class="profile-review-item">
+
+      <a routerLink="/profile/{{review.creator}}"><div class="review-image" [ngStyle]="{ 'background-image': 'url(http://18.224.180.162/api/resources/profile/avatar/' + review.creator + '.jpg)'}"></div></a>
+
+      <div class="review-info">
+        <a routerLink="/profile/{{review.creator}}"><h4>{{review.creator_fname + ' ' + review.creator_lname}}</h4></a>
+        <p>{{review.review}}</p>
+
+        <i *ngFor="let count of ' '.repeat(5).split(''), let i = index" [ngClass]="[i > review.grade - 1 ? 'fas fa-star' : 'fas fa-star fa-star-selected']"></i>
+
+        <span>Project: {{review.project_title}}</span>
+      </div>
+
+    </div>
+
+    <p *ngIf="numberReviews == 0">No reviews yet.</p>
+
+  </div>
+
+  <div class="profile-section">
+
+    <h4>Certificates & Education</h4>
+    <div class="divisor"></div>
+
+  </div>
+
+  <div class="profile-certificates">
+
+    <div *ngFor="let certificate of certificates" class="profile-certificate-item">
+
+      <i class="fas fa-graduation-cap"></i>
+      <div class="profile-certificate-info">
+        <h4>{{certificate.title}}</h4>
+        <p>{{certificate.description}}</p>
+        <span>{{certificate.issuer}}</span>
+      </div>
+
+    </div>
+
+    <p *ngIf="numberCertificates == 0">No certificates yet.</p>
+
+  </div>
+
+
+  <div class="profile-section">
+
+    <h4>Portfolio</h4>
+    <div class="divisor"></div>
+
+  </div>
+
+  <div class="profile-certificates">
+
+    <div *ngFor="let p of portfolios" class="profile-certificate-item">
+
+      <img src="http://18.224.180.162/api/resources/profile/portfolio/{{p.id}}.{{p.ext}}" />
+
+    </div>
+
+    <p *ngIf="numberCertificates == 0">No certificates yet.</p>
+
+  </div>
+
+</div>

@@ -1,0 +1,45 @@
+.content-milestones {
+
+  margin-top: 50px;
+  margin-bottom: 50px;
+
+}
+
+.milestone {
+
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  align-items: center;
+  border-bottom: 1px solid #252525;
+
+}
+
+.project-actions {
+
+  margin: 40px 0 0 0;
+  width: 120px;
+
+}
+
+@media screen and (max-width: 1400px) {
+
+  .milestone {
+    width: 80%;
+  }
+
+}
+
+@media screen and (max-width: 1125px) {
+
+  .content-milestones {
+    text-align: center;
+  }
+
+  .milestone {
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+  }
+
+}

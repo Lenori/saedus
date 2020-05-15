@@ -1,0 +1,13 @@
+<div class="header header-search">
+
+  <div class="content content-title">
+
+    <app-search></app-search>
+
+    <p *ngIf="loaded">{{total}} results for {{term}}</p>
+
+  </div>
+
+</div>
+
+<app-results *ngIf="loaded" [type]="type" [data]="professionals" (onApplyFilters)="searchWithFilters($event)"></app-results>

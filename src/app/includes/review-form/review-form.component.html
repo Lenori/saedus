@@ -1,0 +1,15 @@
+<div class="content">
+
+  <form>
+
+    <span>Review the work of this user on this project:</span>
+
+    <textarea type="text" name="review" id="review" placeholder="Review" rows="3" required [(ngModel)]="form.review" #review="ngModel"></textarea>
+
+    <i *ngFor="let count of ' '.repeat(5).split(''), let i = index" [ngClass]="[i > form.grade - 1 ? 'fas fa-star' : 'fas fa-star fa-star-selected']" (click)="changeGrade(i+1)"></i>
+
+    <p (click)="onSubmit()" class="highlight-dark">{{loading ? 'Loading...' : 'Create review'}}</p>
+
+  </form>
+
+</div>

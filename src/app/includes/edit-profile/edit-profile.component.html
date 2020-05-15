@@ -1,0 +1,110 @@
+<div class="content">
+
+  <form enctype="multipart/form-data" *ngIf="!loading">
+
+    <img class="preview-pic" *ngIf="!this.imgURL && !picRemoved; else newPic" src="{{'http://18.224.180.162/api/resources/profile/avatar/' + id + '.jpg'}}" alt="profilepic" />
+
+    <input type="file" name="pic" id="pic" #pic (change)="fileInput($event.target.files)" />
+    <label for="pic">Upload your profile picture</label>
+
+    <ng-template #newPic>
+      <img class="preview-pic" src="{{this.imgURL}}" alt="profilepic" />
+    </ng-template>
+
+    <p (click)="pic.value = ''; removePicture()" class="preview-remove clickable">REMOVE IMAGE</p>
+
+    <input type="text" name="fn" id="fn" placeholder="First Name" required [(ngModel)]="form.fname" #fname="ngModel" />
+    <input type="text" name="ln" id="ln" placeholder="Last Name" required [(ngModel)]="form.lname" #lname="ngModel" />
+
+    <input type="email" name="email" id="email" placeholder="E-mail" required [(ngModel)]="form.email" #email="ngModel" />
+    <input type="password" name="password" id="password" placeholder="New Password" [(ngModel)]="form.password" #password="ngModel" />
+
+    <input type="text" name="address1" id="address1" placeholder="Address Line 01" required [(ngModel)]="form.add1" #add1="ngModel" />
+    <input type="text" name="address2" id="address2" placeholder="Address Line 02" required [(ngModel)]="form.add2" #add2="ngModel" />
+
+    <select class="highlight" required [(ngModel)]="form.city" name="city" #city="ngModel">
+      <option class="clickable" *ngFor="let city of cities" [ngClass]="[form.city == city ? 'highlight' : 'highlight-dark option-focused']" [value]="city">{{city}}</option>
+    </select>
+    <input type="text" name="zip" id="zip" placeholder="Zip code" required [(ngModel)]="form.zip" #zip="ngModel" />
+
+    <h2>Your Social Links</h2>
+
+    <input type="text" name="website" id="website" placeholder="Website" required [(ngModel)]="form.website" #website="ngModel" />
+    <input type="text" name="facebook" id="facebook" placeholder="Facebook" required [(ngModel)]="form.facebook" #facebook="ngModel" />
+    <input type="text" name="instagram" id="instagram" placeholder="Instagram" required [(ngModel)]="form.instagram" #instagram="ngModel" />
+    <input type="text" name="twitter" id="twitter" placeholder="Twitter" required [(ngModel)]="form.twitter" #twitter="ngModel" />
+
+    <h2>Add new language you speak</h2>
+
+    <input type="text" name="ltitle" id="ltitle" placeholder="New language" required [(ngModel)]="form.ltitle" #ltitle="ngModel" />
+
+    <div class="list-certificates">
+
+      <div *ngFor="let l of languages" class="certificate">
+        <p>{{l.lang}}</p>
+        <span class="clickable" (click)="removeLanguage(l.id)">DELETE</span>
+      </div>
+
+    </div>
+
+    <h2>Want to apply as a professional? Don't forget to fill the info below!</h2>
+
+    <textarea name="description" id="description" placeholder="Description" [(ngModel)]="form.description" #description="ngModel"></textarea>
+
+    <input type="text" name="rate" id="rate" placeholder="Hourly rate" class="rate" currencyMask [options]="{ prefix: 'CAD ', thousands: '', decimal: ',' }" [(ngModel)]="form.rate" #rate="ngModel" />
+
+    <p>Select your categories below:</p>
+
+    <div>
+      <p class="highlight">Home Construction:</p>
+      <select class="highlight" multiple>
+        <option class="clickable" *ngFor="let cat of homeCats()" (click)="selectCategory(cat.id)" [ngClass]="[categories.indexOf(cat.id) == -1 ? 'highlight' : 'highlight-dark option-focused']">{{cat.name}}</option>
+      </select>
+    </div>
+
+    <div>
+      <p class="highlight">Other Categories:</p>
+      <select class="highlight" multiple>
+        <option class="clickable" *ngFor="let cat of otherCats()" (click)="selectCategory(cat.id)" [ngClass]="[categories.indexOf(cat.id) == -1 ? 'highlight' : 'highlight-dark option-focused']">{{cat.name}}</option>
+      </select>
+    </div>
+
+    <div class="list-categories">
+      <p *ngFor="let cat of selectedCats()" class="highlight-dark">{{cat.name}}</p>
+    </div>
+
+    <p (click)="openNewCategory()" class="highlight highlight-menu clickable">New Category</p>
+
+    <p (click)="openNewCertificate()" class="highlight highlight-menu clickable">New Certificate</p>
+
+    <div class="list-certificates">
+
+      <div *ngFor="let c of certificates" class="certificate">
+        <p>{{c.title}}</p>
+        <span class="clickable" (click)="openEditCertificate(c)">EDIT</span>
+        <span class="clickable" (click)="removeCertificate(c.id)">DELETE</span>
+      </div>
+
+    </div>
+
+    <h2>Add new portfolio picture</h2>
+
+    <input type="file" name="portfolio" id="portfolio" #portfolio (change)="portfolioInput($event.target.files)" />
+    <label for="pic">Upload your portfolio picture</label>
+
+    <div class="list-certificates">
+
+      <div *ngFor="let p of portfolios" class="certificate">
+
+        <img src="http://18.224.180.162/api/resources/profile/portfolio/{{p.id}}.{{p.ext}}" />
+        <span class="clickable" (click)="removePortfolioItem(p.id)">DELETE</span>
+
+      </div>
+
+    </div>
+
+    <p (click)="onSubmit()" class="highlight-dark clickable">{{updating ? 'Loading...' : 'Save profile'}}</p>
+
+  </form>
+
+</div>

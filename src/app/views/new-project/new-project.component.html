@@ -1,0 +1,32 @@
+<div class="header header-project">
+
+  <div class="content content-title">
+
+    <h1>Create your own project</h1>
+    <p>Enter a detailed description of what you need and receive bids of interested professionals in minutes!</p>
+
+  </div>
+
+</div>
+
+<div class="content new-project">
+
+  <form>
+
+    <input type="text" name="title" id="title" placeholder="Title" [(ngModel)]="form.title" #title="ngModel" />
+    <label for="title">A descriptive title will help professionals know exactly what you’re looking for.</label>
+
+    <textarea name="description" id="description" placeholder="Description" [(ngModel)]="form.description" #description="ngModel"></textarea>
+    <label for="description">Describe your needs as better as you can.</label>
+
+    <input type="tags" name="title" id="tags" placeholder="Tags (separated by commas)" [(ngModel)]="form.tags" #tags="ngModel" />
+    <label for="tags">Tags will help us to direct your project to the right professional. Enter as many as you want, but try to keep them under the same subject.</label>
+
+    <input type="budget" name="title" id="budget" placeholder="Budget" class="budget" currencyMask [options]="{ prefix: 'CAD ', thousands: '', decimal: ',' }" [(ngModel)]="form.budget" #budget="ngModel" />
+    <label for="budget">Enter the budget you have to show professionals how much you are willing to spend on the project. Keep in mind that professionals can bid higher or lower than your budget.</label>
+
+    <p (click)="onSubmit()" class="highlight-dark">{{loading ? 'Loading...' : 'PUBLISH PROJECT'}}</p>
+
+  </form>
+
+</div>

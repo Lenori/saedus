@@ -1,0 +1,89 @@
+<ng-container *ngIf="loaded">
+
+  <div class="header header-project">
+
+    <div class="content content-title">
+
+      <h1>{{project.title}}</h1>
+      <h2>${{project.price ? project.price : project.budget}} CAD</h2>
+
+    </div>
+
+  </div>
+
+  <div class="content content-project">
+
+    <div class="content-three">
+
+      <a routerLink="/profile/{{owner.owner_id}}"><div class="profile-image" [ngStyle]="{ 'background-image': 'url(http://18.224.180.162/api/resources/profile/avatar/' + owner.owner_id + '.jpg)'}"></div></a>
+      <a routerLink="/profile/{{owner.owner_id}}"><h3>{{owner.owner_fname + ' ' + owner.owner_lname}}</h3></a>
+      <p>Owner</p>
+
+    </div>
+
+    <div class="content-four project-info">
+
+      <h2>Project description</h2>
+
+      <p>{{project.description}}</p>
+
+    </div>
+
+    <div class="content-three">
+
+      <ng-container *ngIf="project.status == 0 && user != owner.owner_id && !ownBid">
+
+        <h2>Leave a bid on this project!</h2>
+
+        <p (click)="openBid()" class="highlight highlight-menu clickable">MAKE BID</p>
+
+      </ng-container>
+
+      <ng-container *ngIf="project.status == 0 && user != owner.owner_id && ownBid">
+        <a routerLink="/profile/{{ownBid.user}}"><div class="profile-image" [ngStyle]="{ 'background-image': 'url(http://18.224.180.162/api/resources/profile/avatar/' + ownBid.user + '.jpg)'}"></div></a>
+
+        <div class="results-profile-info">
+
+          <a routerLink="/profile/{{ownBid.user}}"><h3>{{ownBid.professional_fname + ' ' + ownBid.professional_lname}}</h3></a>
+
+          <p>{{ownBid.proposal}}</p>
+
+          <p>{{ownBid.professional_description}}</p>
+
+          <i *ngFor="let count of ' '.repeat(5).split(''), let i = index" [ngClass]="[i > ownBid.avg_review - 1 ? 'fas fa-star' : 'fas fa-star fa-star-selected']"></i>
+
+          <span>{{ownBid.number_reviews}} reviews | {{ownBid.professional_city}}</span>
+          <p class="user-categories"><span *ngFor="let category of ownBid[0]">{{category.category_name}}</span></p>
+
+        </div>
+
+        <div class="results-profile-hire">
+          <span>${{ownBid.bid}} CAD</span>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="project.status == 1 || project.status == 2">
+
+        <a routerLink="/profile/{{awarded.awarded_id}}"><div class="profile-image" [ngStyle]="{ 'background-image': 'url(http://18.224.180.162/api/resources/profile/avatar/' + awarded.awarded_id + '.jpg)'}"></div></a>
+        <a routerLink="/profile/{{awarded.awarded_id}}"><h3>{{awarded.awarded_fname + ' ' + awarded.awarded_lname}}</h3></a>
+        <p>Awarded</p>
+
+      </ng-container>
+
+    </div>
+
+  </div>
+
+  <app-milestones *ngIf="edit && project.status == 1" [project]="id" [prof]="awarded.awarded_id" [milestones]="milestones"></app-milestones>
+
+  <div class="content">
+    <p *ngIf="project.status == 1 && paid" class="highlight highlight-success project-actions clickable">Complete project</p>
+  </div>
+
+  <div class="content">
+    <app-review-form *ngIf="project.status == 2 && !review" projectId="{{project.id}}" creatorId="{{user}}" userId="{{user == owner.owner_id ? awarded.awarded_id : owner.owner_id}}"></app-review-form>
+    <app-review *ngIf="project.status == 2 && review" review="{{review.review}}" grade="{{review.grade}}"></app-review>
+  </div>
+
+</ng-container>
+

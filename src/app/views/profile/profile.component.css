@@ -1,0 +1,384 @@
+.header-profile-content, .header-profile {
+
+  overflow: visible;
+
+}
+
+.profile-line {
+
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  overflow: visible;
+
+}
+
+.profile-info {
+
+  width: 100%;
+  padding: 15px 0;
+
+}
+
+.chat-button {
+
+  margin: 25px 0 0 0;
+  padding: 15px 40px;
+  font-size: 11px !important;
+  width: 50px;
+  text-align: center;
+  font-weight: 400;
+  color: #252525 !important;
+
+}
+
+.profile-line span {
+
+  font-weight: 100;
+  margin: 0 0 0 10px;
+  font-size: 12px;
+
+}
+
+.profile-line h4 {
+
+  text-align: right;
+  font-weight: 100;
+  font-size: 25px;
+  margin: 0 0 50px 0;
+
+}
+
+.profile-line-02 {
+
+  overflow: visible;
+
+}
+
+.profile-picture {
+
+  background-color: #252525;
+  height: 260px;
+  width: 260px;
+  overflow: visible;
+  position: absolute;
+  right: 0;
+  background-position-x: center;
+  background-position-y: center;
+  background-size: cover;
+
+}
+
+.profile-picture-desktop {
+
+  display: block;
+
+}
+
+.profile-picture-mobile {
+
+  display: none;
+  margin: 0 auto 10px auto !important;
+
+}
+
+.profile-social {
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 30%;
+  color: #343434;
+  padding: 15px 0 0 0;
+
+}
+
+.profile-social i {
+
+  margin: 0 20px 0 0;
+  font-size: 23px;
+
+}
+
+.profile-languages {
+
+  padding: 10px 0;
+
+}
+
+.profile-languages p {
+
+  font-weight: 600;
+
+}
+
+.profile-languages span {
+
+  font-weight: 100;
+  font-size: 15px;
+  margin: 0 10px 0 0;
+  border-bottom: 1px solid #343434;
+
+}
+
+.profile-section {
+
+  margin: 20px 0;
+
+}
+
+.profile-section h4 {
+
+  font-weight: 100;
+  font-size: 19px;
+  text-transform: uppercase;
+  margin: 0 20px 0 0;
+  float: left;
+
+}
+
+.user-categories {
+
+  display: block;
+  margin: 15px 0 0;
+
+}
+
+.user-categories span {
+
+  margin: 0 15px 0 0 !important;
+  display: inline !important;
+  border-bottom: 1px solid #737373;
+  padding: 0 0 3px;
+
+}
+
+
+.divisor {
+
+  border-bottom: 1px solid #dedede;
+  height: 1px;
+  width: 70%;
+  float: left;
+  margin: 13px 0 0 0;
+
+}
+
+.profile-reviews {
+
+  margin: 35px 0;
+
+}
+
+.profile-reviews p {
+
+  font-weight: 100;
+  color: #343434;
+  margin: 10px 0;
+
+}
+
+.profile-review-item {
+
+  display: flex;
+  justify-content: flex-start;
+  border-bottom: 1px solid #dedede;
+  padding: 0 0 20px 0;
+  margin: 0 0 20px 0;
+
+}
+
+.review-image {
+
+  background-size: cover;
+  width: 100px;
+  height: 80px;
+  margin: 0 20px 0 0;
+
+}
+
+.profile-review-item h4 {
+
+  margin: 0;
+  color: #343434;
+
+}
+
+.profile-review-item p {
+
+  font-weight: 100;
+  color: #343434;
+  margin: 10px 0;
+
+}
+
+.profile-review-item span {
+
+  font-weight: 100;
+  color: #343434;
+  margin: 0 0 0 10px;
+  font-size: 12px;
+
+}
+
+.profile-certificates {
+
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 35px 0;
+
+}
+
+.profile-certificates img {
+
+  max-width: 90%;
+
+}
+
+.profile-certificates p {
+
+  font-weight: 100;
+  color: #343434;
+  margin: 10px 0;
+
+}
+
+.profile-certificate-item {
+
+  display: flex;
+  align-items: center;
+  width: 33.33%;
+  margin: 0 0 60px 0;
+
+}
+
+.profile-certificate-item i {
+
+  margin: 0 10px 0 0;
+  color: #fcac4f;
+  font-size: 60px;
+
+}
+
+.profile-certificate-info {
+
+  color: #343434;
+
+}
+
+.profile-certificate-info h4 {
+
+  margin: 0;
+
+}
+
+.profile-certificate-info p {
+
+  font-weight: 100;
+  margin: 5px 0;
+
+}
+
+.profile-certificate-info span {
+
+  font-weight: 400;
+  font-size: 13px;
+  font-style: italic;
+
+}
+
+@media screen and (max-width: 1300px) {
+
+  .profile-certificate-item{
+    width: 50%;
+  }
+
+}
+
+@media screen and (max-width: 1150px) {
+
+  .profile-info {
+    text-align: center;
+  }
+
+  .profile-social {
+    width: 35%;
+  }
+
+  .user-categories {
+    text-align: center;
+    margin: 15px auto;
+  }
+
+  .chat-button {
+    margin: 25px auto;
+  }
+
+}
+
+@media screen and (max-width: 1050px) {
+
+  .profile-picture-desktop {
+    display: none;
+  }
+
+  .profile-picture-mobile {
+    display: block;
+  }
+
+  .profile-line {
+    flex-direction: column;
+  }
+
+  .profile-line h4 {
+    text-align: center;
+    margin: 50px auto 20px;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .profile-picture {
+    margin: auto;
+    position: inherit;
+  }
+
+  .profile-social {
+    width: 50%;
+    margin: auto;
+  }
+
+}
+
+@media screen and (max-width: 950px) {
+
+  .chat-button {
+    margin: 20px auto 0;
+    display: block;
+  }
+
+  .profile-certificate-item{
+    width: 90%;
+  }
+
+}
+
+@media screen and (max-width: 750px) {
+
+  .profile-social {
+    width: 80%;
+  }
+
+  .profile-review-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profile-review-item img {
+    margin: 0 auto 15px;
+  }
+
+}
+
+

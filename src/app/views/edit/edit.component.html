@@ -1,0 +1,17 @@
+<div class="header header-edit">
+
+  <div class="content content-title">
+
+    <h1>Edit your {{type}}</h1>
+    <p>Use this page to edit the contents of your {{type}}.</p>
+
+  </div>
+
+</div>
+
+<div class="content content-fillable">
+
+  <app-edit-profile *ngIf="type == 'profile'" [id]="id"></app-edit-profile>
+  <app-edit-project *ngIf="type == 'project'" [id]="id"></app-edit-project>
+
+</div>

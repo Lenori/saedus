@@ -1,0 +1,21 @@
+<div class="content">
+
+  <form>
+
+    <input type="text" name="fn" id="fn" placeholder="First Name" required [(ngModel)]="form.fname" #fname="ngModel" />
+    <input type="text" name="ln" id="ln" placeholder="Last Name" required [(ngModel)]="form.lname" #lname="ngModel" />
+
+    <input type="email" name="email" id="email" placeholder="E-mail" required [(ngModel)]="form.email" #email="ngModel" />
+    <input type="password" name="password" id="password" placeholder="Password" required [(ngModel)]="form.password" #password="ngModel" />
+
+    <input type="text" name="address1" id="address1" placeholder="Address Line 01" required [(ngModel)]="form.add1" #add1="ngModel" />
+    <input type="text" name="address2" id="address2" placeholder="Address Line 02" required [(ngModel)]="form.add2" #add2="ngModel" />
+
+    <input type="text" name="city" id="city" placeholder="City" required [(ngModel)]="form.city" #city="ngModel" />
+    <input type="text" name="zip" id="zip" placeholder="Zip code" required [(ngModel)]="form.zip" #zip="ngModel" />
+
+    <p (click)="onSubmit()" class="highlight-dark">{{loading ? 'Loading...' : 'Create Account'}}</p>
+
+  </form>
+
+</div>

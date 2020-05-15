@@ -1,0 +1,28 @@
+input {
+
+  margin: 0 10px 20px;
+  width: 90%;
+
+}
+
+textarea {
+
+  margin: 0 0 15px 10px;
+  width: 90%;
+
+}
+
+p {
+
+  width: 200px;
+  text-align: center;
+
+}
+
+.budget {
+
+  width: 350px;
+  max-width: 90%;
+  text-align: left !important;
+
+}

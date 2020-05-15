@@ -1,0 +1,149 @@
+input, select {
+
+  width: 45%;
+  margin: 0 10px 20px;
+
+}
+
+textarea {
+
+  margin: 0 0 15px 10px;
+  width: 90%;
+
+}
+
+span {
+
+  margin: 0 0 30px;
+  display: block;
+  font-size: 12px;
+  color: #9e9e9e;
+
+}
+
+p {
+
+  width: 200px;
+  text-align: center;
+
+}
+
+h2 {
+
+  display: block;
+
+}
+
+.rate {
+
+  width: 350px;
+  max-width: 90%;
+  text-align: left !important;
+
+}
+
+.list-categories {
+
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 0 40px;
+
+}
+
+.list-certificates {
+
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 40px 0 35px;
+
+}
+
+.certificate {
+
+  width: 25%;
+  border-right: 1px solid #343434;
+  margin: 0 0 50px 0;
+  box-sizing: border-box;
+  text-align: center;
+
+}
+
+.certificate p {
+
+  width: auto;
+
+}
+
+.certificate span {
+
+  text-align: center;
+
+}
+
+.certificate img {
+
+  max-width: 180px;
+
+}
+
+.preview-pic {
+
+  width: 150px;
+  display: block;
+  margin: 0 0 10px 0;
+
+}
+
+.preview-remove {
+
+  margin: 0 0 40px 0;
+  width: auto;
+  text-align: left;
+
+}
+.option-focused {
+  background-color: #343434 !important;
+}
+
+.option-focused:hover {
+  background-color: #343434 !important;
+}
+.option-focused:active {
+  background-color: #343434 !important;
+}
+.option-focused:visited {
+  background-color: #343434 !important;
+}
+.option-focused:checked {
+  background-color: #343434 !important;
+}
+.option-focused:focus {
+  background-color: #343434 !important;
+}
+
+@media screen and (max-width: 1300px) {
+
+  .certificate {
+    width: 50%;
+  }
+
+}
+
+@media screen and (max-width: 1170px) {
+
+  input, select {
+    width: 100%;
+    margin: 0 0 20px 0;
+  }
+
+}
+
+@media screen and (max-width: 900px) {
+
+  .certificate {
+    width: 90%;
+  }
+
+}
